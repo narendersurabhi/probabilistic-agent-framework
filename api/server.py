@@ -7,8 +7,10 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
+from src.evaluation.benchmark_runner import BenchmarkRunner
+
 import numpy as np
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -59,6 +61,34 @@ LAST_QUERY: str = ""
 LAST_RUN_ID: str = ""
 CURRENT_OBS: Dict[str, bool] = {"tool_success": True}
 CURRENT_KNOWLEDGE_BELIEF: Dict[str, float] = {"unknown": 0.7, "partial": 0.2, "confident": 0.1}
+
+
+class StreamManager:
+    """Tracks active websocket clients for real-time trace broadcasting."""
+
+    def __init__(self) -> None:
+        self.clients: List[WebSocket] = []
+
+    async def connect(self, websocket: WebSocket) -> None:
+        await websocket.accept()
+        self.clients.append(websocket)
+
+    def disconnect(self, websocket: WebSocket) -> None:
+        if websocket in self.clients:
+            self.clients.remove(websocket)
+
+    async def broadcast(self, event: Dict[str, Any]) -> None:
+        stale_clients: List[WebSocket] = []
+        for client in self.clients:
+            try:
+                await client.send_json(event)
+            except Exception:
+                stale_clients.append(client)
+        for client in stale_clients:
+            self.disconnect(client)
+
+
+stream_manager = StreamManager()
 
 
 def _args_for_action(action: str, query: str) -> Dict[str, str]:
@@ -149,12 +179,14 @@ app.mount("/ui", StaticFiles(directory=str(UI_DIR)), name="ui")
 
 
 @app.post("/run_task")
-def run_task(req: TaskRequest) -> Dict[str, Any]:
+async def run_task(req: TaskRequest) -> Dict[str, Any]:
     global AGENT_STEPS, LAST_QUERY, CURRENT_OBS, LAST_RUN_ID
     AGENT_STEPS = []
     LAST_QUERY = req.query
     CURRENT_OBS = {"tool_success": True}
     LAST_RUN_ID = _new_run_id()
+
+    await stream_manager.broadcast({"event": "task_started", "task_id": LAST_RUN_ID, "query": req.query})
 
     entropies: List[float] = []
     for i in range(1, 6):
@@ -170,27 +202,30 @@ def run_task(req: TaskRequest) -> Dict[str, Any]:
         belief_vec = np.array(list(plan.belief_state.values()), dtype=float)
         entropies.append(float(-(belief_vec * np.log(belief_vec + 1e-9)).sum()))
 
-        AGENT_STEPS.append(
-            {
-                "step": i,
-                "belief_state": {
-                    "task_stage": plan.belief_state,
-                    "knowledge_state": knowledge_belief,
-                },
-                "action": action,
-                "policy_probabilities": plan.policy_probabilities,
-                "expected_free_energy": plan.expected_free_energy,
-                "tool_execution": {
-                    "tool": tool_output.tool,
-                    "arguments": arguments,
-                    "success": tool_output.success,
-                    "result": tool_output.result,
-                    "metadata": tool_output.metadata,
-                },
-                "observation": observation,
-                "critic": eval_result,
-            }
-        )
+        step_event = {
+            "event": "agent_step",
+            "task_id": LAST_RUN_ID,
+            "query": req.query,
+            "step": i,
+            "belief_state": {
+                "task_stage": plan.belief_state,
+                "knowledge_state": knowledge_belief,
+            },
+            "action": action,
+            "policy_probabilities": plan.policy_probabilities,
+            "expected_free_energy": plan.expected_free_energy,
+            "tool_execution": {
+                "tool": tool_output.tool,
+                "arguments": arguments,
+                "success": tool_output.success,
+                "result": tool_output.result,
+                "metadata": tool_output.metadata,
+            },
+            "observation": observation,
+            "critic": eval_result,
+        }
+        AGENT_STEPS.append(step_event)
+        await stream_manager.broadcast(step_event)
         CURRENT_OBS = observation
         if observation.get("answer_generated"):
             break
@@ -203,6 +238,8 @@ def run_task(req: TaskRequest) -> Dict[str, Any]:
 
     trace_payload = _build_trace(LAST_RUN_ID, req.query, AGENT_STEPS)
     (TRACE_DIR / f"{LAST_RUN_ID}.json").write_text(json.dumps(trace_payload, indent=2), encoding="utf-8")
+
+    await stream_manager.broadcast({"event": "task_completed", "task_id": LAST_RUN_ID, "steps": len(AGENT_STEPS)})
 
     return {"query": req.query, "run_id": LAST_RUN_ID, "steps": AGENT_STEPS}
 
@@ -228,3 +265,27 @@ def get_benchmark_results() -> Dict[str, Any]:
     if not path.exists():
         return {}
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+@app.post("/run_benchmark")
+async def run_benchmark() -> Dict[str, Any]:
+    runner = BenchmarkRunner(results_dir=RESULTS_DIR)
+
+    def emit(event: Dict[str, Any]) -> None:
+        import asyncio
+
+        asyncio.create_task(stream_manager.broadcast(event))
+
+    results = runner.run(event_callback=emit)
+    await stream_manager.broadcast({"event": "benchmark_completed", "results": results})
+    return results
+
+
+@app.websocket("/stream")
+async def stream_trace(websocket: WebSocket) -> None:
+    await stream_manager.connect(websocket)
+    try:
+        while True:
+            await websocket.receive_text()
+    except WebSocketDisconnect:
+        stream_manager.disconnect(websocket)

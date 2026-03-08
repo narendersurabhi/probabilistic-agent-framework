@@ -28,3 +28,25 @@ def test_api_endpoints_basic() -> None:
     trace_payload = trace_resp.json()
     assert 'nodes' in trace_payload
     assert 'edges' in trace_payload
+
+
+def test_websocket_stream_emits_step_events() -> None:
+    client = TestClient(app)
+
+    with client.websocket_connect('/stream') as ws:
+        ws.send_text('ping')
+        run_resp = client.post('/run_task', json={'query': 'What is 12 percent of 350'})
+        assert run_resp.status_code == 200
+
+        seen_event_types = set()
+        for _ in range(8):
+            payload = ws.receive_json()
+            event = payload.get('event')
+            if event:
+                seen_event_types.add(event)
+            if 'task_completed' in seen_event_types:
+                break
+
+    assert 'task_started' in seen_event_types
+    assert 'agent_step' in seen_event_types
+    assert 'task_completed' in seen_event_types

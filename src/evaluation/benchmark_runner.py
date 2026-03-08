@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Mapping
+from typing import Any, Callable, Dict, List, Mapping
 
 from src.environment.tool_environment import ToolEnvironment
 from src.evaluation.dataset_loader import DatasetLoader
@@ -267,7 +267,11 @@ class BenchmarkRunner:
         output_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
         return output_path
 
-    def run(self, agent_filter: List[str] | None = None) -> Dict[str, Dict[str, float]]:
+    def run(
+        self,
+        agent_filter: List[str] | None = None,
+        event_callback: Callable[[Dict[str, Any]], None] | None = None,
+    ) -> Dict[str, Dict[str, float]]:
         datasets = self.dataset_loader.load_all()
         available = ["standard", "react", "active_inference"]
         selected_names = [name for name in available if (agent_filter is None or name in agent_filter)]
@@ -288,6 +292,17 @@ class BenchmarkRunner:
                     graph = build_reasoning_graph(trace_payload)
                     task_id = trace_payload.get("task_id", "unknown_task")
                     save_reasoning_graph(graph, self.graph_dir / f"{agent_name}__{task_id}_graph.json")
+                    if event_callback is not None:
+                        for step_payload in trace_payload.get("steps", []):
+                            event_callback(
+                                {
+                                    "event": "benchmark_step",
+                                    "agent": agent_name,
+                                    "task_id": task_id,
+                                    "query": task.get("query"),
+                                    **step_payload,
+                                }
+                            )
             results[agent_name] = aggregate_metrics(rows)
 
         self.save_results(results)
