@@ -20,12 +20,15 @@
         <input id="queryInput" type="text" value="What is 12 percent of 350" />
         <button id="runBtn">Run Task</button>
         <button id="benchmarkBtn">Run Benchmark Stream</button>
+        <button id="arenaBtn">Run Agent Arena</button>
       </div>
       <p id="status"></p>
       <p><strong>Current Query:</strong> <span id="currentQuery">N/A</span></p>
       <a href="/trace_viewer" target="_blank">Open Trace Viewer</a>
       <span> | </span>
       <a href="/agent_comparison" target="_blank">Open Agent Comparison</a>
+      <span> | </span>
+      <a href="/arena" target="_blank">Open Agent Arena</a>
     </section>
 
     <section class="grid">
@@ -64,6 +67,11 @@
       <div class="panel">
         <h2>Failure Analysis</h2>
         <pre id="failureAnalysis"></pre>
+      </div>
+
+      <div class="panel">
+        <h2>Agent Arena Leaderboard</h2>
+        <pre id="arenaResults"></pre>
       </div>
 
       <div class="panel">

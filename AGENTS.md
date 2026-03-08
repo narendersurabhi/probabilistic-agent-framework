@@ -328,3 +328,22 @@ All agents operating in this repository should read this file first to understan
   - `tests/test_benchmark_runner.py` now verifies `failure_analysis.json` artifact creation,
   - `tests/test_api.py` now validates `/failure_analysis` endpoint availability.
 - Updated `README.md` with a new "Failure Analysis" section and artifact list additions.
+
+## 2026-03-08 (Agent Arena head-to-head competition)
+- Added pluggable arena agent interface under `src/agents/`:
+  - `src/agents/base_agent.py` (`BaseAgent` contract with `run(query)`)
+  - `src/agents/builtin_agents.py` (built-in plugins: `StandardArenaAgent`, `ReActArenaAgent`, `ActiveInferenceArenaAgent`)
+  - `src/agents/__init__.py` exports.
+- Added `src/evaluation/arena.py` implementing `AgentArena` with:
+  - automatic plugin discovery from `src/agents/`
+  - per-task head-to-head execution and winner selection
+  - leaderboard and battle-log artifact generation.
+- Added CLI runner `experiments/arena.py` to execute the arena and print sample battle + leaderboard output.
+- Extended API/UI for arena mode:
+  - `api/server.py`: `GET /arena`, `GET /arena_results`, `POST /run_arena`
+  - `ui/arena.html`: dedicated arena leaderboard page
+  - `ui/index.html` + `ui/dashboard.js`: dashboard button/panel integration for Agent Arena.
+- Added tests:
+  - `tests/test_arena.py` for arena artifact/leaderboard generation
+  - updated `tests/test_api.py` to validate arena endpoints.
+- Updated `README.md` with a new **Agent Arena** section covering usage, artifacts, plugin extension model, and API/UI routes.

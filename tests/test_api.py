@@ -38,6 +38,12 @@ def test_api_endpoints_basic() -> None:
     assert 'standard_agent' in compare_payload
     assert 'active_inference_agent' in compare_payload
 
+    arena_run_resp = client.post('/run_arena')
+    assert arena_run_resp.status_code == 200
+
+    arena_resp = client.get('/arena_results')
+    assert arena_resp.status_code == 200
+
 
 def test_websocket_stream_emits_step_events() -> None:
     client = TestClient(app)
