@@ -1,297 +1,191 @@
-# Self-Improving Multi-Agent LLM Framework with Active Inference (POMDP)
+# Probabilistic Agent Framework
+## Active Inference Planning for Tool-Using LLM Agents
 
-A production-style Python 3.11 repository demonstrating a probabilistic multi-agent system with:
+A research-oriented framework for evaluating AI agents that use tools, featuring Active Inference planning, deterministic benchmarks, and real-time reasoning visualization.
 
-- **Planner Agent** (Active Inference / POMDP planning)
-- **Critic Agent** (tool/argument/progress evaluation)
-- **Learner Agent** (preference and transition updates)
+## Demo
 
-It also includes a **benchmark suite** comparing:
+This repository includes a live dashboard and trace viewer for inspecting agent reasoning in real time:
 
-1. Standard LLM Tool Agent
-2. ReAct Agent
-3. Active Inference Agent
+- belief updates over hidden states,
+- policy probabilities and expected free energy,
+- tool calls and observations,
+- reasoning graph artifacts per run.
 
-The benchmark is now **trace-aware**: it evaluates full tool sequences (not just first tool call).
+> Tip: capture a 10-second GIF from the dashboard (`/`) and trace viewer (`/trace_viewer`) and place it under `results/plots/` for portfolio-ready presentation.
 
-## System Overview
-
-Agent loop:
-
-`User Query -> State Extraction -> Planner -> Tool Execution -> Observation Parsing -> Critic -> Logging -> Learner Update -> Next Step`
-
-Hidden states:
-
-- `knowledge_state`: unknown, partial, confident
-- `task_stage`: start, retrieving, solving, complete
-- `tool_effectiveness`: low, medium, high
-
-Observations:
-
-- `relevant_doc_found`
-- `doc_not_relevant`
-- `tool_success`
-- `tool_failure`
-- `answer_generated`
-
-Actions (tools):
-
-- `retrieve_docs`
-- `call_calculator`
-- `ask_user`
-- `generate_answer`
-
-## Architecture (text diagram)
+## Architecture Overview
 
 ```text
-+--------------------+
-| User Query         |
-+---------+----------+
-          |
-          v
-+--------------------+      +----------------------+
-| Planner Agent      | ---> | Tool Environment     |
-| (Active Inference) |      | + validated tools     |
-+---------+----------+      +----------+-----------+
-          |                            |
-          v                            v
-+--------------------+      +----------------------+
-| Observation Parser | ---> | Critic Agent         |
-+---------+----------+      +----------+-----------+
-          |                            |
-          +------------+   +-----------+
-                       v   v
-                 +----------------------+
-                 | Learner Agent        |
-                 | (policy updates)     |
-                 +----------+-----------+
-                            |
-                            v
-                    JSONL Run Logger
+User Query
+    ↓
+State Extraction
+    ↓
+Active Inference Planner
+    ↓
+Tool Execution
+    ↓
+Observation Parsing
+    ↓
+Belief Update
+    ↓
+Next Action
 ```
 
-## Active Inference Explanation
+## Repository Structure
 
-The planner maintains a belief distribution over hidden states. At each step it:
-
-- predicts outcomes under each candidate action,
-- computes expected free energy (heuristic + preference fit),
-- samples/selects low-EFE policies,
-- emits policy probabilities and chosen action.
-
-The learner then adjusts preference matrix `C` and transition matrix `B` using critic + tool outcome signals, enabling self-improvement over episodes.
-
-## Example Run
-
-```bash
-python experiments/run_agent.py
+```text
+.
+├── README.md
+├── Makefile
+├── requirements.txt
+├── config/
+├── src/
+│   ├── agents/
+│   ├── planning/
+│   ├── tools/
+│   ├── environment/
+│   ├── evaluation/
+│   ├── visualization/
+│   └── llm/
+├── api/
+├── ui/
+├── experiments/
+├── evaluation/datasets/
+├── results/
+└── tests/
 ```
 
-Outputs:
+This structure highlights framework design, experiment reproducibility, deterministic evaluation, and observability.
 
-- step-wise structured JSON
-- run logs at `logs/agent_runs.jsonl`
-- belief plots in `results/plots/`
+## Key Features
 
-## Evaluation & Benchmark
+- Active Inference planning for tool selection.
+- Deterministic benchmarking framework with structured traces.
+- Multi-dataset evaluation suite for tool-use behavior.
+- Belief state and policy probability visualization.
+- Reasoning trace graphs for every benchmark task.
+- Real-time dashboard with WebSocket streaming.
 
-Run benchmark:
+## Benchmark Results (Example)
+
+| Agent            | Tool Accuracy | Sequence Accuracy | First Step Accuracy |
+|------------------|---------------|-------------------|---------------------|
+| Standard LLM     | 0.64          | 0.52              | 0.55                |
+| ReAct            | 0.73          | 0.64              | 0.63                |
+| Active Inference | **0.86**      | **0.78**          | **0.82**            |
+
+## Visualization Examples
+
+- **Belief evolution**: unknown → partial → confident as evidence accumulates.
+- **Policy probabilities**: preference shifts between `retrieve_docs`, `call_calculator`, and `generate_answer`.
+- **Reasoning graph**: query → belief update → action → observation → final answer.
+
+Generated artifacts:
+
+- `results/plots/belief_evolution.png`
+- `results/plots/policy_probabilities.png`
+- `results/plots/free_energy.png`
+- `results/graphs/*_graph.json`
+
+## Quick Start
 
 ```bash
+git clone https://github.com/narendersurabhi/probabilistic-agent-framework
+cd probabilistic-agent-framework
+pip install -r requirements.txt
 python experiments/run_benchmark.py
-# or
+```
+
+Or use:
+
+```bash
 make benchmark
 ```
 
-Artifacts:
-
-- `results/benchmark_results.json`
-- `results/benchmark_report.md`
-- task-level traces in `results/benchmark_traces.jsonl`
-- plots in `results/plots/`
-- reasoning graphs in `results/graphs/` (`*_graph.json`)
-- active-inference trace dynamics plots: `belief_evolution.png`, `policy_probabilities.png`, `free_energy.png`
-
-
-### Reasoning Trace Graphs
-
-Benchmark runs now also emit graph-structured reasoning traces for each task in `results/graphs/` via `src/visualization/trace_graph.py`.
-
-Each graph includes:
-
-- query node
-- per-step belief, action, and observation nodes
-- directed edges representing the reasoning flow
-- final result node
-
-These artifacts make it easy to inspect the full reasoning path and can be consumed directly by web viewers or dashboards.
-
-### Active Inference Trace Dynamics Visualization
-
-`python experiments/run_benchmark.py` now auto-generates time-series plots from an Active Inference run trace (`results/traces/active_inference__*.json`) using:
-
-- `src/visualization/belief_plots.py` → `results/plots/belief_evolution.png`
-- `src/visualization/policy_plots.py` → `results/plots/policy_probabilities.png`
-- `src/visualization/free_energy_plot.py` → `results/plots/free_energy.png`
-
-These plots visualize belief updates, policy distributions, and expected free energy over reasoning steps.
-
-### Benchmark Results (example)
-
-| Agent | Tool Accuracy | First-Step Accuracy | Sequence Accuracy | Planning Accuracy | Premature Action Rate | Prefix Accuracy | Argument Accuracy | Completion Rate | Avg Steps |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Standard LLM | 0.65 | 0.55 | 0.52 | 0.52 | 0.45 | 0.61 | 0.62 | 0.50 | 1.00 |
-| ReAct | 0.74 | 0.63 | 0.63 | 0.63 | 0.37 | 0.72 | 0.71 | 0.62 | 1.40 |
-| Active Inference | 0.86 | 0.82 | 0.78 | 0.78 | 0.18 | 0.84 | 0.81 | 0.76 | 1.20 |
-
-Why Active Inference helps:
-
-- explicit uncertainty tracking and entropy reduction,
-- preference-guided policy optimization,
-- iterative updates from critic feedback,
-- improved multi-step sequence performance under trace-aware scoring,
-- stronger first-step information-seeking behavior on uncertainty tasks,
-- lower premature action rates on delayed-reward planning tasks.
-
-
-### Dataset Bundles
-
-Additional benchmark datasets are available under `evaluation/datasets/`:
-
-- `tool_benchmark.json` (100 tasks): 30 arithmetic, 30 retrieval, 20 multi-step, 20 direct-answer
-- `tool_confusion_tasks.json` (50 tasks): false-calculator, hidden-calculator, retrieve-then-compute, and misleading-retrieval splits
-- `uncertainty_tasks.json` (40 tasks): information-first tool sequences (`retrieve_docs -> call_calculator`)
-- `argument_accuracy_tasks.json` (40 tasks): arithmetic prompts focused on calculator argument correctness
-- `multi_step_tasks.json` (40 tasks): explicit two-step planning tasks requiring retrieval then computation
-- `delayed_reward_tasks.json` (40 tasks): long-horizon planning prompts requiring at least three tool calls before reward
-
-These datasets are intended for targeted evaluation beyond the default benchmark configuration and can be passed into the benchmark harness directly.
-
-## Interactive Agent Visualization
-
-A lightweight dashboard is included with:
-
-- **FastAPI backend**: `api/server.py`
-- **Vanilla frontend**: `ui/index.html`, `ui/dashboard.js`, `ui/styles.css`
-
-### Features
-
-- Submit tasks via `/run_task`
-- Run full benchmark streaming via `/run_benchmark`
-- Observe step-by-step agent decisions from `/agent_steps`
-- Inspect belief distributions from `/belief_state`
-- View benchmark metrics from `/benchmark_results`
-- Real-time WebSocket streaming via `/stream` for task and benchmark step events
-- Chart.js visualizations for belief and policy distributions
-- Polling fallback every 1s for state reconciliation
-
-### Run the dashboard
+## Run the Dashboard
 
 ```bash
 uvicorn api.server:app --reload
 ```
 
-Then open:
+Open:
 
 ```text
-http://localhost:8000
+http://localhost:8000/
 ```
 
-### How to interpret the dashboard
-
-- **Belief State** panel shows task-stage and knowledge-state distributions evolving over time.
-- **Policy Probabilities** shows action selection likelihoods at the latest step.
-- **Expected Free Energy** shows per-action objective values (lower is preferred).
-- **Tool Execution** shows validated tool calls and outputs.
-- **Benchmark Comparison** shows architecture-level performance metrics.
-
-### Example screenshot
-
-See `results/plots/dashboard_screenshot.png` after running the UI capture flow.
-
-
-## Agent Trace Visualization
-
-Each dashboard run now generates a graph-structured trace file in `traces/`:
-
-- Node types: `query`, `belief_update`, `policy_eval`, `action_selection`, `tool_execution`, `observation`, `critic`
-- Directed edges represent the execution chain across agent steps
-- Trace API endpoint: `GET /trace/{run_id}`
-
-Open the graph viewer at:
+Trace viewer:
 
 ```text
 http://localhost:8000/trace_viewer
 ```
 
-The trace viewer uses **D3.js** for:
+## Benchmark Datasets
 
-- force-directed graph rendering,
-- zoom and pan interactions,
-- click-to-inspect metadata panel.
+Primary bundles under `evaluation/datasets/` include:
 
-### Trace screenshot
+- tool benchmark tasks,
+- tool confusion tasks,
+- uncertainty / information-seeking tasks,
+- argument-accuracy tasks,
+- delayed-reward planning tasks.
 
-See `results/plots/trace_viewer_screenshot.png` for an example graph visualization.
+The `src/evaluation/datasets/` suite provides additional prompt-driven benchmark bundles for deterministic harness execution.
 
-
-## Experiment Pipeline
-
-A reproducible, production-style experiment pipeline is included for local and Kubernetes execution.
-
-### Pipeline stages
-
-1. **Benchmark Execution**: run all configured agent architectures and write `benchmark_results.json`
-2. **Evaluation**: compute summary metrics and write `evaluation_report.json`
-3. **Visualization**: generate matplotlib comparison plots in `artifacts/plots/`
-4. **Report Generation**: create `benchmark_report.md`
-
-### Pipeline architecture (text diagram)
+## Example Trace
 
 ```text
-User triggers experiment
-  -> Argo workflow starts
-  -> benchmark step runs
-  -> evaluation step computes metrics
-  -> visualization step generates plots
-  -> report step produces benchmark report
+Query: What is 20 percent of the population of Spain?
+
+Step 1
+Action: retrieve_docs
+
+Step 2
+Observation: population = 47M
+
+Step 3
+Action: call_calculator
+
+Answer: 9.4M
 ```
 
-### Kubernetes + Argo
+## Research Inspiration
 
-- Workflow file: `infra/argo/benchmark_workflow.yaml`
-- Container definition: `infra/docker/Dockerfile`
+- Active Inference
+- POMDP planning
+- Tool-use architecture comparisons (Standard vs ReAct vs Active Inference)
 
-Submit on cluster:
+## Interview Demo Flow
 
-```bash
-argo submit infra/argo/benchmark_workflow.yaml
-```
+1. Open repository and scan architecture + benchmark sections.
+2. Run benchmark and show `results/benchmark_results.json`.
+3. Launch dashboard and stream a task live.
+4. Open reasoning graph artifact in trace viewer.
+5. Walk through `src/planning/active_inference_planner.py`.
 
-### Local execution
+## What This Signals
 
-```bash
-python experiments/run_benchmark.py --config config/benchmark_config.yaml --output-dir artifacts
-python experiments/evaluate_metrics.py --input artifacts/benchmark_results.json --output artifacts/evaluation_report.json
-python experiments/generate_visualizations.py --input artifacts/benchmark_results.json --out-dir artifacts/plots
-python experiments/generate_report.py --input artifacts/benchmark_results.json --output artifacts/benchmark_report.md
-```
+This project demonstrates:
 
-### CI integration
+- agent architecture and probabilistic decision loops,
+- ML evaluation methodology with deterministic datasets,
+- reproducible experiment pipeline design,
+- system observability via logs, traces, and dashboards,
+- full-stack AI tooling (backend API + frontend visualization).
 
-GitHub Actions workflow: `.github/workflows/benchmark.yml`
+## Advanced Extension (Recommended Next)
 
-It builds the experiment image, runs the benchmark pipeline locally, and uploads the generated `artifacts/` directory.
+Add side-by-side planning strategy comparison for the same task:
+
+- ReAct trace vs Active Inference trace,
+- aligned step timelines,
+- comparative tool choices and outcomes.
+
+This makes architectural trade-offs immediately visible to reviewers.
 
 ## Testing
 
 ```bash
 pytest -q
 ```
-
-## Future Work
-
-- replace mock LLM with production LLM adapters,
-- add richer tool APIs and external retrieval backends,
-- learn observation and transition models online,
-- support distributed multi-agent execution.
