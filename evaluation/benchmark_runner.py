@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 import numpy as np
 
@@ -35,6 +35,8 @@ def load_dataset(path: str) -> List[Dict[str, Any]]:
 
 
 def _expected_sequence(item: Dict[str, Any]) -> List[str]:
+    if item.get("expected_tool_sequence"):
+        return list(item["expected_tool_sequence"])
     if item.get("expected_tools"):
         return list(item["expected_tools"])
     if item.get("expected_tool"):
@@ -54,22 +56,57 @@ def _prefix_ratio(expected: List[str], actual: List[str]) -> float:
     return matched / len(expected)
 
 
-def _row_from_result(item: Dict[str, Any], result: Dict[str, Any]) -> Dict[str, Any]:
-    expected_tools = _expected_sequence(item)
+def _normalize_result(result: Dict[str, Any]) -> Dict[str, Any]:
+    """Normalize agent output into a common benchmark shape.
+
+    Supported keys:
+    - selected_tool / arguments / steps (action list)
+    - tool / args / trace
+    """
+    if "selected_tool" in result:
+        steps = result.get("steps", [])
+        if steps and isinstance(steps[0], dict):
+            trace = [{"tool": s.get("action"), "args": result.get("arguments", {})} for s in steps]
+        else:
+            trace = []
+        return {
+            "tool": result.get("selected_tool"),
+            "args": result.get("arguments", {}),
+            "trace": trace,
+            "steps": len(trace) if trace else result.get("steps", 1),
+            "completed": bool(result.get("completed", False)),
+            "final_answer": result.get("final_answer"),
+            "beliefs": result.get("beliefs", []),
+        }
+
     trace = result.get("trace", [])
-    actual_tools = [t.get("tool") for t in trace]
+    return {
+        "tool": result.get("tool"),
+        "args": result.get("args", {}),
+        "trace": trace,
+        "steps": result.get("steps", len(trace) if trace else 1),
+        "completed": bool(result.get("completed", False)),
+        "final_answer": result.get("final_answer"),
+        "beliefs": result.get("beliefs", []),
+    }
+
+
+def _row_from_result(item: Dict[str, Any], normalized: Dict[str, Any]) -> Dict[str, Any]:
+    expected_tools = _expected_sequence(item)
+    trace = normalized.get("trace", [])
+    actual_tools = [t.get("tool") for t in trace] if trace else ([normalized.get("tool")] if normalized.get("tool") else [])
 
     expected_args = item.get("expected_args")
-    first_args = trace[0].get("args", {}) if trace else result.get("args", {})
+    first_args = trace[0].get("args", {}) if trace else normalized.get("args", {})
 
     expected_final_answer = item.get("expected_final_answer")
-    final_answer = result.get("final_answer")
+    final_answer = normalized.get("final_answer")
 
     return {
         "tool_correct": bool(expected_tools) and bool(actual_tools) and expected_tools[0] == actual_tools[0],
         "arguments_correct": expected_args is None or first_args == expected_args,
-        "completed": (actual_tools == expected_tools) if expected_tools else bool(result.get("completed", False)),
-        "steps": result.get("steps", len(trace) if trace else 1),
+        "completed": (actual_tools == expected_tools) if expected_tools else bool(normalized.get("completed", False)),
+        "steps": normalized.get("steps", len(trace) if trace else 1),
         "sequence_exact": actual_tools == expected_tools,
         "prefix_ratio": _prefix_ratio(expected_tools, actual_tools),
         "final_answer_correct": expected_final_answer is None or final_answer == expected_final_answer,
@@ -94,9 +131,8 @@ def _per_task_type(rows: List[Dict[str, Any]]) -> Dict[str, Dict[str, float]]:
 def _aggregate_runs(run_results: List[Dict[str, Any]]) -> Dict[str, Any]:
     if not run_results:
         return {}
-    keys = [k for k in run_results[0].keys() if k != "per_task_type"]
+    keys = [k for k in run_results[0].keys() if k not in {"per_task_type", "run_index"}]
     agg: Dict[str, Any] = {k: float(np.mean([rr[k] for rr in run_results])) for k in keys}
-    # aggregate per-task metrics
     task_types = set()
     for rr in run_results:
         task_types.update(rr["per_task_type"].keys())
@@ -119,6 +155,7 @@ def run_benchmark(
     max_steps: int = 3,
     agent_types: List[str] | None = None,
     number_of_runs: int = 1,
+    trace_log_path: str | None = None,
 ) -> Dict[str, Any]:
     np.random.seed(seed)
     data = load_dataset(dataset_path)
@@ -128,6 +165,7 @@ def run_benchmark(
         if name not in AGENT_FACTORIES:
             raise ValueError(f"Unsupported agent type: {name}")
 
+    trace_records: List[Dict[str, Any]] = []
     all_results: Dict[str, Dict[str, Any]] = {}
     for name in selected:
         per_run_results: List[Dict[str, Any]] = []
@@ -136,11 +174,22 @@ def run_benchmark(
             rows = []
             entropy_track: List[float] = []
             for item in data:
-                res = agent.run(item["query"])
-                rows.append(_row_from_result(item, res))
+                raw = agent.run(item["query"])
+                norm = _normalize_result(raw)
+                rows.append(_row_from_result(item, norm))
+                trace_records.append(
+                    {
+                        "agent": name,
+                        "run_index": run_idx,
+                        "task_id": item.get("task_id"),
+                        "query": item.get("query"),
+                        "selected_tool": norm.get("tool"),
+                        "arguments": norm.get("args"),
+                        "steps": norm.get("trace", []),
+                    }
+                )
                 if name == "active_inference":
-                    beliefs = res.get("beliefs", [])
-                    for b in beliefs:
+                    for b in norm.get("beliefs", []):
                         p = np.array(list(b.values()), dtype=float)
                         entropy_track.append(float(-(p * np.log(p + 1e-9)).sum()))
 
@@ -159,5 +208,12 @@ def run_benchmark(
                 }
             )
         all_results[name] = _aggregate_runs(per_run_results)
+
+    if trace_log_path:
+        p = Path(trace_log_path)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        with p.open("w", encoding="utf-8") as f:
+            for rec in trace_records:
+                f.write(json.dumps(rec) + "\n")
 
     return all_results

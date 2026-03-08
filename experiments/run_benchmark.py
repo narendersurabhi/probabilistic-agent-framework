@@ -49,13 +49,6 @@ def write_report(metrics: dict, out_path: str) -> None:
             )
         lines.append("")
 
-    lines.extend(
-        [
-            "## Observations",
-            "- Sequence-aware scoring prevents over-crediting one-shot tool guesses on multi-step tasks.",
-            "- Prefix accuracy reveals partial progress even when exact sequence matching fails.",
-        ]
-    )
     Path(out_path).write_text("\n".join(lines), encoding="utf-8")
 
 
@@ -64,6 +57,7 @@ def write_evaluation_report(metrics: Dict[str, Dict], out_path: str) -> None:
         agent: {
             "tool_selection_accuracy": vals["tool_accuracy"],
             "argument_accuracy": vals["argument_accuracy"],
+            "sequence_accuracy": vals["sequence_tool_accuracy"],
             "task_completion_rate": vals["task_completion"],
             "belief_entropy_reduction": vals.get("belief_entropy_reduction", 0.0),
         }
@@ -85,16 +79,19 @@ def main() -> None:
     number_of_runs = int(cfg.get("number_of_runs", "1"))
     agent_types = parse_agent_types(cfg.get("agent_types", "standard_llm,react,active_inference"))
 
+    out = Path(args.output_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    traces_path = str(out / "benchmark_traces.jsonl")
+
     metrics = run_benchmark(
         dataset_path=dataset_path,
         seed=seed,
         max_steps=max_steps,
         agent_types=agent_types,
         number_of_runs=number_of_runs,
+        trace_log_path=traces_path,
     )
 
-    out = Path(args.output_dir)
-    out.mkdir(parents=True, exist_ok=True)
     (out / "benchmark_results.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
     plot_benchmark_bars(metrics, str(out / "plots"))
     write_report(metrics, str(out / "benchmark_report.md"))

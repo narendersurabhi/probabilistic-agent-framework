@@ -134,3 +134,13 @@ All agents operating in this repository should read this file first to understan
   - 15 `retrieve_then_compute` tasks (two-step `retrieve_docs -> call_calculator`)
   - 10 `misleading_retrieval` tasks (retrieval-looking but common-knowledge prompts that should use `generate_answer`)
 - Validated task count, category distribution, and schema shape via local Python checks.
+
+## 2026-03-08 (benchmark runner harness hardening)
+- Hardened `evaluation/benchmark_runner.py` to act as a true evaluation harness:
+  - normalizes heterogeneous agent output shapes (`selected_tool/arguments/steps` and `tool/args/trace`)
+  - evaluates tasks using `expected_tool_sequence` when present (in addition to existing expected fields)
+  - records task-level execution traces to JSONL via `trace_log_path`
+- Updated `experiments/run_benchmark.py` to emit `benchmark_traces.jsonl` along with benchmark metrics/reports/plots.
+- Added `Makefile` with `make benchmark` and `make test` convenience targets.
+- Added evaluation test coverage for result normalization path in `tests/test_evaluation.py`.
+- Updated README benchmark usage and artifact list to include `make benchmark` and benchmark trace logs.

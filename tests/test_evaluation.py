@@ -43,3 +43,17 @@ def test_benchmark_runner_executes() -> None:
     assert "active_inference" in results
     assert "tool_accuracy" in results["standard_llm"]
     assert "sequence_tool_accuracy" in results["react"]
+
+
+def test_runner_normalizes_selected_tool_format() -> None:
+    from evaluation.benchmark_runner import _normalize_result
+
+    result = {
+        "selected_tool": "call_calculator",
+        "arguments": {"expression": "350 * 0.12"},
+        "steps": [{"action": "call_calculator"}],
+    }
+    norm = _normalize_result(result)
+    assert norm["tool"] == "call_calculator"
+    assert norm["args"] == {"expression": "350 * 0.12"}
+    assert norm["trace"][0]["tool"] == "call_calculator"

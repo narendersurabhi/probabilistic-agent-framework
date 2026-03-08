@@ -99,12 +99,15 @@ Run benchmark:
 
 ```bash
 python experiments/run_benchmark.py
+# or
+make benchmark
 ```
 
 Artifacts:
 
 - `results/benchmark_results.json`
 - `results/benchmark_report.md`
+- task-level traces in `results/benchmark_traces.jsonl`
 - plots in `results/plots/`
 
 ### Benchmark Results (example)
