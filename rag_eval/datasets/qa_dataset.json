@@ -1,0 +1,40 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "ground_truth": "Paris",
+    "relevant_documents": [
+      "France is a country in Europe. Its capital city is Paris.",
+      "Paris is known for the Eiffel Tower."
+    ],
+    "corpus": [
+      "France is a country in Europe. Its capital city is Paris.",
+      "Berlin is the capital of Germany.",
+      "Paris is known for the Eiffel Tower.",
+      "The Pacific Ocean is the largest ocean on Earth."
+    ]
+  },
+  {
+    "question": "Which ocean is the largest on Earth?",
+    "ground_truth": "Pacific Ocean",
+    "relevant_documents": [
+      "The Pacific Ocean is the largest ocean on Earth."
+    ],
+    "corpus": [
+      "The Atlantic Ocean is the second-largest ocean.",
+      "The Pacific Ocean is the largest ocean on Earth.",
+      "Mount Everest is the tallest mountain above sea level."
+    ]
+  },
+  {
+    "question": "What is 15 percent of 200?",
+    "ground_truth": "30",
+    "relevant_documents": [
+      "15 percent of 200 is 30."
+    ],
+    "corpus": [
+      "15 percent of 200 is 30.",
+      "10 percent of 200 is 20.",
+      "Paris is the capital of France."
+    ]
+  }
+]

@@ -84,6 +84,36 @@ Open:
 - `http://localhost:8000/agent_comparison`
 - `http://localhost:8000/arena`
 
+## RAG Evaluation Harness
+
+A new deterministic RAG evaluation module is available under `rag_eval/` to score retrieval-augmented generation pipelines end-to-end.
+
+Supported metrics:
+
+- Retrieval Recall
+- Context Precision
+- Answer Accuracy
+- Faithfulness
+- Hallucination Rate
+
+Run it with:
+
+```bash
+python rag_eval/experiments/run_rag_eval.py
+```
+
+Outputs:
+
+- `rag_eval/results/rag_eval_results.json`
+- `rag_eval/results/rag_eval_metrics.png`
+
+Example benchmark table:
+
+| Model        | Retrieval Recall | Answer Accuracy | Hallucination Rate |
+| ------------ | ---------------- | --------------- | ------------------ |
+| Baseline RAG | 0.84             | 0.79            | 0.08               |
+| Improved RAG | **0.91**         | **0.86**        | **0.04**           |
+
 ## Agent Arena
 
 Run head-to-head evaluation where built-in agents compete on standardized tasks.

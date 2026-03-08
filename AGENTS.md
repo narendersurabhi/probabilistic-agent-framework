@@ -10,6 +10,22 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-08 (RAG evaluation harness module)
+- Added a standalone deterministic RAG evaluation module under `rag_eval/`:
+  - `rag_eval/src/rag_eval/retriever.py` for keyword-overlap retrieval.
+  - `rag_eval/src/rag_eval/generator.py` for heuristic answer extraction from retrieved context.
+  - `rag_eval/src/rag_eval/metrics.py` implementing retrieval recall, context precision, answer accuracy, faithfulness, and hallucination rate.
+  - `rag_eval/src/rag_eval/evaluator.py` with task-level scoring and aggregate metric computation.
+  - `rag_eval/src/rag_eval/__init__.py` package exports.
+- Added benchmark starter dataset `rag_eval/datasets/qa_dataset.json` with QA tasks, relevant docs, and corpora.
+- Added executable experiment script `rag_eval/experiments/run_rag_eval.py`:
+  - runs retrieval + generation + evaluation loop,
+  - writes `rag_eval/results/rag_eval_results.json`,
+  - writes `rag_eval/results/rag_eval_metrics.png` (or placeholder text artifact without matplotlib).
+- Added test coverage in `tests/test_rag_eval.py` for metric behavior, pipeline integration, and end-to-end script artifact generation.
+- Updated `README.md` with a new **RAG Evaluation Harness** section and run instructions.
+- Updated `Makefile` with `make rag-eval` convenience target.
+
 ## 2026-03-08 (README GitHub page positioning refresh)
 - Reworked `README.md` to a high-impact GitHub landing layout focused on immediate project comprehension and adoption.
 - Updated top section branding to **Agent Arena** with subtitle, one-line positioning statement, and professional badges (Python, MIT, PyPI, Benchmark).
