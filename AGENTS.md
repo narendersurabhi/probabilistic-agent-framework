@@ -100,3 +100,14 @@ All agents operating in this repository should read this file first to understan
   - `experiments/generate_report.py`
 - Added `artifacts/.gitkeep` for artifact output directory tracking.
 - Updated README with a new "Experiment Pipeline" section including Argo usage, local commands, and pipeline diagram.
+
+## 2026-03-08 (standalone pymdp active inference planner module)
+- Added new planning module at `src/planning/active_inference_planner.py` implementing:
+  - hidden-state factors (`knowledge_state`, `task_stage`, `tool_effectiveness`)
+  - observation model `A`, transition model `B`, preference vector `C`, prior beliefs `D`
+  - belief inference (`infer_state` / `update_beliefs`)
+  - policy evaluation via expected free energy (`evaluate_policies`)
+  - action selection (`select_action`) and structured step output (`PlannerSnapshot`)
+  - optional `pymdp` Agent initialization when available.
+- Added `src/planning/__init__.py` package marker.
+- Added tests in `tests/test_planner.py` covering belief update behavior, policy probability validity, and valid action selection.
