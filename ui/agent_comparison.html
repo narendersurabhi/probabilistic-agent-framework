@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Reasoning Comparison</title>
+    <link rel="stylesheet" href="/ui/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Agent Reasoning Comparison</h1>
+      <p>Run the same task across Standard, ReAct, and Active Inference agents.</p>
+      <a href="/" target="_self">Back to Dashboard</a>
+    </header>
+
+    <section class="panel">
+      <div class="row">
+        <input id="taskId" type="text" value="task_001" />
+        <input id="query" type="text" value="What is 20 percent of the population of Spain?" />
+        <button id="runCompare">Run Comparison</button>
+      </div>
+      <pre id="summary"></pre>
+    </section>
+
+    <section class="grid" id="comparisonGrid"></section>
+
+    <script src="/ui/agent_comparison.js"></script>
+  </body>
+</html>

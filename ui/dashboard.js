@@ -9,6 +9,7 @@ const queryTextEl = document.getElementById('currentQuery');
 const wsStateEl = document.getElementById('wsState');
 const actionHistoryEl = document.getElementById('actionHistory');
 const graphNodesEl = document.getElementById('graphNodes');
+const comparisonEl = document.getElementById('agentComparison');
 
 const events = [];
 const graph = { nodes: [], edges: [] };
@@ -130,6 +131,19 @@ async function runBenchmark() {
   await fetch('/run_benchmark', { method: 'POST' });
 }
 
+
+async function compareAgents() {
+  const taskId = document.getElementById('comparisonTaskId').value || 'task_001';
+  const query = document.getElementById('comparisonQuery').value;
+  const resp = await fetch('/compare_agents', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ task_id: taskId, query })
+  });
+  const payload = await resp.json();
+  comparisonEl.textContent = JSON.stringify(payload, null, 2);
+}
+
 async function refresh() {
   const [stepsRes, beliefRes, benchmarkRes] = await Promise.all([
     fetch('/agent_steps'),
@@ -148,6 +162,7 @@ async function refresh() {
 
 document.getElementById('runBtn').addEventListener('click', runTask);
 document.getElementById('benchmarkBtn').addEventListener('click', runBenchmark);
+document.getElementById('compareBtn').addEventListener('click', compareAgents);
 setInterval(refresh, 1000);
 connectWebSocket();
 refresh();

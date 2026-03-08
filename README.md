@@ -121,6 +121,29 @@ Trace viewer:
 http://localhost:8000/trace_viewer
 ```
 
+
+## Agent Reasoning Comparison
+
+Run the same query side-by-side across all three agent architectures:
+
+```bash
+python experiments/compare_agents.py --task-id task_001 --query "What is 20 percent of the population of Spain?"
+```
+
+This writes a comparison artifact to `results/comparisons/task_001.json` and includes:
+
+- `standard_agent` steps (often greedy single-tool behavior),
+- `react_agent` steps (retrieve-then-compute chains),
+- `active_inference_agent` steps with belief/policy/expected-free-energy fields.
+
+You can also use the dashboard's **Agent Comparison** panel or open `http://localhost:8000/agent_comparison` for a dedicated side-by-side view.
+
+| Agent            | Typical First Action | Why it matters |
+|------------------|----------------------|----------------|
+| Standard         | `call_calculator`    | Can fail without missing facts |
+| ReAct            | `retrieve_docs`      | Explicit intermediate reasoning |
+| Active Inference | `retrieve_docs`      | Probabilistic planning + belief updates |
+
 ## Benchmark Datasets
 
 Primary bundles under `evaluation/datasets/` include:

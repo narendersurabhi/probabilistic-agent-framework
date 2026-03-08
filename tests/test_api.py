@@ -29,6 +29,12 @@ def test_api_endpoints_basic() -> None:
     assert 'nodes' in trace_payload
     assert 'edges' in trace_payload
 
+    compare_resp = client.post('/compare_agents', json={'task_id': 'task_001', 'query': 'What is 20 percent of the population of Spain?'})
+    assert compare_resp.status_code == 200
+    compare_payload = compare_resp.json()
+    assert 'standard_agent' in compare_payload
+    assert 'active_inference_agent' in compare_payload
+
 
 def test_websocket_stream_emits_step_events() -> None:
     client = TestClient(app)

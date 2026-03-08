@@ -7,6 +7,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
+from src.evaluation.agent_comparison import AgentComparisonRunner
 from src.evaluation.benchmark_runner import BenchmarkRunner
 
 import numpy as np
@@ -29,6 +30,11 @@ from visualization.policy_plots import plot_expected_free_energy, plot_policy_pr
 
 
 class TaskRequest(BaseModel):
+    query: str
+
+
+class ComparisonRequest(BaseModel):
+    task_id: str = "task_001"
     query: str
 
 
@@ -175,6 +181,11 @@ def trace_viewer() -> FileResponse:
     return FileResponse(UI_DIR / "trace_viewer.html")
 
 
+@app.get("/agent_comparison")
+def agent_comparison_view() -> FileResponse:
+    return FileResponse(UI_DIR / "agent_comparison.html")
+
+
 app.mount("/ui", StaticFiles(directory=str(UI_DIR)), name="ui")
 
 
@@ -265,6 +276,12 @@ def get_benchmark_results() -> Dict[str, Any]:
     if not path.exists():
         return {}
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+@app.post("/compare_agents")
+def compare_agents(req: ComparisonRequest) -> Dict[str, Any]:
+    runner = AgentComparisonRunner(results_dir=RESULTS_DIR)
+    return runner.compare_task({"task_id": req.task_id, "query": req.query})
 
 
 @app.post("/run_benchmark")
