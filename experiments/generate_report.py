@@ -1,31 +1,62 @@
-"""Generate benchmark markdown report from benchmark result JSON."""
+"""Generate benchmark markdown report from benchmark result metrics."""
 
 from __future__ import annotations
 
 import argparse
 import json
 from pathlib import Path
+from typing import Dict
 
 
-def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--input", required=True)
-    ap.add_argument("--output", required=True)
-    args = ap.parse_args()
+PLOT_FILES = [
+    "tool_accuracy_comparison.png",
+    "sequence_accuracy_comparison.png",
+    "first_step_accuracy_comparison.png",
+    "completion_rate_comparison.png",
+]
 
-    metrics = json.loads(Path(args.input).read_text(encoding="utf-8"))
+
+def generate_markdown_report(metrics: Dict[str, Dict[str, float]], output_path: str = "results/benchmark_report.md") -> Path:
     lines = [
         "# Benchmark Report",
         "",
-        "| Agent | Tool Accuracy | Argument Accuracy | Completion Rate | Belief Entropy Reduction |",
-        "|---|---:|---:|---:|---:|",
+        "## Summary Metrics",
+        "",
+        "| Agent | Tool Selection Accuracy | Argument Accuracy | Sequence Accuracy | First Step Accuracy | Task Completion Rate |",
+        "|---|---:|---:|---:|---:|---:|",
     ]
-    for agent, vals in metrics.items():
+
+    for agent, values in metrics.items():
         lines.append(
-            f"| {agent} | {vals.get('tool_accuracy', 0.0):.2f} | {vals.get('argument_accuracy', 0.0):.2f} | {vals.get('task_completion', 0.0):.2f} | {vals.get('belief_entropy_reduction', 0.0):.2f} |"
+            "| {agent} | {tool:.2f} | {args:.2f} | {seq:.2f} | {first:.2f} | {completion:.2f} |".format(
+                agent=agent,
+                tool=values.get("tool_selection_accuracy", 0.0),
+                args=values.get("argument_accuracy", 0.0),
+                seq=values.get("sequence_accuracy", 0.0),
+                first=values.get("first_step_accuracy", 0.0),
+                completion=values.get("task_completion_rate", 0.0),
+            )
         )
-    Path(args.output).parent.mkdir(parents=True, exist_ok=True)
-    Path(args.output).write_text("\n".join(lines), encoding="utf-8")
+
+    lines.extend(["", "## Plots", ""])
+    for filename in PLOT_FILES:
+        lines.append(f"![{filename}](plots/{filename})")
+
+    out = Path(output_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text("\n".join(lines), encoding="utf-8")
+    return out
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate markdown benchmark report")
+    parser.add_argument("--input", default="results/benchmark_results.json")
+    parser.add_argument("--output", default="results/benchmark_report.md")
+    args = parser.parse_args()
+
+    metrics = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    out = generate_markdown_report(metrics, output_path=args.output)
+    print(f"Report written to: {out}")
 
 
 if __name__ == "__main__":
