@@ -10,6 +10,7 @@ const wsStateEl = document.getElementById('wsState');
 const actionHistoryEl = document.getElementById('actionHistory');
 const graphNodesEl = document.getElementById('graphNodes');
 const comparisonEl = document.getElementById('agentComparison');
+const failureEl = document.getElementById('failureAnalysis');
 
 const events = [];
 const graph = { nodes: [], edges: [] };
@@ -112,6 +113,7 @@ function connectWebSocket() {
     }
     if (data.event === 'benchmark_completed') {
       benchmarkEl.textContent = JSON.stringify(data.results, null, 2);
+      refresh();
     }
   };
 }
@@ -145,19 +147,22 @@ async function compareAgents() {
 }
 
 async function refresh() {
-  const [stepsRes, beliefRes, benchmarkRes] = await Promise.all([
+  const [stepsRes, beliefRes, benchmarkRes, failureRes] = await Promise.all([
     fetch('/agent_steps'),
     fetch('/belief_state'),
-    fetch('/benchmark_results')
+    fetch('/benchmark_results'),
+    fetch('/failure_analysis')
   ]);
 
   const steps = await stepsRes.json();
   const belief = await beliefRes.json();
   const benchmark = await benchmarkRes.json();
+  const failure = await failureRes.json();
 
   renderTimeline(steps);
   beliefEl.textContent = JSON.stringify(belief, null, 2);
   benchmarkEl.textContent = JSON.stringify(benchmark, null, 2);
+  failureEl.textContent = JSON.stringify(failure, null, 2);
 }
 
 document.getElementById('runBtn').addEventListener('click', runTask);

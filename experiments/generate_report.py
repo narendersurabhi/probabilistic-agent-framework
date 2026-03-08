@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Dict
+from typing import Any, Dict
 
 
 PLOT_FILES = [
@@ -13,10 +13,15 @@ PLOT_FILES = [
     "sequence_accuracy_comparison.png",
     "first_step_accuracy_comparison.png",
     "completion_rate_comparison.png",
+    "failure_distribution.png",
 ]
 
 
-def generate_markdown_report(metrics: Dict[str, Dict[str, float]], output_path: str = "results/benchmark_report.md") -> Path:
+def generate_markdown_report(
+    metrics: Dict[str, Dict[str, float]],
+    output_path: str = "results/benchmark_report.md",
+    failure_analysis: Dict[str, Dict[str, Any]] | None = None,
+) -> Path:
     lines = [
         "# Benchmark Report",
         "",
@@ -38,6 +43,25 @@ def generate_markdown_report(metrics: Dict[str, Dict[str, float]], output_path: 
             )
         )
 
+
+    if failure_analysis:
+        lines.extend(["", "## Failure Analysis", ""])
+        for agent, payload in failure_analysis.items():
+            if agent == "overall":
+                continue
+            counts = payload.get("failure_counts", {})
+            lines.extend([
+                f"### {agent}",
+                "",
+                f"- Total tasks: {payload.get('total_tasks', 0)}",
+                f"- Total failures: {payload.get('total_failures', 0)}",
+                "",
+                "| Failure Type | Count |",
+                "|---|---:|",
+            ])
+            for failure_type, count in counts.items():
+                lines.append(f"| {failure_type} | {count} |")
+            lines.append("")
     lines.extend(["", "## Plots", ""])
     for filename in PLOT_FILES:
         lines.append(f"![{filename}](plots/{filename})")
@@ -55,7 +79,9 @@ def main() -> None:
     args = parser.parse_args()
 
     metrics = json.loads(Path(args.input).read_text(encoding="utf-8"))
-    out = generate_markdown_report(metrics, output_path=args.output)
+    failure_path = Path(args.input).with_name("failure_analysis.json")
+    failure_analysis = json.loads(failure_path.read_text(encoding="utf-8")) if failure_path.exists() else None
+    out = generate_markdown_report(metrics, output_path=args.output, failure_analysis=failure_analysis)
     print(f"Report written to: {out}")
 
 

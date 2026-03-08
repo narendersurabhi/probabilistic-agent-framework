@@ -278,6 +278,14 @@ def get_benchmark_results() -> Dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+@app.get("/failure_analysis")
+def get_failure_analysis() -> Dict[str, Any]:
+    path = RESULTS_DIR / "failure_analysis.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 @app.post("/compare_agents")
 def compare_agents(req: ComparisonRequest) -> Dict[str, Any]:
     runner = AgentComparisonRunner(results_dir=RESULTS_DIR)

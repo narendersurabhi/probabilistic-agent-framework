@@ -66,6 +66,7 @@ def test_benchmark_runner_executes_and_writes_artifacts(tmp_path: Path) -> None:
 
     assert "standard" in results
     assert (tmp_path / "results" / "benchmark_results.json").exists()
+    assert (tmp_path / "results" / "failure_analysis.json").exists()
     assert (tmp_path / "results" / "plots" / "tool_accuracy_comparison.png").exists()
     trace_files = list((tmp_path / "results" / "traces").glob("*.json"))
     assert trace_files

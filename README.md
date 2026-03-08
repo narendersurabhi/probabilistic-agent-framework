@@ -87,6 +87,8 @@ Generated artifacts:
 - `results/plots/policy_probabilities.png`
 - `results/plots/free_energy.png`
 - `results/graphs/*_graph.json`
+- `results/failure_analysis.json`
+- `results/plots/failure_distribution.png`
 
 ## Quick Start
 
@@ -143,6 +145,28 @@ You can also use the dashboard's **Agent Comparison** panel or open `http://loca
 | Standard         | `call_calculator`    | Can fail without missing facts |
 | ReAct            | `retrieve_docs`      | Explicit intermediate reasoning |
 | Active Inference | `retrieve_docs`      | Probabilistic planning + belief updates |
+
+
+## Failure Analysis
+
+The benchmark harness now classifies failed tasks automatically into:
+
+- `wrong_tool`
+- `incorrect_arguments`
+- `premature_action`
+- `incomplete_plan`
+- `incorrect_sequence`
+
+Per-agent and overall failure summaries are written to `results/failure_analysis.json`, and a failure distribution bar chart is generated at `results/plots/failure_distribution.png`.
+
+Example failure table:
+
+| Failure Type        | Count |
+|---------------------|------:|
+| wrong_tool          | 19    |
+| premature_action    | 16    |
+| incorrect_arguments | 12    |
+| incorrect_sequence  | 7     |
 
 ## Benchmark Datasets
 

@@ -23,6 +23,9 @@ def test_api_endpoints_basic() -> None:
     bench_resp = client.get('/benchmark_results')
     assert bench_resp.status_code == 200
 
+    failure_resp = client.get('/failure_analysis')
+    assert failure_resp.status_code == 200
+
     trace_resp = client.get(f"/trace/{payload['run_id']}")
     assert trace_resp.status_code == 200
     trace_payload = trace_resp.json()
