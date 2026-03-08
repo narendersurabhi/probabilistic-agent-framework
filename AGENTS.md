@@ -347,3 +347,27 @@ All agents operating in this repository should read this file first to understan
   - `tests/test_arena.py` for arena artifact/leaderboard generation
   - updated `tests/test_api.py` to validate arena endpoints.
 - Updated `README.md` with a new **Agent Arena** section covering usage, artifacts, plugin extension model, and API/UI routes.
+
+## 2026-03-08 (pip-installable package surface)
+- Added packaging metadata and distribution entry points:
+  - `pyproject.toml` with project name `agent-arena`, runtime dependencies, setuptools build backend, and CLI script `agent-arena`.
+  - `LICENSE` (MIT).
+- Added new public package namespace `agent_arena/` to provide installable library ergonomics while preserving existing internal `src/` modules.
+- Implemented stable public API exports:
+  - `agent_arena/__init__.py` exports `Arena`, `BenchmarkRunner`, and dataset helper functions.
+  - `agent_arena/benchmark.py` exports benchmark runner.
+  - `agent_arena/datasets.py` adds dataset listing/loading helpers plus friendly aliases (e.g., `tool_confusion`).
+- Added user-facing arena wrapper `agent_arena/arena.py`:
+  - supports custom-agent mode (`agents=[...]`) with per-task scoring,
+  - supports built-in mode delegating to internal `AgentArena` when no custom agents are provided.
+- Added CLI entrypoint `agent_arena/cli.py` supporting:
+  - `--dataset`
+  - `--max-tasks`
+  - prints leaderboard-friendly output.
+- Added compatibility subpackage exports for requested package layout:
+  - `agent_arena/agents/`, `planning/`, `evaluation/`, `visualization/`, `tools/`, `environment/`.
+- Updated `README.md` with package install and quick-usage sections:
+  - editable install (`pip install -e .`),
+  - PyPI install command (`pip install agent-arena`),
+  - import example (`from agent_arena import Arena`),
+  - CLI example (`agent-arena --dataset ...`).

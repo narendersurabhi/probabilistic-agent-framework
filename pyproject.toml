@@ -1,0 +1,26 @@
+[project]
+name = "agent-arena"
+version = "0.1.0"
+description = "Benchmarking platform for tool-using AI agents"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "Narender Surabhi" }
+]
+dependencies = [
+  "numpy",
+  "pydantic",
+  "fastapi",
+  "matplotlib"
+]
+
+[project.scripts]
+agent-arena = "agent_arena.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["agent_arena*", "src*"]
+exclude = ["tests*", "results*", "artifacts*"]
