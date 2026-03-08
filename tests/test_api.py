@@ -1,0 +1,30 @@
+from fastapi.testclient import TestClient
+
+from api.server import app
+
+
+def test_api_endpoints_basic() -> None:
+    client = TestClient(app)
+
+    run_resp = client.post('/run_task', json={'query': 'What is 12 percent of 350'})
+    assert run_resp.status_code == 200
+    payload = run_resp.json()
+    assert 'steps' in payload
+    assert 'run_id' in payload
+
+    steps_resp = client.get('/agent_steps')
+    assert steps_resp.status_code == 200
+    assert isinstance(steps_resp.json(), list)
+
+    belief_resp = client.get('/belief_state')
+    assert belief_resp.status_code == 200
+    assert 'knowledge_state' in belief_resp.json()
+
+    bench_resp = client.get('/benchmark_results')
+    assert bench_resp.status_code == 200
+
+    trace_resp = client.get(f"/trace/{payload['run_id']}")
+    assert trace_resp.status_code == 200
+    trace_payload = trace_resp.json()
+    assert 'nodes' in trace_payload
+    assert 'edges' in trace_payload
