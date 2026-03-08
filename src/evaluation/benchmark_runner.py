@@ -11,6 +11,7 @@ from src.environment.tool_environment import ToolEnvironment
 from src.evaluation.dataset_loader import DatasetLoader
 from src.evaluation.metrics import aggregate_metrics
 from src.evaluation.trace_logger import TraceLogger
+from src.visualization.trace_graph import build_reasoning_graph, save_reasoning_graph
 
 
 class _BaseHeuristicAgent:
@@ -41,11 +42,11 @@ class _BaseHeuristicAgent:
 class StandardAgent(_BaseHeuristicAgent):
     def run(self, query: str) -> Dict[str, Any]:
         tool, args = self._select_tool(query)
-        self.env.execute(tool, args)
+        observation = self.env.execute(tool, args)
         return {
             "selected_tool": tool,
             "arguments": args,
-            "steps": [{"action": tool, "arguments": args}],
+            "steps": [{"action": tool, "arguments": args, "observation": observation}],
             "completed": True,
         }
 
@@ -53,12 +54,12 @@ class StandardAgent(_BaseHeuristicAgent):
 class ReActAgent(_BaseHeuristicAgent):
     def run(self, query: str) -> Dict[str, Any]:
         first_tool, first_args = self._select_tool(query)
-        steps = [{"action": first_tool, "arguments": first_args}]
-        self.env.execute(first_tool, first_args)
+        first_obs = self.env.execute(first_tool, first_args)
+        steps = [{"action": first_tool, "arguments": first_args, "observation": first_obs}]
         if first_tool == "retrieve_docs" and "percent" in query.lower():
             second_args = {"expression": self._extract_expression(query)}
-            steps.append({"action": "call_calculator", "arguments": second_args})
-            self.env.execute("call_calculator", second_args)
+            second_obs = self.env.execute("call_calculator", second_args)
+            steps.append({"action": "call_calculator", "arguments": second_args, "observation": second_obs})
 
         return {
             "selected_tool": steps[-1]["action"],
@@ -128,7 +129,7 @@ class ActiveInferenceAgent(_BaseHeuristicAgent):
 
         total_steps = len(steps)
         for index, step in enumerate(steps, start=1):
-            self.env.execute(step["action"], step["arguments"])
+            step["observation"] = self.env.execute(step["action"], step["arguments"])
             step.update(self._build_planner_snapshot(step["action"], index, total_steps))
 
         return {
@@ -149,6 +150,8 @@ class BenchmarkRunner:
         self.trace_logger = TraceLogger(self.results_dir / "traces")
         self.plot_dir = self.results_dir / "plots"
         self.plot_dir.mkdir(parents=True, exist_ok=True)
+        self.graph_dir = self.results_dir / "graphs"
+        self.graph_dir.mkdir(parents=True, exist_ok=True)
 
     def _build_agent(self, agent_name: str) -> Any:
         if agent_name == "standard":
@@ -216,6 +219,8 @@ class BenchmarkRunner:
                 "action": step.get("action"),
                 "arguments": step.get("arguments", {}),
             }
+            if "observation" in step:
+                item["observation"] = step["observation"]
             if "belief_state" in step:
                 item["belief_state"] = step["belief_state"]
             if "policy_probabilities" in step:
@@ -278,7 +283,11 @@ class BenchmarkRunner:
                     normalized = self._normalize(agent.run(task["query"]))
                     evaluation = self._evaluate_task(task, normalized)
                     rows.append(evaluation)
-                    self.trace_logger.log_trace(self._create_trace(task, agent_name, normalized, evaluation))
+                    trace_payload = self._create_trace(task, agent_name, normalized, evaluation)
+                    self.trace_logger.log_trace(trace_payload)
+                    graph = build_reasoning_graph(trace_payload)
+                    task_id = trace_payload.get("task_id", "unknown_task")
+                    save_reasoning_graph(graph, self.graph_dir / f"{agent_name}__{task_id}_graph.json")
             results[agent_name] = aggregate_metrics(rows)
 
         self.save_results(results)

@@ -109,7 +109,22 @@ Artifacts:
 - `results/benchmark_report.md`
 - task-level traces in `results/benchmark_traces.jsonl`
 - plots in `results/plots/`
+- reasoning graphs in `results/graphs/` (`*_graph.json`)
 - active-inference trace dynamics plots: `belief_evolution.png`, `policy_probabilities.png`, `free_energy.png`
+
+
+### Reasoning Trace Graphs
+
+Benchmark runs now also emit graph-structured reasoning traces for each task in `results/graphs/` via `src/visualization/trace_graph.py`.
+
+Each graph includes:
+
+- query node
+- per-step belief, action, and observation nodes
+- directed edges representing the reasoning flow
+- final result node
+
+These artifacts make it easy to inspect the full reasoning path and can be consumed directly by web viewers or dashboards.
 
 ### Active Inference Trace Dynamics Visualization
 
