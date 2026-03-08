@@ -1,0 +1,1142 @@
+[
+  {
+    "task_id": "task_001",
+    "task_type": "arithmetic",
+    "query": "What is 15 percent of 240?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "240 * 0.15"
+    }
+  },
+  {
+    "task_id": "task_002",
+    "task_type": "arithmetic",
+    "query": "Calculate 18 percent of 550.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "550 * 0.18"
+    }
+  },
+  {
+    "task_id": "task_003",
+    "task_type": "arithmetic",
+    "query": "What is 22% of 130?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "130 * 0.22"
+    }
+  },
+  {
+    "task_id": "task_004",
+    "task_type": "arithmetic",
+    "query": "Find 7 percent of 980.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "980 * 0.07"
+    }
+  },
+  {
+    "task_id": "task_005",
+    "task_type": "arithmetic",
+    "query": "What is 35% of 84?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "84 * 0.35"
+    }
+  },
+  {
+    "task_id": "task_006",
+    "task_type": "arithmetic",
+    "query": "Compute 125 + 87 * 3.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "125 + 87 * 3"
+    }
+  },
+  {
+    "task_id": "task_007",
+    "task_type": "arithmetic",
+    "query": "What is (45 - 12) * 6?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "(45 - 12) * 6"
+    }
+  },
+  {
+    "task_id": "task_008",
+    "task_type": "arithmetic",
+    "query": "Calculate 144 / 12 + 19.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "144 / 12 + 19"
+    }
+  },
+  {
+    "task_id": "task_009",
+    "task_type": "arithmetic",
+    "query": "What is 9.5 percent of 420?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "420 * 0.095"
+    }
+  },
+  {
+    "task_id": "task_010",
+    "task_type": "arithmetic",
+    "query": "Find 2.75 * 64.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "2.75 * 64"
+    }
+  },
+  {
+    "task_id": "task_011",
+    "task_type": "arithmetic",
+    "query": "What is 1500 minus 17 percent of 1500?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "1500 - 1500 * 0.17"
+    }
+  },
+  {
+    "task_id": "task_012",
+    "task_type": "arithmetic",
+    "query": "Compute 3 to the power of 5.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "3 ** 5"
+    }
+  },
+  {
+    "task_id": "task_013",
+    "task_type": "arithmetic",
+    "query": "What is 11% tax on 89?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "89 * 0.11"
+    }
+  },
+  {
+    "task_id": "task_014",
+    "task_type": "arithmetic",
+    "query": "Find the average of 14, 28, and 35.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "(14 + 28 + 35) / 3"
+    }
+  },
+  {
+    "task_id": "task_015",
+    "task_type": "arithmetic",
+    "query": "Calculate 0.25 of 960.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "960 * 0.25"
+    }
+  },
+  {
+    "task_id": "task_016",
+    "task_type": "arithmetic",
+    "query": "What is 64% of 1250?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "1250 * 0.64"
+    }
+  },
+  {
+    "task_id": "task_017",
+    "task_type": "arithmetic",
+    "query": "Compute (320 / 8) * 1.5.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "(320 / 8) * 1.5"
+    }
+  },
+  {
+    "task_id": "task_018",
+    "task_type": "arithmetic",
+    "query": "What is 999 + 1001?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "999 + 1001"
+    }
+  },
+  {
+    "task_id": "task_019",
+    "task_type": "arithmetic",
+    "query": "Find 40 percent of 72.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "72 * 0.4"
+    }
+  },
+  {
+    "task_id": "task_020",
+    "task_type": "arithmetic",
+    "query": "Calculate 12.5 percent of 640.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "640 * 0.125"
+    }
+  },
+  {
+    "task_id": "task_021",
+    "task_type": "arithmetic",
+    "query": "What is 1/3 of 99?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "99 / 3"
+    }
+  },
+  {
+    "task_id": "task_022",
+    "task_type": "arithmetic",
+    "query": "Compute 450 * 0.07 + 19.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "450 * 0.07 + 19"
+    }
+  },
+  {
+    "task_id": "task_023",
+    "task_type": "arithmetic",
+    "query": "What is 17 squared?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "17 ** 2"
+    }
+  },
+  {
+    "task_id": "task_024",
+    "task_type": "arithmetic",
+    "query": "Find the remainder of 275 divided by 12.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "275 % 12"
+    }
+  },
+  {
+    "task_id": "task_025",
+    "task_type": "arithmetic",
+    "query": "Calculate (5 + 9 + 11 + 20) / 4.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "(5 + 9 + 11 + 20) / 4"
+    }
+  },
+  {
+    "task_id": "task_026",
+    "task_type": "arithmetic",
+    "query": "What is 88 minus 13?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "88 - 13"
+    }
+  },
+  {
+    "task_id": "task_027",
+    "task_type": "arithmetic",
+    "query": "Compute 1200 * 1.08.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "1200 * 1.08"
+    }
+  },
+  {
+    "task_id": "task_028",
+    "task_type": "arithmetic",
+    "query": "What is 27% of 370?",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "370 * 0.27"
+    }
+  },
+  {
+    "task_id": "task_029",
+    "task_type": "arithmetic",
+    "query": "Find 1024 / 32.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "1024 / 32"
+    }
+  },
+  {
+    "task_id": "task_030",
+    "task_type": "arithmetic",
+    "query": "Calculate 19 * 19 - 25.",
+    "expected_tool": "calculator",
+    "expected_args": {
+      "expression": "19 * 19 - 25"
+    }
+  },
+  {
+    "task_id": "task_031",
+    "task_type": "retrieval",
+    "query": "Find documents about reinforcement learning.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find documents about reinforcement learning."
+    }
+  },
+  {
+    "task_id": "task_032",
+    "task_type": "retrieval",
+    "query": "Retrieve papers on active inference in robotics.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Retrieve papers on active inference in robotics."
+    }
+  },
+  {
+    "task_id": "task_033",
+    "task_type": "retrieval",
+    "query": "Find articles about transformer interpretability.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find articles about transformer interpretability."
+    }
+  },
+  {
+    "task_id": "task_034",
+    "task_type": "retrieval",
+    "query": "Search docs on Monte Carlo Tree Search.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Search docs on Monte Carlo Tree Search."
+    }
+  },
+  {
+    "task_id": "task_035",
+    "task_type": "retrieval",
+    "query": "Find references on variational inference tutorials.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find references on variational inference tutorials."
+    }
+  },
+  {
+    "task_id": "task_036",
+    "task_type": "retrieval",
+    "query": "Retrieve documentation for FastAPI dependency injection.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Retrieve documentation for FastAPI dependency injection."
+    }
+  },
+  {
+    "task_id": "task_037",
+    "task_type": "retrieval",
+    "query": "Find documents about Kubernetes Argo Workflows.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find documents about Kubernetes Argo Workflows."
+    }
+  },
+  {
+    "task_id": "task_038",
+    "task_type": "retrieval",
+    "query": "Search papers on belief propagation algorithms.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Search papers on belief propagation algorithms."
+    }
+  },
+  {
+    "task_id": "task_039",
+    "task_type": "retrieval",
+    "query": "Find resources on Bayesian optimization methods.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find resources on Bayesian optimization methods."
+    }
+  },
+  {
+    "task_id": "task_040",
+    "task_type": "retrieval",
+    "query": "Retrieve articles about POMDP planning under uncertainty.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Retrieve articles about POMDP planning under uncertainty."
+    }
+  },
+  {
+    "task_id": "task_041",
+    "task_type": "retrieval",
+    "query": "Find documents discussing ReAct prompting.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find documents discussing ReAct prompting."
+    }
+  },
+  {
+    "task_id": "task_042",
+    "task_type": "retrieval",
+    "query": "Search references on tool-augmented LLM agents.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Search references on tool-augmented LLM agents."
+    }
+  },
+  {
+    "task_id": "task_043",
+    "task_type": "retrieval",
+    "query": "Find docs about retrieval-augmented generation evaluation.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find docs about retrieval-augmented generation evaluation."
+    }
+  },
+  {
+    "task_id": "task_044",
+    "task_type": "retrieval",
+    "query": "Retrieve sources on entropy minimization in active inference.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Retrieve sources on entropy minimization in active inference."
+    }
+  },
+  {
+    "task_id": "task_045",
+    "task_type": "retrieval",
+    "query": "Find material on policy gradient baselines.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find material on policy gradient baselines."
+    }
+  },
+  {
+    "task_id": "task_046",
+    "task_type": "retrieval",
+    "query": "Search documentation on pytest fixtures.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Search documentation on pytest fixtures."
+    }
+  },
+  {
+    "task_id": "task_047",
+    "task_type": "retrieval",
+    "query": "Find papers about graph neural networks.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find papers about graph neural networks."
+    }
+  },
+  {
+    "task_id": "task_048",
+    "task_type": "retrieval",
+    "query": "Retrieve documents on probabilistic graphical models.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Retrieve documents on probabilistic graphical models."
+    }
+  },
+  {
+    "task_id": "task_049",
+    "task_type": "retrieval",
+    "query": "Find guides on Docker image optimization.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find guides on Docker image optimization."
+    }
+  },
+  {
+    "task_id": "task_050",
+    "task_type": "retrieval",
+    "query": "Search docs about CI artifact storage in GitHub Actions.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Search docs about CI artifact storage in GitHub Actions."
+    }
+  },
+  {
+    "task_id": "task_051",
+    "task_type": "retrieval",
+    "query": "Find reports on uncertainty calibration for language models.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find reports on uncertainty calibration for language models."
+    }
+  },
+  {
+    "task_id": "task_052",
+    "task_type": "retrieval",
+    "query": "Retrieve documents about SLAM in autonomous systems.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Retrieve documents about SLAM in autonomous systems."
+    }
+  },
+  {
+    "task_id": "task_053",
+    "task_type": "retrieval",
+    "query": "Find references on model-based RL benchmarks.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find references on model-based RL benchmarks."
+    }
+  },
+  {
+    "task_id": "task_054",
+    "task_type": "retrieval",
+    "query": "Search docs on observability for ML systems.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Search docs on observability for ML systems."
+    }
+  },
+  {
+    "task_id": "task_055",
+    "task_type": "retrieval",
+    "query": "Find papers on chain-of-thought reliability.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find papers on chain-of-thought reliability."
+    }
+  },
+  {
+    "task_id": "task_056",
+    "task_type": "retrieval",
+    "query": "Retrieve docs about vector database indexing techniques.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Retrieve docs about vector database indexing techniques."
+    }
+  },
+  {
+    "task_id": "task_057",
+    "task_type": "retrieval",
+    "query": "Find resources about approximate Bayesian computation.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find resources about approximate Bayesian computation."
+    }
+  },
+  {
+    "task_id": "task_058",
+    "task_type": "retrieval",
+    "query": "Search papers on hierarchical planning.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Search papers on hierarchical planning."
+    }
+  },
+  {
+    "task_id": "task_059",
+    "task_type": "retrieval",
+    "query": "Find docs on distributed experiment tracking.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Find docs on distributed experiment tracking."
+    }
+  },
+  {
+    "task_id": "task_060",
+    "task_type": "retrieval",
+    "query": "Retrieve references on causal inference in ML.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Retrieve references on causal inference in ML."
+    }
+  },
+  {
+    "task_id": "task_061",
+    "task_type": "multi_step",
+    "query": "Find the population of France and multiply it by 2.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "population of France"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "population of France"
+      },
+      {
+        "expression": "2 * population_france"
+      }
+    ]
+  },
+  {
+    "task_id": "task_062",
+    "task_type": "multi_step",
+    "query": "Retrieve Tesla's 2023 revenue and divide it by 4.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Tesla 2023 revenue"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "Tesla 2023 revenue"
+      },
+      {
+        "expression": "tesla_2023_revenue / 4"
+      }
+    ]
+  },
+  {
+    "task_id": "task_063",
+    "task_type": "multi_step",
+    "query": "Find the GDP of Japan and compute 5 percent of it.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "GDP of Japan"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "GDP of Japan"
+      },
+      {
+        "expression": "gdp_japan * 0.05"
+      }
+    ]
+  },
+  {
+    "task_id": "task_064",
+    "task_type": "multi_step",
+    "query": "Get the latest Bitcoin price and add 1500.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "latest Bitcoin price"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "latest Bitcoin price"
+      },
+      {
+        "expression": "bitcoin_price + 1500"
+      }
+    ]
+  },
+  {
+    "task_id": "task_065",
+    "task_type": "multi_step",
+    "query": "Find the height of Mount Everest and convert it to feet.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "height of Mount Everest in meters"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "height of Mount Everest in meters"
+      },
+      {
+        "expression": "everest_meters * 3.28084"
+      }
+    ]
+  },
+  {
+    "task_id": "task_066",
+    "task_type": "multi_step",
+    "query": "Retrieve the area of Germany and compute density using population 84 million.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "area of Germany"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "area of Germany"
+      },
+      {
+        "expression": "84000000 / area_germany"
+      }
+    ]
+  },
+  {
+    "task_id": "task_067",
+    "task_type": "multi_step",
+    "query": "Find Earth's circumference in km and divide by 24.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Earth circumference km"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "Earth circumference km"
+      },
+      {
+        "expression": "earth_circumference_km / 24"
+      }
+    ]
+  },
+  {
+    "task_id": "task_068",
+    "task_type": "multi_step",
+    "query": "Retrieve the speed of light and multiply by 2.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "speed of light"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "speed of light"
+      },
+      {
+        "expression": "speed_of_light * 2"
+      }
+    ]
+  },
+  {
+    "task_id": "task_069",
+    "task_type": "multi_step",
+    "query": "Find average rainfall in London and add 10 percent.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "average rainfall London"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "average rainfall London"
+      },
+      {
+        "expression": "rainfall_london * 1.1"
+      }
+    ]
+  },
+  {
+    "task_id": "task_070",
+    "task_type": "multi_step",
+    "query": "Retrieve the distance to the Moon and convert km to miles.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "distance to Moon km"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "distance to Moon km"
+      },
+      {
+        "expression": "distance_moon_km * 0.621371"
+      }
+    ]
+  },
+  {
+    "task_id": "task_071",
+    "task_type": "multi_step",
+    "query": "Find Nvidia market cap and calculate 1 percent.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Nvidia market cap"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "Nvidia market cap"
+      },
+      {
+        "expression": "nvidia_market_cap * 0.01"
+      }
+    ]
+  },
+  {
+    "task_id": "task_072",
+    "task_type": "multi_step",
+    "query": "Retrieve current EUR to USD rate and convert 500 EUR.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "EUR to USD exchange rate"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "EUR to USD exchange rate"
+      },
+      {
+        "expression": "500 * eur_usd_rate"
+      }
+    ]
+  },
+  {
+    "task_id": "task_073",
+    "task_type": "multi_step",
+    "query": "Find WHO global life expectancy and subtract 3.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "global life expectancy WHO"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "global life expectancy WHO"
+      },
+      {
+        "expression": "life_expectancy - 3"
+      }
+    ]
+  },
+  {
+    "task_id": "task_074",
+    "task_type": "multi_step",
+    "query": "Retrieve annual CO2 emissions of India and divide by 12.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "India annual CO2 emissions"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "India annual CO2 emissions"
+      },
+      {
+        "expression": "india_co2_emissions / 12"
+      }
+    ]
+  },
+  {
+    "task_id": "task_075",
+    "task_type": "multi_step",
+    "query": "Find the population of Brazil and compute 12 percent.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "population of Brazil"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "population of Brazil"
+      },
+      {
+        "expression": "population_brazil * 0.12"
+      }
+    ]
+  },
+  {
+    "task_id": "task_076",
+    "task_type": "multi_step",
+    "query": "Retrieve average CPU price and add 18 percent tax.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "average CPU price"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "average CPU price"
+      },
+      {
+        "expression": "cpu_price * 1.18"
+      }
+    ]
+  },
+  {
+    "task_id": "task_077",
+    "task_type": "multi_step",
+    "query": "Find number of US states and multiply by 9.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "number of US states"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "number of US states"
+      },
+      {
+        "expression": "us_states * 9"
+      }
+    ]
+  },
+  {
+    "task_id": "task_078",
+    "task_type": "multi_step",
+    "query": "Retrieve Tokyo population and compute per-capita for 1B budget.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "Tokyo population"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "Tokyo population"
+      },
+      {
+        "expression": "1000000000 / tokyo_population"
+      }
+    ]
+  },
+  {
+    "task_id": "task_079",
+    "task_type": "multi_step",
+    "query": "Find average battery capacity of EVs and add 15 kWh.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "average EV battery capacity"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "average EV battery capacity"
+      },
+      {
+        "expression": "ev_battery_capacity + 15"
+      }
+    ]
+  },
+  {
+    "task_id": "task_080",
+    "task_type": "multi_step",
+    "query": "Retrieve Atlantic ocean depth average and halve it.",
+    "expected_tool": "retriever",
+    "expected_args": {
+      "query": "average depth Atlantic Ocean"
+    },
+    "expected_tools": [
+      "retriever",
+      "calculator"
+    ],
+    "expected_args_sequence": [
+      {
+        "query": "average depth Atlantic Ocean"
+      },
+      {
+        "expression": "atlantic_depth / 2"
+      }
+    ]
+  },
+  {
+    "task_id": "task_081",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Japan?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Tokyo is the capital of Japan."
+    }
+  },
+  {
+    "task_id": "task_082",
+    "task_type": "direct_answer",
+    "query": "Who wrote Pride and Prejudice?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Jane Austen wrote Pride and Prejudice."
+    }
+  },
+  {
+    "task_id": "task_083",
+    "task_type": "direct_answer",
+    "query": "What planet is known as the Red Planet?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Mars is known as the Red Planet."
+    }
+  },
+  {
+    "task_id": "task_084",
+    "task_type": "direct_answer",
+    "query": "Name the largest ocean on Earth.",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "The Pacific Ocean is the largest ocean on Earth."
+    }
+  },
+  {
+    "task_id": "task_085",
+    "task_type": "direct_answer",
+    "query": "What is the boiling point of water at sea level?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Water boils at 100\u00b0C (212\u00b0F) at sea level."
+    }
+  },
+  {
+    "task_id": "task_086",
+    "task_type": "direct_answer",
+    "query": "Who painted the Mona Lisa?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Leonardo da Vinci painted the Mona Lisa."
+    }
+  },
+  {
+    "task_id": "task_087",
+    "task_type": "direct_answer",
+    "query": "What is the primary language spoken in Brazil?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Portuguese is the primary language spoken in Brazil."
+    }
+  },
+  {
+    "task_id": "task_088",
+    "task_type": "direct_answer",
+    "query": "Which gas do plants absorb from the atmosphere?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Plants absorb carbon dioxide from the atmosphere."
+    }
+  },
+  {
+    "task_id": "task_089",
+    "task_type": "direct_answer",
+    "query": "What is the smallest prime number?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "The smallest prime number is 2."
+    }
+  },
+  {
+    "task_id": "task_090",
+    "task_type": "direct_answer",
+    "query": "Who developed the theory of relativity?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Albert Einstein developed the theory of relativity."
+    }
+  },
+  {
+    "task_id": "task_091",
+    "task_type": "direct_answer",
+    "query": "What is H2O commonly called?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "H2O is commonly called water."
+    }
+  },
+  {
+    "task_id": "task_092",
+    "task_type": "direct_answer",
+    "query": "Which continent is Egypt in?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Egypt is in Africa."
+    }
+  },
+  {
+    "task_id": "task_093",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Canada?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Ottawa is the capital of Canada."
+    }
+  },
+  {
+    "task_id": "task_094",
+    "task_type": "direct_answer",
+    "query": "Who is known as the father of computers?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Charles Babbage is known as the father of computers."
+    }
+  },
+  {
+    "task_id": "task_095",
+    "task_type": "direct_answer",
+    "query": "What is the largest mammal?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "The blue whale is the largest mammal."
+    }
+  },
+  {
+    "task_id": "task_096",
+    "task_type": "direct_answer",
+    "query": "What instrument has 88 keys?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "A standard piano has 88 keys."
+    }
+  },
+  {
+    "task_id": "task_097",
+    "task_type": "direct_answer",
+    "query": "Which metal is liquid at room temperature?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Mercury is liquid at room temperature."
+    }
+  },
+  {
+    "task_id": "task_098",
+    "task_type": "direct_answer",
+    "query": "What is the currency of the United Kingdom?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "The currency of the United Kingdom is the Pound Sterling."
+    }
+  },
+  {
+    "task_id": "task_099",
+    "task_type": "direct_answer",
+    "query": "Who discovered penicillin?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Alexander Fleming discovered penicillin."
+    }
+  },
+  {
+    "task_id": "task_100",
+    "task_type": "direct_answer",
+    "query": "What is the tallest land animal?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "The giraffe is the tallest land animal."
+    }
+  }
+]

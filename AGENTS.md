@@ -111,3 +111,12 @@ All agents operating in this repository should read this file first to understan
   - optional `pymdp` Agent initialization when available.
 - Added `src/planning/__init__.py` package marker.
 - Added tests in `tests/test_planner.py` covering belief update behavior, policy probability validity, and valid action selection.
+
+## 2026-03-08 (100-task tool-selection benchmark dataset)
+- Added new dataset `evaluation/datasets/agent_tool_benchmark.json` with 100 tasks for tool-selection evaluation.
+- Dataset distribution:
+  - 30 arithmetic tasks (`expected_tool: calculator`, `expected_args.expression`)
+  - 30 retrieval tasks (`expected_tool: retriever`, `expected_args.query`)
+  - 20 multi-step tasks (`expected_tool: retriever` plus `expected_tools` and `expected_args_sequence` for retriever->calculator chains)
+  - 20 direct-answer tasks (`expected_tool: generate_answer`, `expected_args.text`)
+- Validated dataset length, required schema fields, and category distribution via local Python checks.
