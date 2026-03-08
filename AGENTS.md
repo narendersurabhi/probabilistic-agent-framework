@@ -264,3 +264,19 @@ All agents operating in this repository should read this file first to understan
 - Expanded tests:
   - `tests/test_api.py` now validates websocket stream emission for task execution.
   - `tests/test_benchmark_runner.py` now validates benchmark event callback emission.
+
+## 2026-03-08 (README portfolio and recruiter-facing refresh)
+- Reworked `README.md` into a recruiter-friendly, portfolio-style format optimized for fast scanning (<30s value comprehension).
+- Updated top-level README structure to include:
+  - title + subtitle aligned to "Probabilistic Agent Framework"
+  - one-line project description
+  - demo section guidance
+  - architecture overview flow
+  - repository structure snapshot
+  - key feature highlights
+  - benchmark results table
+  - visualization artifact callouts
+  - quick start and dashboard run flow
+  - dataset bundle summary and example trace
+  - interview demo flow and recruiter-signal framing
+  - advanced next-step recommendation for side-by-side planning strategy comparison.
