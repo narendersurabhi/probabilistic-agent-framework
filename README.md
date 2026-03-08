@@ -105,6 +105,36 @@ Or use:
 make benchmark
 ```
 
+## Installation
+
+Install from source in editable mode:
+
+```bash
+pip install -e .
+```
+
+After publishing to PyPI, users can install with:
+
+```bash
+pip install agent-arena
+```
+
+## Package Quick Example
+
+```python
+from agent_arena import Arena
+
+arena = Arena(dataset="tool_confusion")
+results = arena.run(max_tasks=10)
+print(results["leaderboard"])
+```
+
+CLI usage:
+
+```bash
+agent-arena --dataset tool_benchmark --max-tasks 10
+```
+
 ## Run the Dashboard
 
 ```bash
