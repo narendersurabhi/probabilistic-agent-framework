@@ -10,6 +10,12 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-08 (README GitHub page positioning refresh)
+- Reworked `README.md` to a high-impact GitHub landing layout focused on immediate project comprehension and adoption.
+- Updated top section branding to **Agent Arena** with subtitle, one-line positioning statement, and professional badges (Python, MIT, PyPI, Benchmark).
+- Added dedicated sections for: live demo GIF placement, architecture flow, key features, benchmark results, visualization artifacts, quick start, dashboard routes, Agent Arena leaderboard, custom agent extension, example trace, datasets, roadmap, and contribution guidance.
+- Aligned the README narrative to emphasize AI research/platform value (deterministic evaluation + active-inference planning + observability tooling).
+
 ## 2026-03-08
 - Created repository scaffold:
   - `agents/`, `models/`, `tools/`, `environment/`, `llm/`, `evaluation/`, `logging/`, `experiments/`, `visualization/`, `benchmarks/`, `config/`, `results/`, `tests/`.
