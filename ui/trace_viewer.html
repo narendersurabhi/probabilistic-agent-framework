@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Trace Graph Viewer</title>
+    <link rel="stylesheet" href="/ui/styles.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Agent Trace Visualization</h1>
+      <p>Directed graph of reasoning, policy evaluation, action, tools, observations, and critic feedback.</p>
+    </header>
+
+    <section class="panel">
+      <div class="row">
+        <input id="runIdInput" type="text" placeholder="run_YYYYMMDD_..." />
+        <button id="loadTraceBtn">Load Trace</button>
+      </div>
+      <p id="traceStatus"></p>
+    </section>
+
+    <section class="grid">
+      <div class="panel" style="grid-column: span 2; min-height: 560px;">
+        <h2>Trace Graph</h2>
+        <svg id="traceGraph" width="100%" height="520"></svg>
+      </div>
+
+      <div class="panel">
+        <h2>Node Metadata</h2>
+        <pre id="nodeMetadata">Click a node to inspect metadata.</pre>
+      </div>
+    </section>
+
+    <script src="/ui/trace_graph.js"></script>
+  </body>
+</html>

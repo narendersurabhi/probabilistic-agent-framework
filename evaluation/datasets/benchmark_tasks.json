@@ -1,0 +1,23 @@
+[
+  {
+    "task": "percentage calculation",
+    "task_type": "calculator",
+    "query": "What is 12 percent of 350",
+    "expected_tool": "call_calculator",
+    "expected_tools": ["call_calculator"],
+    "expected_args": {"expression": "350 * 0.12"}
+  },
+  {
+    "task": "information retrieval",
+    "task_type": "retrieval",
+    "query": "Find documents about reinforcement learning",
+    "expected_tool": "retrieve_docs",
+    "expected_tools": ["retrieve_docs"]
+  },
+  {
+    "task": "multi-step reasoning",
+    "task_type": "mixed",
+    "query": "Find the population of France and multiply it by 2",
+    "expected_tools": ["retrieve_docs", "call_calculator"]
+  }
+]
