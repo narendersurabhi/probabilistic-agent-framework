@@ -234,3 +234,18 @@ All agents operating in this repository should read this file first to understan
   - `tests/test_visualization.py` validates all three trace plotting helpers write output files.
   - `tests/test_benchmark_runner.py` validates Active Inference traces include belief, policy-probability, and expected-free-energy fields.
 - Updated `README.md` benchmark artifacts and documentation with an "Active Inference Trace Dynamics Visualization" section.
+
+## 2026-03-08 (reasoning trace graph artifacts for benchmark runs)
+- Added `src/visualization/trace_graph.py` with:
+  - `build_reasoning_graph(trace)` to convert benchmark traces into node/edge graph JSON.
+  - `save_reasoning_graph(graph, path)` to persist graph artifacts.
+- Extended `src/visualization/__init__.py` exports to include reasoning-graph helpers.
+- Extended `src/evaluation/benchmark_runner.py` to:
+  - include per-step tool `observation` values in agent steps and persisted traces,
+  - generate a reasoning graph for every task trace,
+  - save graph artifacts under `results/graphs/` as `{agent}__{task_id}_graph.json`.
+- Added graph output directory tracking with `results/graphs/.gitkeep`.
+- Added tests:
+  - `tests/test_trace_graph.py` for graph construction and file persistence.
+  - updated `tests/test_benchmark_runner.py` to assert graph artifact generation.
+- Updated `README.md` benchmark artifacts/docs with a new "Reasoning Trace Graphs" section and `results/graphs/` output details.

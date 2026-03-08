@@ -69,6 +69,8 @@ def test_benchmark_runner_executes_and_writes_artifacts(tmp_path: Path) -> None:
     assert (tmp_path / "results" / "plots" / "tool_accuracy_comparison.png").exists()
     trace_files = list((tmp_path / "results" / "traces").glob("*.json"))
     assert trace_files
+    graph_files = list((tmp_path / "results" / "graphs").glob("*_graph.json"))
+    assert graph_files
 
 
 def test_active_inference_trace_contains_planner_state(tmp_path: Path) -> None:
