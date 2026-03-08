@@ -1,0 +1,242 @@
+[
+  {
+    "task_id": "args_001",
+    "query": "What is 15 percent of 200?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "200 * 0.15"
+    }
+  },
+  {
+    "task_id": "args_002",
+    "query": "What is 22 percent of 450?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "450 * 0.22"
+    }
+  },
+  {
+    "task_id": "args_003",
+    "query": "What is 9 percent of 800?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "800 * 0.09"
+    }
+  },
+  {
+    "task_id": "args_004",
+    "query": "What is 35 percent of 120?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "120 * 0.35"
+    }
+  },
+  {
+    "task_id": "args_005",
+    "query": "What is 5 percent of 960?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "960 * 0.05"
+    }
+  },
+  {
+    "task_id": "args_006",
+    "query": "What is 18 percent of 275?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "275 * 0.18"
+    }
+  },
+  {
+    "task_id": "args_007",
+    "query": "What is 40 percent of 90?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "90 * 0.40"
+    }
+  },
+  {
+    "task_id": "args_008",
+    "query": "What is 12 percent of 640?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "640 * 0.12"
+    }
+  },
+  {
+    "task_id": "args_009",
+    "query": "What is 75 percent of 44?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "44 * 0.75"
+    }
+  },
+  {
+    "task_id": "args_010",
+    "query": "What is 3 percent of 1500?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "1500 * 0.03"
+    }
+  },
+  {
+    "task_id": "args_011",
+    "query": "What is 480 divided by 16?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "480 / 16"
+    }
+  },
+  {
+    "task_id": "args_012",
+    "query": "What is 27 times 14?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "27 * 14"
+    }
+  },
+  {
+    "task_id": "args_013",
+    "query": "What is 1500 minus 875?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "1500 - 875"
+    }
+  },
+  {
+    "task_id": "args_014",
+    "query": "What is 88 plus 156?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "88 + 156"
+    }
+  },
+  {
+    "task_id": "args_015",
+    "query": "What is 11 squared plus 9?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "11 ** 2 + 9"
+    }
+  },
+  {
+    "task_id": "args_016",
+    "query": "What is one half of 930?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "930 * 0.5"
+    }
+  },
+  {
+    "task_id": "args_017",
+    "query": "What is one quarter of 620?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "620 * 0.25"
+    }
+  },
+  {
+    "task_id": "args_018",
+    "query": "What is triple 47?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "47 * 3"
+    }
+  },
+  {
+    "task_id": "args_019",
+    "query": "What is 18 less than 200?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "200 - 18"
+    }
+  },
+  {
+    "task_id": "args_020",
+    "query": "What is twice the sum of 30 and 12?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "(30 + 12) * 2"
+    }
+  },
+  {
+    "task_id": "args_021",
+    "query": "What is 7 percent of 710?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "710 * 0.07"
+    }
+  },
+  {
+    "task_id": "args_022",
+    "query": "What is 13 percent of 1300?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "1300 * 0.13"
+    }
+  },
+  {
+    "task_id": "args_023",
+    "query": "What is 95 minus 37?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "95 - 37"
+    }
+  },
+  {
+    "task_id": "args_024",
+    "query": "What is 66 plus 34?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "66 + 34"
+    }
+  },
+  {
+    "task_id": "args_025",
+    "query": "What is 144 divided by 12?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "144 / 12"
+    }
+  },
+  {
+    "task_id": "args_026",
+    "query": "What is 19 times 19?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "19 * 19"
+    }
+  },
+  {
+    "task_id": "args_027",
+    "query": "What is 250 increased by 8 percent?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "250 * 1.08"
+    }
+  },
+  {
+    "task_id": "args_028",
+    "query": "What is 620 reduced by 15 percent?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "620 * 0.85"
+    }
+  },
+  {
+    "task_id": "args_029",
+    "query": "What is difference between 1000 and 333?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "1000 - 333"
+    }
+  },
+  {
+    "task_id": "args_030",
+    "query": "What is sum of 125, 375, and 500?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "125 + 375 + 500"
+    }
+  }
+]
