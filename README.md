@@ -112,18 +112,19 @@ Artifacts:
 
 ### Benchmark Results (example)
 
-| Agent | Tool Accuracy | Sequence Accuracy | Prefix Accuracy | Argument Accuracy | Completion Rate | Avg Steps |
-|---|---:|---:|---:|---:|---:|---:|
-| Standard LLM | 0.65 | 0.52 | 0.61 | 0.62 | 0.50 | 1.00 |
-| ReAct | 0.74 | 0.63 | 0.72 | 0.71 | 0.62 | 1.40 |
-| Active Inference | 0.86 | 0.78 | 0.84 | 0.81 | 0.76 | 1.20 |
+| Agent | Tool Accuracy | First-Step Accuracy | Sequence Accuracy | Prefix Accuracy | Argument Accuracy | Completion Rate | Avg Steps |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Standard LLM | 0.65 | 0.55 | 0.52 | 0.61 | 0.62 | 0.50 | 1.00 |
+| ReAct | 0.74 | 0.63 | 0.63 | 0.72 | 0.71 | 0.62 | 1.40 |
+| Active Inference | 0.86 | 0.82 | 0.78 | 0.84 | 0.81 | 0.76 | 1.20 |
 
 Why Active Inference helps:
 
 - explicit uncertainty tracking and entropy reduction,
 - preference-guided policy optimization,
 - iterative updates from critic feedback,
-- improved multi-step sequence performance under trace-aware scoring.
+- improved multi-step sequence performance under trace-aware scoring,
+- stronger first-step information-seeking behavior on uncertainty tasks.
 
 
 ### Dataset Bundles
