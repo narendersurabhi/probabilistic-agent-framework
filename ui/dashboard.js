@@ -11,6 +11,7 @@ const actionHistoryEl = document.getElementById('actionHistory');
 const graphNodesEl = document.getElementById('graphNodes');
 const comparisonEl = document.getElementById('agentComparison');
 const failureEl = document.getElementById('failureAnalysis');
+const arenaEl = document.getElementById('arenaResults');
 
 const events = [];
 const graph = { nodes: [], edges: [] };
@@ -115,6 +116,11 @@ function connectWebSocket() {
       benchmarkEl.textContent = JSON.stringify(data.results, null, 2);
       refresh();
     }
+    if (data.event === 'arena_completed') {
+      arenaEl.textContent = JSON.stringify(data.results.leaderboard || data.results, null, 2);
+      statusEl.textContent = 'Agent Arena completed.';
+      refresh();
+    }
   };
 }
 
@@ -133,6 +139,10 @@ async function runBenchmark() {
   await fetch('/run_benchmark', { method: 'POST' });
 }
 
+async function runArena() {
+  statusEl.textContent = 'Running arena...';
+  await fetch('/run_arena', { method: 'POST' });
+}
 
 async function compareAgents() {
   const taskId = document.getElementById('comparisonTaskId').value || 'task_001';
@@ -147,26 +157,30 @@ async function compareAgents() {
 }
 
 async function refresh() {
-  const [stepsRes, beliefRes, benchmarkRes, failureRes] = await Promise.all([
+  const [stepsRes, beliefRes, benchmarkRes, failureRes, arenaRes] = await Promise.all([
     fetch('/agent_steps'),
     fetch('/belief_state'),
     fetch('/benchmark_results'),
-    fetch('/failure_analysis')
+    fetch('/failure_analysis'),
+    fetch('/arena_results')
   ]);
 
   const steps = await stepsRes.json();
   const belief = await beliefRes.json();
   const benchmark = await benchmarkRes.json();
   const failure = await failureRes.json();
+  const arena = await arenaRes.json();
 
   renderTimeline(steps);
   beliefEl.textContent = JSON.stringify(belief, null, 2);
   benchmarkEl.textContent = JSON.stringify(benchmark, null, 2);
   failureEl.textContent = JSON.stringify(failure, null, 2);
+  arenaEl.textContent = JSON.stringify(arena.leaderboard || arena, null, 2);
 }
 
 document.getElementById('runBtn').addEventListener('click', runTask);
 document.getElementById('benchmarkBtn').addEventListener('click', runBenchmark);
+document.getElementById('arenaBtn').addEventListener('click', runArena);
 document.getElementById('compareBtn').addEventListener('click', compareAgents);
 setInterval(refresh, 1000);
 connectWebSocket();

@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 from src.evaluation.agent_comparison import AgentComparisonRunner
+from src.evaluation.arena import AgentArena
 from src.evaluation.benchmark_runner import BenchmarkRunner
 
 import numpy as np
@@ -186,6 +187,11 @@ def agent_comparison_view() -> FileResponse:
     return FileResponse(UI_DIR / "agent_comparison.html")
 
 
+@app.get("/arena")
+def arena_view() -> FileResponse:
+    return FileResponse(UI_DIR / "arena.html")
+
+
 app.mount("/ui", StaticFiles(directory=str(UI_DIR)), name="ui")
 
 
@@ -286,6 +292,14 @@ def get_failure_analysis() -> Dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+@app.get("/arena_results")
+def get_arena_results() -> Dict[str, Any]:
+    path = RESULTS_DIR / "arena_results.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 @app.post("/compare_agents")
 def compare_agents(req: ComparisonRequest) -> Dict[str, Any]:
     runner = AgentComparisonRunner(results_dir=RESULTS_DIR)
@@ -303,6 +317,14 @@ async def run_benchmark() -> Dict[str, Any]:
 
     results = runner.run(event_callback=emit)
     await stream_manager.broadcast({"event": "benchmark_completed", "results": results})
+    return results
+
+
+@app.post("/run_arena")
+async def run_arena() -> Dict[str, Any]:
+    arena = AgentArena(results_dir=RESULTS_DIR)
+    results = arena.run()
+    await stream_manager.broadcast({"event": "arena_completed", "results": results})
     return results
 
 

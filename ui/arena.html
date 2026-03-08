@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Arena</title>
+    <link rel="stylesheet" href="/ui/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Agent Arena</h1>
+      <p>Head-to-head battles and leaderboard for tool-using agents.</p>
+    </header>
+
+    <section class="panel">
+      <div class="row">
+        <button id="runArenaBtn">Run Arena</button>
+      </div>
+      <p id="arenaStatus"></p>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>Leaderboard</h2>
+        <pre id="leaderboard"></pre>
+      </div>
+      <div class="panel">
+        <h2>Battle Log (sample)</h2>
+        <pre id="battles"></pre>
+      </div>
+    </section>
+
+    <script>
+      const statusEl = document.getElementById('arenaStatus');
+      const leaderboardEl = document.getElementById('leaderboard');
+      const battlesEl = document.getElementById('battles');
+
+      async function refreshArena() {
+        const resp = await fetch('/arena_results');
+        const payload = await resp.json();
+        leaderboardEl.textContent = JSON.stringify(payload.leaderboard || payload, null, 2);
+        battlesEl.textContent = JSON.stringify((payload.battles || []).slice(0, 3), null, 2);
+      }
+
+      async function runArena() {
+        statusEl.textContent = 'Running arena...';
+        const resp = await fetch('/run_arena', { method: 'POST' });
+        const payload = await resp.json();
+        statusEl.textContent = `Completed ${payload.total_tasks || 0} tasks.`;
+        await refreshArena();
+      }
+
+      document.getElementById('runArenaBtn').addEventListener('click', runArena);
+      refreshArena();
+    </script>
+  </body>
+</html>

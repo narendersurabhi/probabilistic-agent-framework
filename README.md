@@ -147,6 +147,34 @@ You can also use the dashboard's **Agent Comparison** panel or open `http://loca
 | Active Inference | `retrieve_docs`      | Probabilistic planning + belief updates |
 
 
+## Agent Arena
+
+Run a head-to-head competition where all discovered `BaseAgent` plugins compete on the same tasks:
+
+```bash
+python experiments/arena.py
+```
+
+Artifacts:
+
+- `results/leaderboard.json`
+- `results/arena_results.json`
+
+Built-in arena plugins:
+
+- `StandardAgent`
+- `ReActAgent`
+- `ActiveInferenceAgent`
+
+To add your own plugin, create a new class under `src/agents/` that subclasses `BaseAgent` and implements `run(query)`. It will be auto-discovered by the arena runner.
+
+The dashboard also supports arena execution via:
+
+- `POST /run_arena`
+- `GET /arena_results`
+- UI page at `http://localhost:8000/arena`
+
+
 ## Failure Analysis
 
 The benchmark harness now classifies failed tasks automatically into:
