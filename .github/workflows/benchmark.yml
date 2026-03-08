@@ -1,0 +1,41 @@
+name: Benchmark Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'benchmarks/**'
+      - 'evaluation/**'
+      - 'experiments/**'
+      - 'infra/**'
+      - 'config/benchmark_config.yaml'
+      - '.github/workflows/benchmark.yml'
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build experiment image
+        run: docker build -f infra/docker/Dockerfile -t active-inference-benchmark:ci .
+
+      - name: Run benchmark locally
+        run: python experiments/run_benchmark.py --config config/benchmark_config.yaml --output-dir artifacts
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-artifacts
+          path: artifacts/
