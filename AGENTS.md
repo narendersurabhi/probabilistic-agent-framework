@@ -120,3 +120,17 @@ All agents operating in this repository should read this file first to understan
   - 20 multi-step tasks (`expected_tool: retriever` plus `expected_tools` and `expected_args_sequence` for retriever->calculator chains)
   - 20 direct-answer tasks (`expected_tool: generate_answer`, `expected_args.text`)
 - Validated dataset length, required schema fields, and category distribution via local Python checks.
+
+## 2026-03-08 (tool confusion robustness benchmark dataset)
+- Added `evaluation/datasets/tool_confusion_benchmark.json` with 50 tasks focused on tool-selection robustness under confusion scenarios.
+- Dataset includes required fields:
+  - `task_id`
+  - `task_type`
+  - `query`
+  - `expected_tool_sequence`
+- Distribution implemented:
+  - 15 `false_calculator` tasks (numeric-looking questions that should use `generate_answer`)
+  - 10 `hidden_calculator` tasks (informational-looking prompts that require `call_calculator`)
+  - 15 `retrieve_then_compute` tasks (two-step `retrieve_docs -> call_calculator`)
+  - 10 `misleading_retrieval` tasks (retrieval-looking but common-knowledge prompts that should use `generate_answer`)
+- Validated task count, category distribution, and schema shape via local Python checks.

@@ -1,0 +1,417 @@
+[
+  {
+    "task_id": "confusion_001",
+    "task_type": "false_calculator",
+    "query": "What percentage is half?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_002",
+    "task_type": "false_calculator",
+    "query": "Is zero an even number?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_003",
+    "task_type": "false_calculator",
+    "query": "What is the meaning of 100% certainty?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_004",
+    "task_type": "false_calculator",
+    "query": "Is a dozen equal to twelve?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_005",
+    "task_type": "false_calculator",
+    "query": "What does '24/7' mean in common usage?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_006",
+    "task_type": "false_calculator",
+    "query": "Is 3rd greater than 2nd in ranking?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_007",
+    "task_type": "false_calculator",
+    "query": "What is the definition of a prime number?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_008",
+    "task_type": "false_calculator",
+    "query": "Does a leap year have 366 days?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_009",
+    "task_type": "false_calculator",
+    "query": "What does 50-50 chance mean?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_010",
+    "task_type": "false_calculator",
+    "query": "Is 0 degrees Celsius the freezing point of water?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_011",
+    "task_type": "false_calculator",
+    "query": "What does 'top 1%' mean colloquially?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_012",
+    "task_type": "false_calculator",
+    "query": "Is one quarter equivalent to 25 percent conceptually?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_013",
+    "task_type": "false_calculator",
+    "query": "What is the term for a 90-degree angle?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_014",
+    "task_type": "false_calculator",
+    "query": "Is a century 100 years?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_015",
+    "task_type": "false_calculator",
+    "query": "What does 'binary' mean in computing?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_016",
+    "task_type": "hidden_calculator",
+    "query": "If I have 300 apples and sell 20%, how many remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_017",
+    "task_type": "hidden_calculator",
+    "query": "A jacket costs 80 dollars after a 20% discount. What was the original price?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_018",
+    "task_type": "hidden_calculator",
+    "query": "I read 45 of 60 pages. What percentage is completed?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_019",
+    "task_type": "hidden_calculator",
+    "query": "A battery is at 75% and drops by 40 percentage points. What is it now?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_020",
+    "task_type": "hidden_calculator",
+    "query": "If a team wins 18 out of 24 games, what is the win rate percent?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_021",
+    "task_type": "hidden_calculator",
+    "query": "A price increases from 50 to 65. What is the percentage increase?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_022",
+    "task_type": "hidden_calculator",
+    "query": "I split 360 equally among 9 people. How much per person?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_023",
+    "task_type": "hidden_calculator",
+    "query": "A tank is 3/5 full at 500 liters capacity. How many liters are filled?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_024",
+    "task_type": "hidden_calculator",
+    "query": "You tip 18% on a 42 dollar meal. What is the tip amount?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_025",
+    "task_type": "hidden_calculator",
+    "query": "A score moved from 72 to 81. By what percent did it improve?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_026",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Canada and calculate 10 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_027",
+    "task_type": "retrieve_then_compute",
+    "query": "Retrieve the GDP of France and compute 2 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_028",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the area of Texas and divide it by 4.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_029",
+    "task_type": "retrieve_then_compute",
+    "query": "Get the population of Brazil and multiply it by 1.5.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_030",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the current EUR to USD rate and convert 250 EUR.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_031",
+    "task_type": "retrieve_then_compute",
+    "query": "Retrieve the height of Mount Everest in meters and convert it to feet.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_032",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the distance from Earth to Moon in km and halve it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_033",
+    "task_type": "retrieve_then_compute",
+    "query": "Get Japan's population and compute 12 percent.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_034",
+    "task_type": "retrieve_then_compute",
+    "query": "Find Germany's population and calculate twice that value.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_035",
+    "task_type": "retrieve_then_compute",
+    "query": "Retrieve average annual rainfall in Seattle and add 15 percent.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_036",
+    "task_type": "retrieve_then_compute",
+    "query": "Find Tesla's latest quarterly revenue and divide by 3.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_037",
+    "task_type": "retrieve_then_compute",
+    "query": "Retrieve the price of gold per ounce and compute 5 ounces cost.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_038",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the number of states in the US and multiply by 7.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_039",
+    "task_type": "retrieve_then_compute",
+    "query": "Get global internet users and compute 25 percent of that number.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_040",
+    "task_type": "retrieve_then_compute",
+    "query": "Retrieve the population of Australia and subtract 1 million.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_041",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital of Japan?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_042",
+    "task_type": "misleading_retrieval",
+    "query": "Who wrote Hamlet?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_043",
+    "task_type": "misleading_retrieval",
+    "query": "What is the largest planet in our solar system?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_044",
+    "task_type": "misleading_retrieval",
+    "query": "What is the boiling point of water at sea level?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_045",
+    "task_type": "misleading_retrieval",
+    "query": "Who painted the Mona Lisa?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_046",
+    "task_type": "misleading_retrieval",
+    "query": "What language is primarily spoken in Brazil?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_047",
+    "task_type": "misleading_retrieval",
+    "query": "What is the currency of the United Kingdom?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_048",
+    "task_type": "misleading_retrieval",
+    "query": "What gas do plants absorb from the atmosphere?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_049",
+    "task_type": "misleading_retrieval",
+    "query": "What is the tallest land animal?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_050",
+    "task_type": "misleading_retrieval",
+    "query": "Which continent is Egypt in?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  }
+]
