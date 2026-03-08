@@ -1,0 +1,322 @@
+[
+  {
+    "task_id": "multi_001",
+    "query": "Find the population of Norway and calculate 6 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_002",
+    "query": "Find the population of Sweden and calculate 9 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_003",
+    "query": "Find the population of Poland and calculate 12 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_004",
+    "query": "Find the population of Argentina and calculate 15 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_005",
+    "query": "Find the population of Chile and calculate 18 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_006",
+    "query": "Find the population of Egypt and calculate 21 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_007",
+    "query": "Find the population of Kenya and calculate 24 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_008",
+    "query": "Find the population of South Korea and calculate 27 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_009",
+    "query": "Find the population of Indonesia and calculate 30 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_010",
+    "query": "Find the population of Turkey and calculate 33 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_011",
+    "query": "Find the population of Netherlands and calculate 36 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_012",
+    "query": "Find the population of Belgium and calculate 3 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_013",
+    "query": "Find the population of Portugal and calculate 6 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_014",
+    "query": "Find the population of Greece and calculate 9 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_015",
+    "query": "Find the population of Austria and calculate 12 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_016",
+    "query": "Find the population of Switzerland and calculate 15 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_017",
+    "query": "Find the population of Ireland and calculate 18 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_018",
+    "query": "Find the population of Denmark and calculate 21 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_019",
+    "query": "Find the population of Finland and calculate 24 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_020",
+    "query": "Find the population of New Zealand and calculate 27 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_021",
+    "query": "Find the population of Peru and calculate 30 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_022",
+    "query": "Find the population of Colombia and calculate 33 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_023",
+    "query": "Find the population of South Africa and calculate 36 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_024",
+    "query": "Find the population of Nigeria and calculate 3 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_025",
+    "query": "Find the population of Thailand and calculate 6 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_026",
+    "query": "Find the population of Vietnam and calculate 9 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_027",
+    "query": "Find the population of Philippines and calculate 12 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_028",
+    "query": "Find the population of Malaysia and calculate 15 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_029",
+    "query": "Find the population of Singapore and calculate 18 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_030",
+    "query": "Find the population of Pakistan and calculate 21 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_031",
+    "query": "Find the population of Japan and calculate 24 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_032",
+    "query": "Find the population of France and calculate 27 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_033",
+    "query": "Find the population of Brazil and calculate 30 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_034",
+    "query": "Find the population of Canada and calculate 33 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_035",
+    "query": "Find the population of India and calculate 36 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_036",
+    "query": "Find the population of Spain and calculate 3 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_037",
+    "query": "Find the population of Italy and calculate 6 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_038",
+    "query": "Find the population of Germany and calculate 9 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_039",
+    "query": "Find the population of Australia and calculate 12 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "multi_040",
+    "query": "Find the population of Mexico and calculate 15 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  }
+]

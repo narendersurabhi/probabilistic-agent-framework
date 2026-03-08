@@ -144,3 +144,13 @@ All agents operating in this repository should read this file first to understan
 - Added `Makefile` with `make benchmark` and `make test` convenience targets.
 - Added evaluation test coverage for result normalization path in `tests/test_evaluation.py`.
 - Updated README benchmark usage and artifact list to include `make benchmark` and benchmark trace logs.
+
+## 2026-03-08 (expanded benchmark dataset suite)
+- Added five new benchmark dataset bundles in `evaluation/datasets/` aligned to research-style tool-use evaluation prompts:
+  - `tool_benchmark.json` (100-task mixed benchmark: arithmetic/retrieval/multi-step/direct-answer)
+  - `tool_confusion_tasks.json` (50-task confusion robustness benchmark)
+  - `uncertainty_tasks.json` (40-task uncertainty-seeking / information-first benchmark)
+  - `argument_accuracy_tasks.json` (40-task tool-argument correctness benchmark)
+  - `multi_step_tasks.json` (40-task multi-step planning benchmark)
+- Added dataset integrity tests in `tests/test_evaluation.py` to validate dataset presence, expected sizes, and `tool_benchmark.json` task-type distribution.
+- Updated `README.md` with a new "Dataset Bundles" section documenting the new dataset files and intended use.

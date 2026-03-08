@@ -126,6 +126,18 @@ Why Active Inference helps:
 - improved multi-step sequence performance under trace-aware scoring.
 
 
+### Dataset Bundles
+
+Additional benchmark datasets are available under `evaluation/datasets/`:
+
+- `tool_benchmark.json` (100 tasks): 30 arithmetic, 30 retrieval, 20 multi-step, 20 direct-answer
+- `tool_confusion_tasks.json` (50 tasks): false-calculator, hidden-calculator, retrieve-then-compute, and misleading-retrieval splits
+- `uncertainty_tasks.json` (40 tasks): information-first tool sequences (`retrieve_docs -> call_calculator`)
+- `argument_accuracy_tasks.json` (40 tasks): arithmetic prompts focused on calculator argument correctness
+- `multi_step_tasks.json` (40 tasks): explicit two-step planning tasks requiring retrieval then computation
+
+These datasets are intended for targeted evaluation beyond the default benchmark configuration and can be passed into the benchmark harness directly.
+
 ## Interactive Agent Visualization
 
 A lightweight dashboard is included with:

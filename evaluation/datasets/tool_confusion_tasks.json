@@ -1,0 +1,417 @@
+[
+  {
+    "task_id": "confusion_001",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (1).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_002",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (2).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_003",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (3).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_004",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (4).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_005",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (5).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_006",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (6).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_007",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (7).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_008",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (8).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_009",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (9).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_010",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (10).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_011",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (11).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_012",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (12).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_013",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (13).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_014",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (14).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_015",
+    "task_type": "false_calculator",
+    "query": "Is half of a quantity equal to 50 percent? Explain briefly (15).",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_016",
+    "task_type": "hidden_calculator",
+    "query": "If I sell 20 percent of 276 tickets, how many tickets remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_017",
+    "task_type": "hidden_calculator",
+    "query": "If I sell 30 percent of 282 tickets, how many tickets remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_018",
+    "task_type": "hidden_calculator",
+    "query": "If I sell 40 percent of 288 tickets, how many tickets remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_019",
+    "task_type": "hidden_calculator",
+    "query": "If I sell 50 percent of 294 tickets, how many tickets remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_020",
+    "task_type": "hidden_calculator",
+    "query": "If I sell 10 percent of 300 tickets, how many tickets remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_021",
+    "task_type": "hidden_calculator",
+    "query": "If I sell 20 percent of 306 tickets, how many tickets remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_022",
+    "task_type": "hidden_calculator",
+    "query": "If I sell 30 percent of 312 tickets, how many tickets remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_023",
+    "task_type": "hidden_calculator",
+    "query": "If I sell 40 percent of 318 tickets, how many tickets remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_024",
+    "task_type": "hidden_calculator",
+    "query": "If I sell 50 percent of 324 tickets, how many tickets remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_025",
+    "task_type": "hidden_calculator",
+    "query": "If I sell 10 percent of 330 tickets, how many tickets remain?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_026",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Japan and compute 15 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_027",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of France and compute 20 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_028",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Brazil and compute 25 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_029",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Canada and compute 30 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_030",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of India and compute 5 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_031",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Spain and compute 10 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_032",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Italy and compute 15 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_033",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Germany and compute 20 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_034",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Australia and compute 25 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_035",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Mexico and compute 30 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_036",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Norway and compute 5 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_037",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Sweden and compute 10 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_038",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Poland and compute 15 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_039",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Argentina and compute 20 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_040",
+    "task_type": "retrieve_then_compute",
+    "query": "Find the population of Chile and compute 25 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_041",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital city of Japan?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_042",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital city of France?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_043",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital city of Brazil?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_044",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital city of Canada?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_045",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital city of India?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_046",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital city of Spain?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_047",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital city of Italy?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_048",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital city of Germany?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_049",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital city of Australia?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_050",
+    "task_type": "misleading_retrieval",
+    "query": "What is the capital city of Mexico?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  }
+]

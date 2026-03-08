@@ -9,6 +9,40 @@ from evaluation.metrics import (
 )
 
 
+def test_dataset_bundles_exist_and_match_expected_sizes() -> None:
+    import json
+    from pathlib import Path
+
+    dataset_specs = {
+        "evaluation/datasets/tool_benchmark.json": 100,
+        "evaluation/datasets/tool_confusion_tasks.json": 50,
+        "evaluation/datasets/uncertainty_tasks.json": 40,
+        "evaluation/datasets/argument_accuracy_tasks.json": 40,
+        "evaluation/datasets/multi_step_tasks.json": 40,
+    }
+
+    for path, expected_size in dataset_specs.items():
+        payload = json.loads(Path(path).read_text(encoding="utf-8"))
+        assert isinstance(payload, list)
+        assert len(payload) == expected_size
+
+
+def test_tool_benchmark_distribution() -> None:
+    import json
+    from collections import Counter
+    from pathlib import Path
+
+    payload = json.loads(Path("evaluation/datasets/tool_benchmark.json").read_text(encoding="utf-8"))
+    counts = Counter(item["task_type"] for item in payload)
+
+    assert counts == {
+        "arithmetic": 30,
+        "retrieval": 30,
+        "multi_step": 20,
+        "direct_answer": 20,
+    }
+
+
 def test_metrics_basic() -> None:
     rows = [
         {

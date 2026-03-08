@@ -1,0 +1,322 @@
+[
+  {
+    "task_id": "args_001",
+    "query": "What is 10 percent of 161?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "161 * 0.10"
+    }
+  },
+  {
+    "task_id": "args_002",
+    "query": "What is 15 percent of 172?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "172 * 0.15"
+    }
+  },
+  {
+    "task_id": "args_003",
+    "query": "What is 20 percent of 183?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "183 * 0.20"
+    }
+  },
+  {
+    "task_id": "args_004",
+    "query": "What is 25 percent of 194?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "194 * 0.25"
+    }
+  },
+  {
+    "task_id": "args_005",
+    "query": "What is 30 percent of 205?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "205 * 0.30"
+    }
+  },
+  {
+    "task_id": "args_006",
+    "query": "What is 35 percent of 216?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "216 * 0.35"
+    }
+  },
+  {
+    "task_id": "args_007",
+    "query": "What is 40 percent of 227?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "227 * 0.40"
+    }
+  },
+  {
+    "task_id": "args_008",
+    "query": "What is 45 percent of 238?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "238 * 0.45"
+    }
+  },
+  {
+    "task_id": "args_009",
+    "query": "What is 50 percent of 249?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "249 * 0.50"
+    }
+  },
+  {
+    "task_id": "args_010",
+    "query": "What is 5 percent of 260?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "260 * 0.05"
+    }
+  },
+  {
+    "task_id": "args_011",
+    "query": "What is 10 percent of 271?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "271 * 0.10"
+    }
+  },
+  {
+    "task_id": "args_012",
+    "query": "What is 15 percent of 282?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "282 * 0.15"
+    }
+  },
+  {
+    "task_id": "args_013",
+    "query": "What is 20 percent of 293?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "293 * 0.20"
+    }
+  },
+  {
+    "task_id": "args_014",
+    "query": "What is 25 percent of 304?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "304 * 0.25"
+    }
+  },
+  {
+    "task_id": "args_015",
+    "query": "What is 30 percent of 315?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "315 * 0.30"
+    }
+  },
+  {
+    "task_id": "args_016",
+    "query": "What is 35 percent of 326?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "326 * 0.35"
+    }
+  },
+  {
+    "task_id": "args_017",
+    "query": "What is 40 percent of 337?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "337 * 0.40"
+    }
+  },
+  {
+    "task_id": "args_018",
+    "query": "What is 45 percent of 348?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "348 * 0.45"
+    }
+  },
+  {
+    "task_id": "args_019",
+    "query": "What is 50 percent of 359?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "359 * 0.50"
+    }
+  },
+  {
+    "task_id": "args_020",
+    "query": "What is 5 percent of 370?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "370 * 0.05"
+    }
+  },
+  {
+    "task_id": "args_021",
+    "query": "What is 10 percent of 381?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "381 * 0.10"
+    }
+  },
+  {
+    "task_id": "args_022",
+    "query": "What is 15 percent of 392?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "392 * 0.15"
+    }
+  },
+  {
+    "task_id": "args_023",
+    "query": "What is 20 percent of 403?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "403 * 0.20"
+    }
+  },
+  {
+    "task_id": "args_024",
+    "query": "What is 25 percent of 414?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "414 * 0.25"
+    }
+  },
+  {
+    "task_id": "args_025",
+    "query": "What is 30 percent of 425?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "425 * 0.30"
+    }
+  },
+  {
+    "task_id": "args_026",
+    "query": "What is 35 percent of 436?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "436 * 0.35"
+    }
+  },
+  {
+    "task_id": "args_027",
+    "query": "What is 40 percent of 447?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "447 * 0.40"
+    }
+  },
+  {
+    "task_id": "args_028",
+    "query": "What is 45 percent of 458?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "458 * 0.45"
+    }
+  },
+  {
+    "task_id": "args_029",
+    "query": "What is 50 percent of 469?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "469 * 0.50"
+    }
+  },
+  {
+    "task_id": "args_030",
+    "query": "What is 5 percent of 480?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "480 * 0.05"
+    }
+  },
+  {
+    "task_id": "args_031",
+    "query": "What is 10 percent of 491?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "491 * 0.10"
+    }
+  },
+  {
+    "task_id": "args_032",
+    "query": "What is 15 percent of 502?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "502 * 0.15"
+    }
+  },
+  {
+    "task_id": "args_033",
+    "query": "What is 20 percent of 513?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "513 * 0.20"
+    }
+  },
+  {
+    "task_id": "args_034",
+    "query": "What is 25 percent of 524?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "524 * 0.25"
+    }
+  },
+  {
+    "task_id": "args_035",
+    "query": "What is 30 percent of 535?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "535 * 0.30"
+    }
+  },
+  {
+    "task_id": "args_036",
+    "query": "What is 35 percent of 546?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "546 * 0.35"
+    }
+  },
+  {
+    "task_id": "args_037",
+    "query": "What is 40 percent of 557?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "557 * 0.40"
+    }
+  },
+  {
+    "task_id": "args_038",
+    "query": "What is 45 percent of 568?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "568 * 0.45"
+    }
+  },
+  {
+    "task_id": "args_039",
+    "query": "What is 50 percent of 579?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "579 * 0.50"
+    }
+  },
+  {
+    "task_id": "args_040",
+    "query": "What is 5 percent of 590?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "590 * 0.05"
+    }
+  }
+]
