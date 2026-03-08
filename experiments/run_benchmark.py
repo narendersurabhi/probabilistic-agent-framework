@@ -30,22 +30,22 @@ def write_report(metrics: dict, out_path: str) -> None:
     lines = [
         "# Benchmark Report",
         "",
-        "| Agent | Tool Accuracy | Sequence Accuracy | Prefix Accuracy | Argument Accuracy | Completion Rate | Avg Steps |",
-        "|---|---:|---:|---:|---:|---:|---:|",
+        "| Agent | Tool Accuracy | First-Step Accuracy | Sequence Accuracy | Prefix Accuracy | Argument Accuracy | Completion Rate | Avg Steps |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for agent, vals in metrics.items():
         lines.append(
-            f"| {agent} | {vals['tool_accuracy']:.2f} | {vals['sequence_tool_accuracy']:.2f} | {vals['prefix_accuracy']:.2f} | {vals['argument_accuracy']:.2f} | {vals['task_completion']:.2f} | {vals['step_efficiency']:.2f} |"
+            f"| {agent} | {vals['tool_accuracy']:.2f} | {vals['first_step_accuracy']:.2f} | {vals['sequence_tool_accuracy']:.2f} | {vals['prefix_accuracy']:.2f} | {vals['argument_accuracy']:.2f} | {vals['task_completion']:.2f} | {vals['step_efficiency']:.2f} |"
         )
 
     lines.extend(["", "## Per-task-type summary"])
     for agent, vals in metrics.items():
         lines.append(f"### {agent}")
-        lines.append("| Task Type | Tool Acc | Sequence Acc | Completion |")
-        lines.append("|---|---:|---:|---:|")
+        lines.append("| Task Type | Tool Acc | First Step Acc | Sequence Acc | Completion |")
+        lines.append("|---|---:|---:|---:|---:|")
         for task_type, task_vals in vals["per_task_type"].items():
             lines.append(
-                f"| {task_type} | {task_vals['tool_accuracy']:.2f} | {task_vals['sequence_accuracy']:.2f} | {task_vals['completion']:.2f} |"
+                f"| {task_type} | {task_vals['tool_accuracy']:.2f} | {task_vals['first_step_accuracy']:.2f} | {task_vals['sequence_accuracy']:.2f} | {task_vals['completion']:.2f} |"
             )
         lines.append("")
 
@@ -58,6 +58,7 @@ def write_evaluation_report(metrics: Dict[str, Dict], out_path: str) -> None:
             "tool_selection_accuracy": vals["tool_accuracy"],
             "argument_accuracy": vals["argument_accuracy"],
             "sequence_accuracy": vals["sequence_tool_accuracy"],
+            "first_step_accuracy": vals["first_step_accuracy"],
             "task_completion_rate": vals["task_completion"],
             "belief_entropy_reduction": vals.get("belief_entropy_reduction", 0.0),
         }

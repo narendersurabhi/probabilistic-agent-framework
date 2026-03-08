@@ -2,6 +2,7 @@ from evaluation.benchmark_runner import run_benchmark
 from evaluation.metrics import (
     argument_accuracy,
     final_answer_accuracy,
+    first_step_accuracy,
     prefix_accuracy,
     sequence_tool_accuracy,
     task_completion_rate,
@@ -47,6 +48,7 @@ def test_metrics_basic() -> None:
     rows = [
         {
             "tool_correct": True,
+            "first_step_correct": True,
             "arguments_correct": True,
             "completed": True,
             "steps": 1,
@@ -56,6 +58,7 @@ def test_metrics_basic() -> None:
         },
         {
             "tool_correct": False,
+            "first_step_correct": False,
             "arguments_correct": True,
             "completed": False,
             "steps": 2,
@@ -70,6 +73,7 @@ def test_metrics_basic() -> None:
     assert sequence_tool_accuracy(rows) == 0.5
     assert prefix_accuracy(rows) == 0.75
     assert final_answer_accuracy(rows) == 0.5
+    assert first_step_accuracy(rows) == 0.5
 
 
 def test_benchmark_runner_executes() -> None:
@@ -77,6 +81,7 @@ def test_benchmark_runner_executes() -> None:
     assert "active_inference" in results
     assert "tool_accuracy" in results["standard_llm"]
     assert "sequence_tool_accuracy" in results["react"]
+    assert "first_step_accuracy" in results["active_inference"]
 
 
 def test_runner_normalizes_selected_tool_format() -> None:

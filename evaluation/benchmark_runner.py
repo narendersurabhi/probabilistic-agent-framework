@@ -15,6 +15,7 @@ from evaluation.metrics import (
     argument_accuracy,
     belief_entropy_reduction,
     final_answer_accuracy,
+    first_step_accuracy,
     prefix_accuracy,
     sequence_tool_accuracy,
     step_efficiency,
@@ -104,6 +105,7 @@ def _row_from_result(item: Dict[str, Any], normalized: Dict[str, Any]) -> Dict[s
 
     return {
         "tool_correct": bool(expected_tools) and bool(actual_tools) and expected_tools[0] == actual_tools[0],
+        "first_step_correct": bool(expected_tools) and bool(actual_tools) and expected_tools[0] == actual_tools[0],
         "arguments_correct": expected_args is None or first_args == expected_args,
         "completed": (actual_tools == expected_tools) if expected_tools else bool(normalized.get("completed", False)),
         "steps": normalized.get("steps", len(trace) if trace else 1),
@@ -123,6 +125,7 @@ def _per_task_type(rows: List[Dict[str, Any]]) -> Dict[str, Dict[str, float]]:
             "tool_accuracy": tool_selection_accuracy(v),
             "sequence_accuracy": sequence_tool_accuracy(v),
             "completion": task_completion_rate(v),
+            "first_step_accuracy": first_step_accuracy(v),
         }
         for k, v in grouped.items()
     }
@@ -138,11 +141,12 @@ def _aggregate_runs(run_results: List[Dict[str, Any]]) -> Dict[str, Any]:
         task_types.update(rr["per_task_type"].keys())
     per_task: Dict[str, Dict[str, float]] = {}
     for t in sorted(task_types):
-        vals = [rr["per_task_type"].get(t, {"tool_accuracy": 0.0, "sequence_accuracy": 0.0, "completion": 0.0}) for rr in run_results]
+        vals = [rr["per_task_type"].get(t, {"tool_accuracy": 0.0, "sequence_accuracy": 0.0, "completion": 0.0, "first_step_accuracy": 0.0}) for rr in run_results]
         per_task[t] = {
             "tool_accuracy": float(np.mean([v["tool_accuracy"] for v in vals])),
             "sequence_accuracy": float(np.mean([v["sequence_accuracy"] for v in vals])),
             "completion": float(np.mean([v["completion"] for v in vals])),
+            "first_step_accuracy": float(np.mean([v["first_step_accuracy"] for v in vals])),
         }
     agg["per_task_type"] = per_task
     agg["num_runs"] = len(run_results)
@@ -202,6 +206,7 @@ def run_benchmark(
                     "sequence_tool_accuracy": sequence_tool_accuracy(rows),
                     "prefix_accuracy": prefix_accuracy(rows),
                     "final_answer_accuracy": final_answer_accuracy(rows),
+                    "first_step_accuracy": first_step_accuracy(rows),
                     "belief_entropy_reduction": belief_entropy_reduction(entropy_track) if name == "active_inference" else 0.0,
                     "per_task_type": _per_task_type(rows),
                     "run_index": run_idx,

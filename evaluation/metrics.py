@@ -53,3 +53,9 @@ def final_answer_accuracy(rows: List[Dict]) -> float:
     if not rows:
         return 0.0
     return sum(1 for r in rows if r.get("final_answer_correct")) / len(rows)
+
+
+def first_step_accuracy(rows: List[Dict]) -> float:
+    if not rows:
+        return 0.0
+    return sum(1 for r in rows if r.get("first_step_correct")) / len(rows)

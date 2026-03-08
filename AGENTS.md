@@ -165,3 +165,10 @@ All agents operating in this repository should read this file first to understan
 - Added package markers and exports for new `src/environment`, `src/tools`, and `src/llm` modules.
 - Strengthened top-level deterministic retriever (`tools/retriever.py`) to use a static knowledge base and explicit success/failure behavior on unmatched queries.
 - Expanded tool tests in `tests/test_tools.py` to cover deterministic retriever failure, new `src` tool environment outputs, and observation parser mapping.
+
+## 2026-03-08 (uncertainty-planning metric extension)
+- Added explicit `first_step_accuracy` metric in `evaluation/metrics.py` to measure whether agents choose the correct initial action on information-seeking tasks.
+- Extended `evaluation/benchmark_runner.py` to record `first_step_correct` per task, aggregate `first_step_accuracy` across runs, and include per-task-type first-step summaries.
+- Updated benchmark reporting in `experiments/run_benchmark.py` to include first-step columns in markdown and JSON evaluation reports.
+- Expanded `tests/test_evaluation.py` to validate first-step metric calculations and benchmark output fields.
+- Updated `README.md` benchmark table and narrative to highlight first-step accuracy as a planning-sensitive metric for uncertainty tasks.
