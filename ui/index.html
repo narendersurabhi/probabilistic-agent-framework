@@ -24,6 +24,8 @@
       <p id="status"></p>
       <p><strong>Current Query:</strong> <span id="currentQuery">N/A</span></p>
       <a href="/trace_viewer" target="_blank">Open Trace Viewer</a>
+      <span> | </span>
+      <a href="/agent_comparison" target="_blank">Open Agent Comparison</a>
     </section>
 
     <section class="grid">
@@ -57,6 +59,16 @@
       <div class="panel">
         <h2>Benchmark Comparison</h2>
         <pre id="benchmark"></pre>
+      </div>
+
+      <div class="panel">
+        <h2>Agent Comparison</h2>
+        <div class="row">
+          <input id="comparisonTaskId" type="text" value="task_001" />
+          <input id="comparisonQuery" type="text" value="What is 20 percent of the population of Spain?" />
+          <button id="compareBtn">Compare Agents</button>
+        </div>
+        <pre id="agentComparison"></pre>
       </div>
 
       <div class="panel">

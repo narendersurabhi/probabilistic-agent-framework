@@ -280,3 +280,25 @@ All agents operating in this repository should read this file first to understan
   - dataset bundle summary and example trace
   - interview demo flow and recruiter-signal framing
   - advanced next-step recommendation for side-by-side planning strategy comparison.
+
+## 2026-03-08 (side-by-side agent reasoning comparison)
+- Added side-by-side comparison harness at `src/evaluation/agent_comparison.py`:
+  - runs Standard, ReAct, and Active Inference agents on the same task query,
+  - normalizes step traces,
+  - writes JSON artifacts under `results/comparisons/{task_id}.json`.
+- Updated `src/evaluation/__init__.py` exports to include `AgentComparisonRunner`.
+- Added comparison experiment script `experiments/compare_agents.py` with CLI flags:
+  - `--task-id`
+  - `--query`
+  - `--output-dir`
+- Extended API server (`api/server.py`) with:
+  - `POST /compare_agents` to run and return side-by-side comparison payloads,
+  - `GET /agent_comparison` route serving a dedicated UI page.
+- Added comparison UI pages/components:
+  - `ui/agent_comparison.html`
+  - `ui/agent_comparison.js`
+  - dashboard integration in `ui/index.html` + `ui/dashboard.js` with an in-dashboard Agent Comparison panel.
+- Added test coverage:
+  - `tests/test_agent_comparison.py` for artifact generation and payload schema.
+  - extended `tests/test_api.py` to validate `POST /compare_agents`.
+- Updated `README.md` with a new **Agent Reasoning Comparison** section documenting CLI usage, UI routes, and expected behavioral differences.
