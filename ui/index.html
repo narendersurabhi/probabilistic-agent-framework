@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Active Inference Dashboard</title>
     <link rel="stylesheet" href="/ui/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <header>
       <h1>Active Inference Agent Dashboard</h1>
       <p>Observe belief updates, policy selection, expected free energy, and tool usage.</p>
+      <p><strong>WebSocket:</strong> <span id="wsState">connecting...</span></p>
     </header>
 
     <section class="panel">
@@ -17,8 +19,10 @@
       <div class="row">
         <input id="queryInput" type="text" value="What is 12 percent of 350" />
         <button id="runBtn">Run Task</button>
+        <button id="benchmarkBtn">Run Benchmark Stream</button>
       </div>
       <p id="status"></p>
+      <p><strong>Current Query:</strong> <span id="currentQuery">N/A</span></p>
       <a href="/trace_viewer" target="_blank">Open Trace Viewer</a>
     </section>
 
@@ -30,11 +34,13 @@
 
       <div class="panel">
         <h2>Belief State</h2>
+        <canvas id="beliefChart"></canvas>
         <pre id="beliefState"></pre>
       </div>
 
       <div class="panel">
         <h2>Policy Probabilities</h2>
+        <canvas id="policyChart"></canvas>
         <pre id="policyProbs"></pre>
       </div>
 
@@ -51,6 +57,16 @@
       <div class="panel">
         <h2>Benchmark Comparison</h2>
         <pre id="benchmark"></pre>
+      </div>
+
+      <div class="panel">
+        <h2>Action History</h2>
+        <ol id="actionHistory"></ol>
+      </div>
+
+      <div class="panel">
+        <h2>Reasoning Graph (live JSON)</h2>
+        <pre id="graphNodes"></pre>
       </div>
     </section>
 

@@ -249,3 +249,18 @@ All agents operating in this repository should read this file first to understan
   - `tests/test_trace_graph.py` for graph construction and file persistence.
   - updated `tests/test_benchmark_runner.py` to assert graph artifact generation.
 - Updated `README.md` benchmark artifacts/docs with a new "Reasoning Trace Graphs" section and `results/graphs/` output details.
+
+## 2026-03-08 (websocket real-time dashboard streaming)
+- Extended dashboard backend in `api/server.py` with websocket streaming endpoint `GET /stream` and broadcast manager for live events.
+- Updated `POST /run_task` to emit `task_started`, per-step `agent_step`, and `task_completed` stream events.
+- Added `POST /run_benchmark` in `api/server.py` to execute `src.evaluation.BenchmarkRunner` and stream benchmark-step events live.
+- Extended `src/evaluation/benchmark_runner.py` with optional `event_callback` support so each task step can be emitted to the dashboard as `benchmark_step` events.
+- Upgraded dashboard frontend (`ui/index.html`, `ui/dashboard.js`) to consume websocket events in real time, including:
+  - live belief and policy charts (Chart.js),
+  - action history,
+  - incremental reasoning graph JSON,
+  - benchmark stream trigger button.
+- Updated `README.md` dashboard documentation to include websocket streaming and benchmark streaming capabilities.
+- Expanded tests:
+  - `tests/test_api.py` now validates websocket stream emission for task execution.
+  - `tests/test_benchmark_runner.py` now validates benchmark event callback emission.

@@ -177,10 +177,13 @@ A lightweight dashboard is included with:
 ### Features
 
 - Submit tasks via `/run_task`
+- Run full benchmark streaming via `/run_benchmark`
 - Observe step-by-step agent decisions from `/agent_steps`
 - Inspect belief distributions from `/belief_state`
 - View benchmark metrics from `/benchmark_results`
-- Real-time UI polling every 500ms
+- Real-time WebSocket streaming via `/stream` for task and benchmark step events
+- Chart.js visualizations for belief and policy distributions
+- Polling fallback every 1s for state reconciliation
 
 ### Run the dashboard
 
