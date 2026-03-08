@@ -188,3 +188,13 @@ All agents operating in this repository should read this file first to understan
   - new planning metric behavior
   - benchmark runner output fields for new metrics
 - Updated `README.md` benchmark and dataset sections to document delayed-reward tasks and planning-centric metrics.
+
+## 2026-03-08 (master benchmark dataset suite under src/)
+- Added a new benchmark dataset bundle in `src/evaluation/datasets/` for prompt-driven suite generation with ~200 tasks total:
+  - `tool_benchmark.json` (60 tasks; `task_id`, `task_type`, `query`, `expected_tool`, `expected_args`)
+  - `tool_confusion_tasks.json` (40 tasks; `task_id`, `task_type`, `query`, `expected_tool_sequence`)
+  - `uncertainty_tasks.json` (40 tasks; `task_id`, `query`, `expected_tool_sequence`)
+  - `argument_accuracy_tasks.json` (30 tasks; `task_id`, `query`, `expected_tool`, `expected_args`)
+  - `delayed_reward_tasks.json` (30 tasks; `task_id`, `query`, `expected_tool_sequence`)
+- Ensured task ID naming follows requested prefixes (`benchmark_*`, `confusion_*`, `uncertainty_*`, `args_*`, `delayed_*`).
+- Used tool names `retrieve_docs`, `call_calculator`, and `generate_answer` with country/city population and world-fact prompts.

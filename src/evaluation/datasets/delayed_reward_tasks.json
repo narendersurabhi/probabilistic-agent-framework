@@ -1,0 +1,292 @@
+[
+  {
+    "task_id": "delayed_001",
+    "query": "Find the populations of France and Germany, then compute the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_002",
+    "query": "Find the populations of Spain and Italy, then compute the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_003",
+    "query": "Find the populations of Canada and Mexico, then compute the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_004",
+    "query": "Find the populations of Japan and South Korea, then compute the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_005",
+    "query": "Find the populations of Brazil and Argentina, then compute the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_006",
+    "query": "Find the populations of Egypt and Nigeria, then compute the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_007",
+    "query": "Find the populations of Australia and India, then compute the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_008",
+    "query": "Find the populations of United States and Mexico, then compute the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_009",
+    "query": "Find the populations of Germany and Japan, then compute the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_010",
+    "query": "Find the populations of France and Spain, then compute the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_011",
+    "query": "Retrieve the populations of Tokyo and Paris; compute the difference and then double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_012",
+    "query": "Retrieve the populations of Berlin and Madrid; compute the difference and then double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_013",
+    "query": "Retrieve the populations of Rome and Toronto; compute the difference and then double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_014",
+    "query": "Retrieve the populations of Sao Paulo and Mumbai; compute the difference and then double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_015",
+    "query": "Retrieve the populations of New York and Mexico City; compute the difference and then double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_016",
+    "query": "Retrieve the populations of Sydney and Lagos; compute the difference and then double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_017",
+    "query": "Retrieve the populations of Cairo and Buenos Aires; compute the difference and then double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_018",
+    "query": "Retrieve the populations of Seoul and Tokyo; compute the difference and then double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_019",
+    "query": "Retrieve the populations of Paris and Berlin; compute the difference and then double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_020",
+    "query": "Retrieve the populations of Mumbai and Sydney; compute the difference and then double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_021",
+    "query": "Get populations for France, Germany, and Spain; add the first two and subtract the third.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_022",
+    "query": "Get populations for Japan, India, and Australia; add the first two and subtract the third.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_023",
+    "query": "Get populations for Canada, Mexico, and United States; add the first two and subtract the third.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_024",
+    "query": "Get populations for Brazil, Argentina, and Italy; add the first two and subtract the third.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_025",
+    "query": "Get populations for Egypt, Nigeria, and South Korea; add the first two and subtract the third.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_026",
+    "query": "Get populations for Tokyo, Paris, and Berlin; add the first two and subtract the third.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_027",
+    "query": "Get populations for Madrid, Rome, and Toronto; add the first two and subtract the third.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_028",
+    "query": "Get populations for Mumbai, Seoul, and Sydney; add the first two and subtract the third.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_029",
+    "query": "Get populations for Lagos, Cairo, and New York; add the first two and subtract the third.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_030",
+    "query": "Get populations for Mexico City, Buenos Aires, and Sao Paulo; add the first two and subtract the third.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  }
+]

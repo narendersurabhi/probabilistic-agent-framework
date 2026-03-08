@@ -1,0 +1,542 @@
+[
+  {
+    "task_id": "benchmark_001",
+    "task_type": "arithmetic",
+    "query": "What is 15 percent of 240?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "240 * 0.15"
+    }
+  },
+  {
+    "task_id": "benchmark_002",
+    "task_type": "arithmetic",
+    "query": "What is 18 percent of 350?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "350 * 0.18"
+    }
+  },
+  {
+    "task_id": "benchmark_003",
+    "task_type": "arithmetic",
+    "query": "What is 12 percent of 480?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "480 * 0.12"
+    }
+  },
+  {
+    "task_id": "benchmark_004",
+    "task_type": "arithmetic",
+    "query": "What is 25 percent of 96?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "96 * 0.25"
+    }
+  },
+  {
+    "task_id": "benchmark_005",
+    "task_type": "arithmetic",
+    "query": "What is 7 percent of 900?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "900 * 0.07"
+    }
+  },
+  {
+    "task_id": "benchmark_006",
+    "task_type": "arithmetic",
+    "query": "What is 33 percent of 300?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "300 * 0.33"
+    }
+  },
+  {
+    "task_id": "benchmark_007",
+    "task_type": "arithmetic",
+    "query": "What is 45 plus 78?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "45 + 78"
+    }
+  },
+  {
+    "task_id": "benchmark_008",
+    "task_type": "arithmetic",
+    "query": "What is 540 divided by 12?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "540 / 12"
+    }
+  },
+  {
+    "task_id": "benchmark_009",
+    "task_type": "arithmetic",
+    "query": "What is 19 times 14?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "19 * 14"
+    }
+  },
+  {
+    "task_id": "benchmark_010",
+    "task_type": "arithmetic",
+    "query": "What is 1000 minus 457?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "1000 - 457"
+    }
+  },
+  {
+    "task_id": "benchmark_011",
+    "task_type": "arithmetic",
+    "query": "What is 2.5 times 18?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "2.5 * 18"
+    }
+  },
+  {
+    "task_id": "benchmark_012",
+    "task_type": "arithmetic",
+    "query": "What is 84 divided by 3?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "84 / 3"
+    }
+  },
+  {
+    "task_id": "benchmark_013",
+    "task_type": "arithmetic",
+    "query": "What is 11 squared?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "11 ** 2"
+    }
+  },
+  {
+    "task_id": "benchmark_014",
+    "task_type": "arithmetic",
+    "query": "What is 75 percent of 88?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "88 * 0.75"
+    }
+  },
+  {
+    "task_id": "benchmark_015",
+    "task_type": "arithmetic",
+    "query": "What is 5 percent of 640?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "640 * 0.05"
+    }
+  },
+  {
+    "task_id": "benchmark_016",
+    "task_type": "arithmetic",
+    "query": "What is 130 plus 270?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "130 + 270"
+    }
+  },
+  {
+    "task_id": "benchmark_017",
+    "task_type": "arithmetic",
+    "query": "What is 999 minus 321?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "999 - 321"
+    }
+  },
+  {
+    "task_id": "benchmark_018",
+    "task_type": "arithmetic",
+    "query": "What is 16 times 16?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "16 * 16"
+    }
+  },
+  {
+    "task_id": "benchmark_019",
+    "task_type": "arithmetic",
+    "query": "What is 420 divided by 7?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "420 / 7"
+    }
+  },
+  {
+    "task_id": "benchmark_020",
+    "task_type": "arithmetic",
+    "query": "What is 9 percent of 1500?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "1500 * 0.09"
+    }
+  },
+  {
+    "task_id": "benchmark_021",
+    "task_type": "retrieval",
+    "query": "Find documents about the population of Japan.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Japan"
+    }
+  },
+  {
+    "task_id": "benchmark_022",
+    "task_type": "retrieval",
+    "query": "Find documents about the population of Germany.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Germany"
+    }
+  },
+  {
+    "task_id": "benchmark_023",
+    "task_type": "retrieval",
+    "query": "Find documents about the population of Spain.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Spain"
+    }
+  },
+  {
+    "task_id": "benchmark_024",
+    "task_type": "retrieval",
+    "query": "Find documents about the population of Brazil.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Brazil"
+    }
+  },
+  {
+    "task_id": "benchmark_025",
+    "task_type": "retrieval",
+    "query": "Find documents about the population of India.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of India"
+    }
+  },
+  {
+    "task_id": "benchmark_026",
+    "task_type": "retrieval",
+    "query": "Find documents about the population of Canada.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Canada"
+    }
+  },
+  {
+    "task_id": "benchmark_027",
+    "task_type": "retrieval",
+    "query": "Find documents about the population of Nigeria.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Nigeria"
+    }
+  },
+  {
+    "task_id": "benchmark_028",
+    "task_type": "retrieval",
+    "query": "Find documents about the population of Egypt.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Egypt"
+    }
+  },
+  {
+    "task_id": "benchmark_029",
+    "task_type": "retrieval",
+    "query": "Find documents about the population of Mexico.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Mexico"
+    }
+  },
+  {
+    "task_id": "benchmark_030",
+    "task_type": "retrieval",
+    "query": "Find documents about the population of Australia.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Australia"
+    }
+  },
+  {
+    "task_id": "benchmark_031",
+    "task_type": "retrieval",
+    "query": "Find documents about the capital of France.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "capital of France"
+    }
+  },
+  {
+    "task_id": "benchmark_032",
+    "task_type": "retrieval",
+    "query": "Find documents about the capital of Italy.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "capital of Italy"
+    }
+  },
+  {
+    "task_id": "benchmark_033",
+    "task_type": "retrieval",
+    "query": "Find documents about the capital of South Korea.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "capital of South Korea"
+    }
+  },
+  {
+    "task_id": "benchmark_034",
+    "task_type": "retrieval",
+    "query": "Find documents about the capital of Argentina.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "capital of Argentina"
+    }
+  },
+  {
+    "task_id": "benchmark_035",
+    "task_type": "retrieval",
+    "query": "Find documents about the capital of United States.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "capital of United States"
+    }
+  },
+  {
+    "task_id": "benchmark_036",
+    "task_type": "retrieval",
+    "query": "Find documents about the city population of Tokyo.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "city population of Tokyo"
+    }
+  },
+  {
+    "task_id": "benchmark_037",
+    "task_type": "retrieval",
+    "query": "Find documents about the city population of Paris.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "city population of Paris"
+    }
+  },
+  {
+    "task_id": "benchmark_038",
+    "task_type": "retrieval",
+    "query": "Find documents about the city population of Lagos.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "city population of Lagos"
+    }
+  },
+  {
+    "task_id": "benchmark_039",
+    "task_type": "retrieval",
+    "query": "Find documents about the city population of Mumbai.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "city population of Mumbai"
+    }
+  },
+  {
+    "task_id": "benchmark_040",
+    "task_type": "retrieval",
+    "query": "Find documents about the city population of Sydney.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "city population of Sydney"
+    }
+  },
+  {
+    "task_id": "benchmark_041",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Japan?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Tokyo"
+    }
+  },
+  {
+    "task_id": "benchmark_042",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Germany?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Berlin"
+    }
+  },
+  {
+    "task_id": "benchmark_043",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Brazil?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Brasilia"
+    }
+  },
+  {
+    "task_id": "benchmark_044",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Canada?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Ottawa"
+    }
+  },
+  {
+    "task_id": "benchmark_045",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Australia?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Canberra"
+    }
+  },
+  {
+    "task_id": "benchmark_046",
+    "task_type": "direct_answer",
+    "query": "What is 2 + 2?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "4"
+    }
+  },
+  {
+    "task_id": "benchmark_047",
+    "task_type": "direct_answer",
+    "query": "What is how many months are in a year?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "12"
+    }
+  },
+  {
+    "task_id": "benchmark_048",
+    "task_type": "direct_answer",
+    "query": "What is the largest ocean on Earth?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Pacific Ocean"
+    }
+  },
+  {
+    "task_id": "benchmark_049",
+    "task_type": "direct_answer",
+    "query": "What is the boiling point of water in Celsius at sea level?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "100"
+    }
+  },
+  {
+    "task_id": "benchmark_050",
+    "task_type": "direct_answer",
+    "query": "What is the color of a clear daytime sky?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "blue"
+    }
+  },
+  {
+    "task_id": "benchmark_051",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Spain?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Madrid"
+    }
+  },
+  {
+    "task_id": "benchmark_052",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Mexico?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Mexico City"
+    }
+  },
+  {
+    "task_id": "benchmark_053",
+    "task_type": "direct_answer",
+    "query": "What is the capital of India?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "New Delhi"
+    }
+  },
+  {
+    "task_id": "benchmark_054",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Egypt?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Cairo"
+    }
+  },
+  {
+    "task_id": "benchmark_055",
+    "task_type": "direct_answer",
+    "query": "What is the capital of South Korea?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Seoul"
+    }
+  },
+  {
+    "task_id": "benchmark_056",
+    "task_type": "direct_answer",
+    "query": "What is how many days are in a standard week?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "7"
+    }
+  },
+  {
+    "task_id": "benchmark_057",
+    "task_type": "direct_answer",
+    "query": "What is whether Earth orbits the Sun?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Earth orbits the Sun"
+    }
+  },
+  {
+    "task_id": "benchmark_058",
+    "task_type": "direct_answer",
+    "query": "What is the result of 10 minus 3?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "7"
+    }
+  },
+  {
+    "task_id": "benchmark_059",
+    "task_type": "direct_answer",
+    "query": "What is the first month of the year?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "January"
+    }
+  },
+  {
+    "task_id": "benchmark_060",
+    "task_type": "direct_answer",
+    "query": "What is whether water freezes above or below 0 Celsius?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "water freezes at or below 0 Celsius"
+    }
+  }
+]

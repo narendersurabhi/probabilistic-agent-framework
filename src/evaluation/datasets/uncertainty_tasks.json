@@ -1,0 +1,322 @@
+[
+  {
+    "task_id": "uncertainty_001",
+    "query": "What is 10 percent of the population of Japan?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_002",
+    "query": "What is 10 percent of the population of France?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_003",
+    "query": "What is 10 percent of the population of Germany?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_004",
+    "query": "What is 10 percent of the population of Spain?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_005",
+    "query": "What is 10 percent of the population of Italy?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_006",
+    "query": "What is 10 percent of the population of Canada?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_007",
+    "query": "What is 10 percent of the population of Brazil?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_008",
+    "query": "What is 10 percent of the population of India?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_009",
+    "query": "What is 10 percent of the population of United States?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_010",
+    "query": "What is 10 percent of the population of Mexico?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_011",
+    "query": "What is 10 percent of the population of Australia?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_012",
+    "query": "What is 10 percent of the population of Nigeria?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_013",
+    "query": "What is 10 percent of the population of Egypt?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_014",
+    "query": "What is 10 percent of the population of Argentina?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_015",
+    "query": "What is 10 percent of the population of South Korea?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_016",
+    "query": "What is 25 percent of the population of Japan?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_017",
+    "query": "What is 25 percent of the population of France?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_018",
+    "query": "What is 25 percent of the population of Germany?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_019",
+    "query": "What is 25 percent of the population of Spain?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_020",
+    "query": "What is 25 percent of the population of Italy?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_021",
+    "query": "What is 25 percent of the population of Canada?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_022",
+    "query": "What is 25 percent of the population of Brazil?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_023",
+    "query": "What is 25 percent of the population of India?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_024",
+    "query": "What is 25 percent of the population of United States?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_025",
+    "query": "What is 25 percent of the population of Mexico?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_026",
+    "query": "What is 25 percent of the population of Australia?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_027",
+    "query": "What is 25 percent of the population of Nigeria?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_028",
+    "query": "What is 25 percent of the population of Egypt?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_029",
+    "query": "What is 25 percent of the population of Argentina?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_030",
+    "query": "What is 25 percent of the population of South Korea?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_031",
+    "query": "Retrieve the population of Japan and then compute the difference from 50,000,000.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_032",
+    "query": "Retrieve the population of France and then compute the difference from 50,000,000.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_033",
+    "query": "Retrieve the population of Germany and then compute the difference from 50,000,000.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_034",
+    "query": "Retrieve the population of Spain and then compute the difference from 50,000,000.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_035",
+    "query": "Retrieve the population of Italy and then compute the difference from 50,000,000.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_036",
+    "query": "Retrieve the population of Canada and then compute the difference from 50,000,000.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_037",
+    "query": "Retrieve the population of Brazil and then compute the difference from 50,000,000.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_038",
+    "query": "Retrieve the population of India and then compute the difference from 50,000,000.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_039",
+    "query": "Retrieve the population of United States and then compute the difference from 50,000,000.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "uncertainty_040",
+    "query": "Retrieve the population of Mexico and then compute the difference from 50,000,000.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  }
+]

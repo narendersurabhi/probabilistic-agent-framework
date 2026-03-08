@@ -1,0 +1,332 @@
+[
+  {
+    "task_id": "confusion_001",
+    "task_type": "false_calculator",
+    "query": "What percentage is half?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_002",
+    "task_type": "false_calculator",
+    "query": "Is 50 percent the same as one half?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_003",
+    "task_type": "false_calculator",
+    "query": "What does 100 percent mean in plain language?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_004",
+    "task_type": "false_calculator",
+    "query": "Is zero percent equal to nothing?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_005",
+    "task_type": "false_calculator",
+    "query": "What is meant by 200 percent effort?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_006",
+    "task_type": "false_calculator",
+    "query": "Does percent always mean out of 100?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_007",
+    "task_type": "false_calculator",
+    "query": "Is 25 percent the same as one quarter?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_008",
+    "task_type": "false_calculator",
+    "query": "Can a percentage be greater than 100?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_009",
+    "task_type": "false_calculator",
+    "query": "Is 10 percent the same as one tenth?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_010",
+    "task_type": "false_calculator",
+    "query": "Can percentages be negative?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_011",
+    "task_type": "hidden_calculator",
+    "query": "If I keep 80 percent of 300 apples, how many do I keep?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_012",
+    "task_type": "hidden_calculator",
+    "query": "A discount of 15 percent on 200 dollars leaves what price?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_013",
+    "task_type": "hidden_calculator",
+    "query": "What is the remaining amount after spending 35 percent of 500?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_014",
+    "task_type": "hidden_calculator",
+    "query": "If a tank is 60 percent full of 900 liters, how many liters is that?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_015",
+    "task_type": "hidden_calculator",
+    "query": "A class has 40 students and 25 percent are absent. How many attend?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_016",
+    "task_type": "hidden_calculator",
+    "query": "What is 12 percent sales tax on 250?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_017",
+    "task_type": "hidden_calculator",
+    "query": "If revenue rises by 8 percent from 1000, what is the increase amount?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_018",
+    "task_type": "hidden_calculator",
+    "query": "A score improved from 50 to 65. What is the increase?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_019",
+    "task_type": "hidden_calculator",
+    "query": "What is one third of 360?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_020",
+    "task_type": "hidden_calculator",
+    "query": "What is twice 47 plus 6?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_021",
+    "task_type": "retrieve_then_compute",
+    "query": "Search the population of France and compute 10 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_022",
+    "task_type": "retrieve_then_compute",
+    "query": "Get Germany population and calculate 5 percent.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_023",
+    "task_type": "retrieve_then_compute",
+    "query": "Find Spain population, then compute one quarter of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_024",
+    "task_type": "retrieve_then_compute",
+    "query": "Retrieve Canada population and add 2 million.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_025",
+    "task_type": "retrieve_then_compute",
+    "query": "Look up Brazil population and subtract 3 million.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_026",
+    "task_type": "retrieve_then_compute",
+    "query": "Find Japan population and divide it by 5.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_027",
+    "task_type": "retrieve_then_compute",
+    "query": "Retrieve Nigeria population and compute 12 percent.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_028",
+    "task_type": "retrieve_then_compute",
+    "query": "Find Egypt population and compute 20 percent.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_029",
+    "task_type": "retrieve_then_compute",
+    "query": "Get India population and calculate 1 percent.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_030",
+    "task_type": "retrieve_then_compute",
+    "query": "Find Mexico population and compute half.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "confusion_031",
+    "task_type": "misleading_retrieval",
+    "query": "Find documents to answer: what is the capital of Japan?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_032",
+    "task_type": "misleading_retrieval",
+    "query": "Look up whether water boils at 100C at sea level.",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_033",
+    "task_type": "misleading_retrieval",
+    "query": "Retrieve info: how many days are in a week?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_034",
+    "task_type": "misleading_retrieval",
+    "query": "Use documents to tell me if Earth is a planet.",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_035",
+    "task_type": "misleading_retrieval",
+    "query": "Can you search for the color of ripe bananas?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_036",
+    "task_type": "misleading_retrieval",
+    "query": "Please retrieve whether Paris is in France.",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_037",
+    "task_type": "misleading_retrieval",
+    "query": "Search for the first month of the year.",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_038",
+    "task_type": "misleading_retrieval",
+    "query": "Find docs: is the Pacific an ocean?",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_039",
+    "task_type": "misleading_retrieval",
+    "query": "Look up if 2 plus 2 equals 4.",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "confusion_040",
+    "task_type": "misleading_retrieval",
+    "query": "Retrieve info on whether winter is colder than summer in many places.",
+    "expected_tool_sequence": [
+      "generate_answer"
+    ]
+  }
+]
