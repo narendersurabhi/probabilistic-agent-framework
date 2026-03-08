@@ -1,0 +1,8 @@
+numpy
+pydantic
+pytest
+matplotlib
+pymdp
+fastapi
+openai
+uvicorn

@@ -1,0 +1,5 @@
+seed: 7
+dataset_path: evaluation/datasets/benchmark_tasks.json
+max_steps: 3
+number_of_runs: 3
+agent_types: standard_llm,react,active_inference
