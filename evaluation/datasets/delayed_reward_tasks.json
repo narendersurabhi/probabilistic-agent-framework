@@ -1,0 +1,422 @@
+[
+  {
+    "task_id": "delayed_001",
+    "task_type": "delayed_reward",
+    "query": "Find the population of France and Switzerland, then compute the population difference (France - Switzerland).",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_002",
+    "task_type": "delayed_reward",
+    "query": "Retrieve the populations of Germany and Ireland and compute the percent difference relative to Ireland.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_003",
+    "task_type": "delayed_reward",
+    "query": "Find the population of Spain and Finland, then compute the population difference (Spain - Finland).",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_004",
+    "task_type": "delayed_reward",
+    "query": "Retrieve the populations of Italy and Bulgaria and compute the percent difference relative to Bulgaria.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_005",
+    "task_type": "delayed_reward",
+    "query": "Find the population of Portugal and Romania, then compute the population difference (Portugal - Romania).",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_006",
+    "task_type": "delayed_reward",
+    "query": "Retrieve the populations of Netherlands and Hungary and compute the percent difference relative to Hungary.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_007",
+    "task_type": "delayed_reward",
+    "query": "Find the population of Belgium and Czech Republic, then compute the population difference (Belgium - Czech Republic).",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_008",
+    "task_type": "delayed_reward",
+    "query": "Retrieve the populations of Sweden and Greece and compute the percent difference relative to Greece.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_009",
+    "task_type": "delayed_reward",
+    "query": "Find the population of Norway and Austria, then compute the population difference (Norway - Austria).",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_010",
+    "task_type": "delayed_reward",
+    "query": "Retrieve the populations of Denmark and Poland and compute the percent difference relative to Poland.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_011",
+    "task_type": "delayed_reward",
+    "query": "Find the population of Poland and Denmark, then compute the population difference (Poland - Denmark).",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_012",
+    "task_type": "delayed_reward",
+    "query": "Retrieve the populations of Austria and Norway and compute the percent difference relative to Norway.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_013",
+    "task_type": "delayed_reward",
+    "query": "Find the population of Greece and Sweden, then compute the population difference (Greece - Sweden).",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_014",
+    "task_type": "delayed_reward",
+    "query": "Retrieve the populations of Czech Republic and Belgium and compute the percent difference relative to Belgium.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_015",
+    "task_type": "delayed_reward",
+    "query": "Find the population of Hungary and Netherlands, then compute the population difference (Hungary - Netherlands).",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_016",
+    "task_type": "delayed_reward",
+    "query": "Retrieve the populations of Romania and Portugal and compute the percent difference relative to Portugal.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_017",
+    "task_type": "delayed_reward",
+    "query": "Find the population of Bulgaria and Italy, then compute the population difference (Bulgaria - Italy).",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_018",
+    "task_type": "delayed_reward",
+    "query": "Retrieve the populations of Finland and Spain and compute the percent difference relative to Spain.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_019",
+    "task_type": "delayed_reward",
+    "query": "Find the population of Ireland and Germany, then compute the population difference (Ireland - Germany).",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_020",
+    "task_type": "delayed_reward",
+    "query": "Retrieve the populations of Switzerland and France and compute the percent difference relative to France.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_021",
+    "task_type": "delayed_reward",
+    "query": "What is twice the population difference between Italy and Austria? First find both populations, then compute the difference and double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_022",
+    "task_type": "delayed_reward",
+    "query": "Retrieve populations for Portugal and Greece. Compute the difference (Portugal - Greece) and then multiply the result by 3.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_023",
+    "task_type": "delayed_reward",
+    "query": "Find the populations of Netherlands and Czech Republic, compute their absolute difference, and then divide that difference by 2.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_024",
+    "task_type": "delayed_reward",
+    "query": "Get populations for Belgium and Hungary; calculate the difference and then calculate 10 percent of that difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_025",
+    "task_type": "delayed_reward",
+    "query": "Find Sweden and Romania population values, compute their difference, then compute 25 percent of that difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_026",
+    "task_type": "delayed_reward",
+    "query": "Retrieve populations of Norway and Bulgaria; compute the difference first, then square the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_027",
+    "task_type": "delayed_reward",
+    "query": "What is twice the population difference between Denmark and Finland? First find both populations, then compute the difference and double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_028",
+    "task_type": "delayed_reward",
+    "query": "Retrieve populations for Poland and Ireland. Compute the difference (Poland - Ireland) and then multiply the result by 3.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_029",
+    "task_type": "delayed_reward",
+    "query": "Find the populations of Austria and Switzerland, compute their absolute difference, and then divide that difference by 2.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_030",
+    "task_type": "delayed_reward",
+    "query": "Get populations for Greece and France; calculate the difference and then calculate 10 percent of that difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_031",
+    "task_type": "delayed_reward",
+    "query": "Find Czech Republic and Germany population values, compute their difference, then compute 25 percent of that difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_032",
+    "task_type": "delayed_reward",
+    "query": "Retrieve populations of Hungary and Spain; compute the difference first, then square the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_033",
+    "task_type": "delayed_reward",
+    "query": "What is twice the population difference between Romania and Italy? First find both populations, then compute the difference and double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_034",
+    "task_type": "delayed_reward",
+    "query": "Retrieve populations for Bulgaria and Portugal. Compute the difference (Bulgaria - Portugal) and then multiply the result by 3.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_035",
+    "task_type": "delayed_reward",
+    "query": "Find the populations of Finland and Netherlands, compute their absolute difference, and then divide that difference by 2.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_036",
+    "task_type": "delayed_reward",
+    "query": "Get populations for Ireland and Belgium; calculate the difference and then calculate 10 percent of that difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_037",
+    "task_type": "delayed_reward",
+    "query": "Find Switzerland and Sweden population values, compute their difference, then compute 25 percent of that difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_038",
+    "task_type": "delayed_reward",
+    "query": "Retrieve populations of France and Norway; compute the difference first, then square the difference.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_039",
+    "task_type": "delayed_reward",
+    "query": "What is twice the population difference between Germany and Denmark? First find both populations, then compute the difference and double it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "delayed_040",
+    "task_type": "delayed_reward",
+    "query": "Retrieve populations for Spain and Poland. Compute the difference (Spain - Poland) and then multiply the result by 3.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "retrieve_docs",
+      "call_calculator",
+      "call_calculator"
+    ]
+  }
+]

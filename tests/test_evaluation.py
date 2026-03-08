@@ -1,9 +1,12 @@
 from evaluation.benchmark_runner import run_benchmark
 from evaluation.metrics import (
     argument_accuracy,
+    average_planning_depth,
     final_answer_accuracy,
     first_step_accuracy,
+    planning_accuracy,
     prefix_accuracy,
+    premature_action_rate,
     sequence_tool_accuracy,
     task_completion_rate,
     tool_selection_accuracy,
@@ -20,6 +23,7 @@ def test_dataset_bundles_exist_and_match_expected_sizes() -> None:
         "evaluation/datasets/uncertainty_tasks.json": 40,
         "evaluation/datasets/argument_accuracy_tasks.json": 40,
         "evaluation/datasets/multi_step_tasks.json": 40,
+        "evaluation/datasets/delayed_reward_tasks.json": 40,
     }
 
     for path, expected_size in dataset_specs.items():
@@ -27,6 +31,16 @@ def test_dataset_bundles_exist_and_match_expected_sizes() -> None:
         assert isinstance(payload, list)
         assert len(payload) == expected_size
 
+
+
+def test_delayed_reward_dataset_shape() -> None:
+    import json
+    from pathlib import Path
+
+    payload = json.loads(Path("evaluation/datasets/delayed_reward_tasks.json").read_text(encoding="utf-8"))
+    assert len(payload) == 40
+    assert all(item.get("task_type") == "delayed_reward" for item in payload)
+    assert all(len(item["expected_tool_sequence"]) >= 3 for item in payload)
 
 def test_tool_benchmark_distribution() -> None:
     import json
@@ -74,6 +88,9 @@ def test_metrics_basic() -> None:
     assert prefix_accuracy(rows) == 0.75
     assert final_answer_accuracy(rows) == 0.5
     assert first_step_accuracy(rows) == 0.5
+    assert planning_accuracy(rows) == 0.5
+    assert average_planning_depth(rows) == 1.5
+    assert premature_action_rate(rows) == 0.5
 
 
 def test_benchmark_runner_executes() -> None:
@@ -81,6 +98,9 @@ def test_benchmark_runner_executes() -> None:
     assert "active_inference" in results
     assert "tool_accuracy" in results["standard_llm"]
     assert "sequence_tool_accuracy" in results["react"]
+    assert "planning_accuracy" in results["react"]
+    assert "average_planning_depth" in results["active_inference"]
+    assert "premature_action_rate" in results["active_inference"]
     assert "first_step_accuracy" in results["active_inference"]
 
 
