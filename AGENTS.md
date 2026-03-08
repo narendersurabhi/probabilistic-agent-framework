@@ -198,3 +198,19 @@ All agents operating in this repository should read this file first to understan
   - `delayed_reward_tasks.json` (30 tasks; `task_id`, `query`, `expected_tool_sequence`)
 - Ensured task ID naming follows requested prefixes (`benchmark_*`, `confusion_*`, `uncertainty_*`, `args_*`, `delayed_*`).
 - Used tool names `retrieve_docs`, `call_calculator`, and `generate_answer` with country/city population and world-fact prompts.
+
+## 2026-03-08 (src evaluation harness + one-command benchmark pipeline refresh)
+- Added `src/evaluation` package modules for a full benchmark/evaluation harness aligned to the tool-use architecture comparison workflow:
+  - `src/evaluation/dataset_loader.py` for loading all dataset bundles in `src/evaluation/datasets/`.
+  - `src/evaluation/metrics.py` with benchmark metrics: `tool_selection_accuracy`, `argument_accuracy`, `sequence_accuracy`, `first_step_accuracy`, and `task_completion_rate`.
+  - `src/evaluation/trace_logger.py` for structured per-task trace persistence under `results/traces/`.
+  - `src/evaluation/benchmark_runner.py` introducing `BenchmarkRunner` to run agents, normalize outputs, score tasks, write traces/results, and generate comparison plots in `results/plots/`.
+  - `src/evaluation/__init__.py` export for `BenchmarkRunner`.
+- Reworked benchmark scripts to match a one-command evaluation flow:
+  - Updated `experiments/run_benchmark.py` to run `BenchmarkRunner`, support optional `--agent` filters (`standard`, `react`, `active_inference`), save artifacts, and trigger markdown report generation.
+  - Updated `experiments/generate_report.py` to build `results/benchmark_report.md` with summary tables and embedded plot image links.
+- Added test coverage for the new harness:
+  - `tests/test_metrics.py` validating metric calculations and aggregate output keys.
+  - `tests/test_benchmark_runner.py` validating dataset loader behavior and benchmark execution/artifact generation with a deterministic dummy agent.
+- Refined `src/evaluation/benchmark_runner.py` to include lightweight deterministic in-module benchmark agent implementations (`StandardAgent`, `ReActAgent`, `ActiveInferenceAgent`) built on `src/environment/tool_environment.py` so `python experiments/run_benchmark.py` works without importing heavier optional benchmark stack dependencies.
+- Added resilient plotting behavior: if `matplotlib` is unavailable in an execution environment, plot artifacts are still produced as placeholder files while preserving benchmark pipeline outputs.
