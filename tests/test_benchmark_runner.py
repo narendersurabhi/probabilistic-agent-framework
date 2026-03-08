@@ -69,3 +69,34 @@ def test_benchmark_runner_executes_and_writes_artifacts(tmp_path: Path) -> None:
     assert (tmp_path / "results" / "plots" / "tool_accuracy_comparison.png").exists()
     trace_files = list((tmp_path / "results" / "traces").glob("*.json"))
     assert trace_files
+
+
+def test_active_inference_trace_contains_planner_state(tmp_path: Path) -> None:
+    dataset_dir = tmp_path / "datasets"
+    dataset_dir.mkdir(parents=True)
+
+    (dataset_dir / "tool_benchmark.json").write_text(
+        json.dumps(
+            [
+                {
+                    "task_id": "benchmark_001",
+                    "query": "What is 15 percent of the population of France?",
+                    "expected_tool_sequence": ["retrieve_docs", "call_calculator"],
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    for name in ["tool_confusion_tasks.json", "uncertainty_tasks.json", "argument_accuracy_tasks.json", "delayed_reward_tasks.json"]:
+        (dataset_dir / name).write_text("[]", encoding="utf-8")
+
+    runner = BenchmarkRunner(dataset_dir=dataset_dir, results_dir=tmp_path / "results")
+    runner.run(agent_filter=["active_inference"])
+
+    trace_file = tmp_path / "results" / "traces" / "active_inference__benchmark_001.json"
+    trace_payload = json.loads(trace_file.read_text(encoding="utf-8"))
+    first_step = trace_payload["steps"][0]
+
+    assert "belief_state" in first_step
+    assert "policy_probabilities" in first_step
+    assert "expected_free_energy" in first_step

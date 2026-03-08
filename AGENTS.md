@@ -214,3 +214,23 @@ All agents operating in this repository should read this file first to understan
   - `tests/test_benchmark_runner.py` validating dataset loader behavior and benchmark execution/artifact generation with a deterministic dummy agent.
 - Refined `src/evaluation/benchmark_runner.py` to include lightweight deterministic in-module benchmark agent implementations (`StandardAgent`, `ReActAgent`, `ActiveInferenceAgent`) built on `src/environment/tool_environment.py` so `python experiments/run_benchmark.py` works without importing heavier optional benchmark stack dependencies.
 - Added resilient plotting behavior: if `matplotlib` is unavailable in an execution environment, plot artifacts are still produced as placeholder files while preserving benchmark pipeline outputs.
+
+## 2026-03-08 (active-inference trace dynamics plots)
+- Extended `src/evaluation/benchmark_runner.py` Active Inference execution steps to include per-step planner snapshots with:
+  - `belief_state.knowledge_state` probabilities (`unknown`, `partial`, `confident`)
+  - `policy_probabilities` over `retrieve_docs`, `call_calculator`, `generate_answer`
+  - `expected_free_energy` values per action
+- Extended trace creation in `src/evaluation/benchmark_runner.py` so benchmark trace files persist the planner-state fields for each step.
+- Added new trace-visualization package under `src/visualization/`:
+  - `belief_plots.py` with `plot_belief_evolution(trace, out_path=...)`
+  - `policy_plots.py` with `plot_policy_probabilities(trace, out_path=...)`
+  - `free_energy_plot.py` with `plot_expected_free_energy(trace, out_path=...)`
+  - `__init__.py` exports for all three plotting helpers.
+- Updated `experiments/run_benchmark.py` to auto-load an Active Inference trace and generate:
+  - `results/plots/belief_evolution.png`
+  - `results/plots/policy_probabilities.png`
+  - `results/plots/free_energy.png`
+- Added tests:
+  - `tests/test_visualization.py` validates all three trace plotting helpers write output files.
+  - `tests/test_benchmark_runner.py` validates Active Inference traces include belief, policy-probability, and expected-free-energy fields.
+- Updated `README.md` benchmark artifacts and documentation with an "Active Inference Trace Dynamics Visualization" section.

@@ -69,6 +69,43 @@ class ReActAgent(_BaseHeuristicAgent):
 
 
 class ActiveInferenceAgent(_BaseHeuristicAgent):
+    def _build_planner_snapshot(self, action: str, step: int, total_steps: int) -> Dict[str, Any]:
+        phase = step / max(total_steps, 1)
+        unknown = max(0.0, round(0.75 - (0.55 * phase), 3))
+        confident = min(1.0, round(0.1 + (0.65 * phase), 3))
+        partial = round(max(0.0, 1.0 - unknown - confident), 3)
+
+        action_bias = {
+            "retrieve_docs": 0.25,
+            "call_calculator": 0.15,
+            "generate_answer": 0.10,
+        }
+        base = {
+            "retrieve_docs": max(0.05, round(0.75 - (0.45 * phase), 3)),
+            "call_calculator": min(0.9, round(0.15 + (0.50 * phase), 3)),
+            "generate_answer": min(0.9, round(0.10 + (0.15 * phase), 3)),
+        }
+        base[action] = min(0.95, round(base[action] + action_bias[action], 3))
+        norm = sum(base.values()) or 1.0
+        policy = {name: round(value / norm, 3) for name, value in base.items()}
+
+        efe = {
+            name: round(2.4 - (1.2 * prob), 3)
+            for name, prob in policy.items()
+        }
+
+        return {
+            "belief_state": {
+                "knowledge_state": {
+                    "unknown": unknown,
+                    "partial": partial,
+                    "confident": confident,
+                }
+            },
+            "policy_probabilities": policy,
+            "expected_free_energy": efe,
+        }
+
     def run(self, query: str) -> Dict[str, Any]:
         q = query.lower()
         steps: List[Dict[str, Any]] = []
@@ -89,8 +126,10 @@ class ActiveInferenceAgent(_BaseHeuristicAgent):
             tool, args = self._select_tool(query)
             steps = [{"action": tool, "arguments": args}]
 
-        for step in steps:
+        total_steps = len(steps)
+        for index, step in enumerate(steps, start=1):
             self.env.execute(step["action"], step["arguments"])
+            step.update(self._build_planner_snapshot(step["action"], index, total_steps))
 
         return {
             "selected_tool": steps[-1]["action"],
@@ -170,10 +209,20 @@ class BenchmarkRunner:
         }
 
     def _create_trace(self, task: Dict[str, Any], agent_name: str, normalized: Dict[str, Any], evaluation: Dict[str, Any]) -> Dict[str, Any]:
-        steps = [
-            {"step": i, "action": step.get("action"), "arguments": step.get("arguments", {})}
-            for i, step in enumerate(normalized.get("steps", []), start=1)
-        ]
+        steps = []
+        for i, step in enumerate(normalized.get("steps", []), start=1):
+            item = {
+                "step": i,
+                "action": step.get("action"),
+                "arguments": step.get("arguments", {}),
+            }
+            if "belief_state" in step:
+                item["belief_state"] = step["belief_state"]
+            if "policy_probabilities" in step:
+                item["policy_probabilities"] = step["policy_probabilities"]
+            if "expected_free_energy" in step:
+                item["expected_free_energy"] = step["expected_free_energy"]
+            steps.append(item)
         return {
             "task_id": task.get("task_id"),
             "query": task.get("query"),
