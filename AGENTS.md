@@ -154,3 +154,14 @@ All agents operating in this repository should read this file first to understan
   - `multi_step_tasks.json` (40-task multi-step planning benchmark)
 - Added dataset integrity tests in `tests/test_evaluation.py` to validate dataset presence, expected sizes, and `tool_benchmark.json` task-type distribution.
 - Updated `README.md` with a new "Dataset Bundles" section documenting the new dataset files and intended use.
+
+## 2026-03-08 (deterministic benchmark tooling under src/)
+- Added explicit deterministic benchmark modules under `src/` for CI/offline evaluation:
+  - `src/environment/tool_environment.py` with `execute(tool_name, args)` dispatcher for `call_calculator`, `retrieve_docs`, and `generate_answer`.
+  - `src/tools/calculator_tool.py` deterministic expression evaluator.
+  - `src/tools/retrieval_tool.py` static knowledge-base retriever.
+  - `src/llm/mock_llm.py` mock provider-driven state extraction (`LLM_PROVIDER` defaults to `fake`).
+  - `src/llm/observation_parser.py` deterministic tool-output to observation label mapping.
+- Added package markers and exports for new `src/environment`, `src/tools`, and `src/llm` modules.
+- Strengthened top-level deterministic retriever (`tools/retriever.py`) to use a static knowledge base and explicit success/failure behavior on unmatched queries.
+- Expanded tool tests in `tests/test_tools.py` to cover deterministic retriever failure, new `src` tool environment outputs, and observation parser mapping.
