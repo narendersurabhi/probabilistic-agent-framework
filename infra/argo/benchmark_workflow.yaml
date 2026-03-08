@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: active-inference-benchmark-
+spec:
+  entrypoint: benchmark-pipeline
+  volumes:
+    - name: artifacts-vol
+      emptyDir: {}
+  templates:
+    - name: benchmark-pipeline
+      steps:
+        - - name: benchmark-step
+            template: benchmark-step
+        - - name: evaluation-step
+            template: evaluation-step
+        - - name: visualization-step
+            template: visualization-step
+        - - name: report-step
+            template: report-step
+
+    - name: benchmark-step
+      container:
+        image: active-inference-benchmark:latest
+        command: ["python", "experiments/run_benchmark.py"]
+        args: ["--config", "config/benchmark_config.yaml", "--output-dir", "/artifacts"]
+        volumeMounts:
+          - name: artifacts-vol
+            mountPath: /artifacts
+
+    - name: evaluation-step
+      container:
+        image: active-inference-benchmark:latest
+        command: ["python", "experiments/evaluate_metrics.py"]
+        args: ["--input", "/artifacts/benchmark_results.json", "--output", "/artifacts/evaluation_report.json"]
+        volumeMounts:
+          - name: artifacts-vol
+            mountPath: /artifacts
+
+    - name: visualization-step
+      container:
+        image: active-inference-benchmark:latest
+        command: ["python", "experiments/generate_visualizations.py"]
+        args: ["--input", "/artifacts/benchmark_results.json", "--out-dir", "/artifacts/plots"]
+        volumeMounts:
+          - name: artifacts-vol
+            mountPath: /artifacts
+
+    - name: report-step
+      container:
+        image: active-inference-benchmark:latest
+        command: ["python", "experiments/generate_report.py"]
+        args: ["--input", "/artifacts/benchmark_results.json", "--output", "/artifacts/benchmark_report.md"]
+        volumeMounts:
+          - name: artifacts-vol
+            mountPath: /artifacts

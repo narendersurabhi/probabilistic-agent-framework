@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Active Inference Dashboard</title>
+    <link rel="stylesheet" href="/ui/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Active Inference Agent Dashboard</h1>
+      <p>Observe belief updates, policy selection, expected free energy, and tool usage.</p>
+    </header>
+
+    <section class="panel">
+      <h2>Query Input</h2>
+      <div class="row">
+        <input id="queryInput" type="text" value="What is 12 percent of 350" />
+        <button id="runBtn">Run Task</button>
+      </div>
+      <p id="status"></p>
+      <a href="/trace_viewer" target="_blank">Open Trace Viewer</a>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>Agent Decision Timeline</h2>
+        <div id="timeline"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Belief State</h2>
+        <pre id="beliefState"></pre>
+      </div>
+
+      <div class="panel">
+        <h2>Policy Probabilities</h2>
+        <pre id="policyProbs"></pre>
+      </div>
+
+      <div class="panel">
+        <h2>Expected Free Energy</h2>
+        <pre id="efe"></pre>
+      </div>
+
+      <div class="panel">
+        <h2>Tool Execution</h2>
+        <pre id="tools"></pre>
+      </div>
+
+      <div class="panel">
+        <h2>Benchmark Comparison</h2>
+        <pre id="benchmark"></pre>
+      </div>
+    </section>
+
+    <script src="/ui/dashboard.js"></script>
+  </body>
+</html>
