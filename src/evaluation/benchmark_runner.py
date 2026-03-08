@@ -9,6 +9,7 @@ from typing import Any, Callable, Dict, List, Mapping
 
 from src.environment.tool_environment import ToolEnvironment
 from src.evaluation.dataset_loader import DatasetLoader
+from src.evaluation.failure_analyzer import FailureAnalyzer
 from src.evaluation.metrics import aggregate_metrics
 from src.evaluation.trace_logger import TraceLogger
 from src.visualization.trace_graph import build_reasoning_graph, save_reasoning_graph
@@ -148,6 +149,7 @@ class BenchmarkRunner:
         self.results_dir = Path(results_dir)
         self.results_dir.mkdir(parents=True, exist_ok=True)
         self.trace_logger = TraceLogger(self.results_dir / "traces")
+        self.failure_analyzer = FailureAnalyzer()
         self.plot_dir = self.results_dir / "plots"
         self.plot_dir.mkdir(parents=True, exist_ok=True)
         self.graph_dir = self.results_dir / "graphs"
@@ -237,6 +239,7 @@ class BenchmarkRunner:
                 "tool_correct": evaluation["tool_correct"],
                 "arguments_correct": evaluation["arguments_correct"],
                 "sequence_correct": evaluation["sequence_correct"],
+                "failure_type": evaluation.get("failure_type", "success"),
             },
         }
 
@@ -255,6 +258,29 @@ class BenchmarkRunner:
             plt.close(fig)
         except ModuleNotFoundError:
             (self.plot_dir / filename).write_text(f"matplotlib unavailable for {title}\n", encoding="utf-8")
+
+
+    def _plot_failure_distribution(self, failure_counts: Dict[str, int], filename: str = "failure_distribution.png") -> None:
+        labels = list(failure_counts.keys())
+        values = [failure_counts[label] for label in labels]
+        try:
+            import matplotlib.pyplot as plt  # type: ignore
+
+            fig, ax = plt.subplots(figsize=(8, 4))
+            ax.bar(labels, values, color="#b91c1c")
+            ax.set_title("Failure Distribution")
+            ax.set_ylabel("Count")
+            ax.tick_params(axis="x", rotation=20)
+            fig.tight_layout()
+            fig.savefig(self.plot_dir / filename)
+            plt.close(fig)
+        except ModuleNotFoundError:
+            (self.plot_dir / filename).write_text("matplotlib unavailable for Failure Distribution\n", encoding="utf-8")
+
+    def save_failure_analysis(self, failure_analysis: Dict[str, Dict[str, Any]]) -> Path:
+        output_path = self.results_dir / "failure_analysis.json"
+        output_path.write_text(json.dumps(failure_analysis, indent=2), encoding="utf-8")
+        return output_path
 
     def generate_plots(self, agent_results: Dict[str, Dict[str, float]]) -> None:
         self._plot_metric(agent_results, "tool_selection_accuracy", "Tool Accuracy Comparison", "tool_accuracy_comparison.png")
@@ -279,14 +305,26 @@ class BenchmarkRunner:
             raise ValueError("No valid agents selected.")
 
         results: Dict[str, Dict[str, float]] = {}
+        failure_analysis: Dict[str, Dict[str, Any]] = {}
+        aggregate_failures = {failure: 0 for failure in self.failure_analyzer.FAILURE_TYPES}
+
         for agent_name in selected_names:
             agent = self._build_agent(agent_name)
             rows: List[Dict[str, Any]] = []
+            failure_counts = {failure: 0 for failure in self.failure_analyzer.FAILURE_TYPES}
             for tasks in datasets.values():
                 for task in tasks:
                     normalized = self._normalize(agent.run(task["query"]))
                     evaluation = self._evaluate_task(task, normalized)
                     rows.append(evaluation)
+
+                    failure_type = self.failure_analyzer.analyze(task, normalized)
+                    evaluation["failure_type"] = failure_type
+                    if failure_type != "success":
+                        if failure_type in failure_counts:
+                            failure_counts[failure_type] += 1
+                            aggregate_failures[failure_type] += 1
+
                     trace_payload = self._create_trace(task, agent_name, normalized, evaluation)
                     self.trace_logger.log_trace(trace_payload)
                     graph = build_reasoning_graph(trace_payload)
@@ -300,11 +338,29 @@ class BenchmarkRunner:
                                     "agent": agent_name,
                                     "task_id": task_id,
                                     "query": task.get("query"),
+                                    "failure_type": failure_type,
                                     **step_payload,
                                 }
                             )
-            results[agent_name] = aggregate_metrics(rows)
+
+            metrics = aggregate_metrics(rows)
+            total_tasks = len(rows)
+            total_failures = sum(failure_counts.values())
+            metrics["failure_rate"] = float(total_failures / total_tasks) if total_tasks else 0.0
+            results[agent_name] = metrics
+            failure_analysis[agent_name] = {
+                "total_tasks": total_tasks,
+                "total_failures": total_failures,
+                "failure_counts": failure_counts,
+            }
+
+        failure_analysis["overall"] = {
+            "total_failures": sum(aggregate_failures.values()),
+            "failure_counts": aggregate_failures,
+        }
 
         self.save_results(results)
+        self.save_failure_analysis(failure_analysis)
         self.generate_plots(results)
+        self._plot_failure_distribution(aggregate_failures)
         return results

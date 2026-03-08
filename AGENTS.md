@@ -302,3 +302,29 @@ All agents operating in this repository should read this file first to understan
   - `tests/test_agent_comparison.py` for artifact generation and payload schema.
   - extended `tests/test_api.py` to validate `POST /compare_agents`.
 - Updated `README.md` with a new **Agent Reasoning Comparison** section documenting CLI usage, UI routes, and expected behavioral differences.
+
+## 2026-03-08 (automatic failure analysis in benchmark + dashboard)
+- Added `src/evaluation/failure_analyzer.py` with deterministic failure classification labels:
+  - `wrong_tool`
+  - `incorrect_arguments`
+  - `premature_action`
+  - `incomplete_plan`
+  - `incorrect_sequence`
+- Extended `src/evaluation/benchmark_runner.py` to:
+  - classify each task outcome with `FailureAnalyzer`,
+  - aggregate per-agent and overall failure counts,
+  - persist `results/failure_analysis.json`,
+  - add `failure_rate` to benchmark metrics,
+  - include failure labels in benchmark step stream events,
+  - generate `results/plots/failure_distribution.png`.
+- Extended `experiments/generate_report.py` to include failure-analysis sections in markdown reports and include failure distribution plot links.
+- Updated exports in `src/evaluation/__init__.py` to include `FailureAnalyzer`.
+- Extended dashboard/backend failure visibility:
+  - added `GET /failure_analysis` in `api/server.py`,
+  - added a "Failure Analysis" panel in `ui/index.html`,
+  - updated `ui/dashboard.js` to fetch and render failure analysis results.
+- Added/updated tests:
+  - `tests/test_failure_analyzer.py` for failure category classification,
+  - `tests/test_benchmark_runner.py` now verifies `failure_analysis.json` artifact creation,
+  - `tests/test_api.py` now validates `/failure_analysis` endpoint availability.
+- Updated `README.md` with a new "Failure Analysis" section and artifact list additions.
