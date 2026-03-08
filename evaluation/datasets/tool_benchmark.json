@@ -1,0 +1,982 @@
+[
+  {
+    "task_id": "tool_001",
+    "task_type": "arithmetic",
+    "query": "What is 10 percent of 127?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "127 * 0.10"
+    }
+  },
+  {
+    "task_id": "tool_002",
+    "task_type": "arithmetic",
+    "query": "What is 15 percent of 134?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "134 * 0.15"
+    }
+  },
+  {
+    "task_id": "tool_003",
+    "task_type": "arithmetic",
+    "query": "What is 20 percent of 141?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "141 * 0.20"
+    }
+  },
+  {
+    "task_id": "tool_004",
+    "task_type": "arithmetic",
+    "query": "What is 25 percent of 148?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "148 * 0.25"
+    }
+  },
+  {
+    "task_id": "tool_005",
+    "task_type": "arithmetic",
+    "query": "What is 30 percent of 155?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "155 * 0.30"
+    }
+  },
+  {
+    "task_id": "tool_006",
+    "task_type": "arithmetic",
+    "query": "What is 35 percent of 162?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "162 * 0.35"
+    }
+  },
+  {
+    "task_id": "tool_007",
+    "task_type": "arithmetic",
+    "query": "What is 40 percent of 169?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "169 * 0.40"
+    }
+  },
+  {
+    "task_id": "tool_008",
+    "task_type": "arithmetic",
+    "query": "What is 45 percent of 176?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "176 * 0.45"
+    }
+  },
+  {
+    "task_id": "tool_009",
+    "task_type": "arithmetic",
+    "query": "What is 5 percent of 183?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "183 * 0.05"
+    }
+  },
+  {
+    "task_id": "tool_010",
+    "task_type": "arithmetic",
+    "query": "What is 10 percent of 190?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "190 * 0.10"
+    }
+  },
+  {
+    "task_id": "tool_011",
+    "task_type": "arithmetic",
+    "query": "What is 15 percent of 197?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "197 * 0.15"
+    }
+  },
+  {
+    "task_id": "tool_012",
+    "task_type": "arithmetic",
+    "query": "What is 20 percent of 204?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "204 * 0.20"
+    }
+  },
+  {
+    "task_id": "tool_013",
+    "task_type": "arithmetic",
+    "query": "What is 25 percent of 211?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "211 * 0.25"
+    }
+  },
+  {
+    "task_id": "tool_014",
+    "task_type": "arithmetic",
+    "query": "What is 30 percent of 218?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "218 * 0.30"
+    }
+  },
+  {
+    "task_id": "tool_015",
+    "task_type": "arithmetic",
+    "query": "What is 35 percent of 225?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "225 * 0.35"
+    }
+  },
+  {
+    "task_id": "tool_016",
+    "task_type": "arithmetic",
+    "query": "What is 40 percent of 232?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "232 * 0.40"
+    }
+  },
+  {
+    "task_id": "tool_017",
+    "task_type": "arithmetic",
+    "query": "What is 45 percent of 239?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "239 * 0.45"
+    }
+  },
+  {
+    "task_id": "tool_018",
+    "task_type": "arithmetic",
+    "query": "What is 5 percent of 246?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "246 * 0.05"
+    }
+  },
+  {
+    "task_id": "tool_019",
+    "task_type": "arithmetic",
+    "query": "What is 10 percent of 253?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "253 * 0.10"
+    }
+  },
+  {
+    "task_id": "tool_020",
+    "task_type": "arithmetic",
+    "query": "What is 15 percent of 260?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "260 * 0.15"
+    }
+  },
+  {
+    "task_id": "tool_021",
+    "task_type": "arithmetic",
+    "query": "What is 20 percent of 267?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "267 * 0.20"
+    }
+  },
+  {
+    "task_id": "tool_022",
+    "task_type": "arithmetic",
+    "query": "What is 25 percent of 274?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "274 * 0.25"
+    }
+  },
+  {
+    "task_id": "tool_023",
+    "task_type": "arithmetic",
+    "query": "What is 30 percent of 281?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "281 * 0.30"
+    }
+  },
+  {
+    "task_id": "tool_024",
+    "task_type": "arithmetic",
+    "query": "What is 35 percent of 288?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "288 * 0.35"
+    }
+  },
+  {
+    "task_id": "tool_025",
+    "task_type": "arithmetic",
+    "query": "What is 40 percent of 295?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "295 * 0.40"
+    }
+  },
+  {
+    "task_id": "tool_026",
+    "task_type": "arithmetic",
+    "query": "What is 45 percent of 302?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "302 * 0.45"
+    }
+  },
+  {
+    "task_id": "tool_027",
+    "task_type": "arithmetic",
+    "query": "What is 5 percent of 309?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "309 * 0.05"
+    }
+  },
+  {
+    "task_id": "tool_028",
+    "task_type": "arithmetic",
+    "query": "What is 10 percent of 316?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "316 * 0.10"
+    }
+  },
+  {
+    "task_id": "tool_029",
+    "task_type": "arithmetic",
+    "query": "What is 15 percent of 323?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "323 * 0.15"
+    }
+  },
+  {
+    "task_id": "tool_030",
+    "task_type": "arithmetic",
+    "query": "What is 20 percent of 330?",
+    "expected_tool": "call_calculator",
+    "expected_args": {
+      "expression": "330 * 0.20"
+    }
+  },
+  {
+    "task_id": "tool_031",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Japan.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Japan"
+    }
+  },
+  {
+    "task_id": "tool_032",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of France.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of France"
+    }
+  },
+  {
+    "task_id": "tool_033",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Brazil.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Brazil"
+    }
+  },
+  {
+    "task_id": "tool_034",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Canada.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Canada"
+    }
+  },
+  {
+    "task_id": "tool_035",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of India.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of India"
+    }
+  },
+  {
+    "task_id": "tool_036",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Spain.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Spain"
+    }
+  },
+  {
+    "task_id": "tool_037",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Italy.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Italy"
+    }
+  },
+  {
+    "task_id": "tool_038",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Germany.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Germany"
+    }
+  },
+  {
+    "task_id": "tool_039",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Australia.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Australia"
+    }
+  },
+  {
+    "task_id": "tool_040",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Mexico.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Mexico"
+    }
+  },
+  {
+    "task_id": "tool_041",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Norway.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Norway"
+    }
+  },
+  {
+    "task_id": "tool_042",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Sweden.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Sweden"
+    }
+  },
+  {
+    "task_id": "tool_043",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Poland.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Poland"
+    }
+  },
+  {
+    "task_id": "tool_044",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Argentina.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Argentina"
+    }
+  },
+  {
+    "task_id": "tool_045",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Chile.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Chile"
+    }
+  },
+  {
+    "task_id": "tool_046",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Egypt.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Egypt"
+    }
+  },
+  {
+    "task_id": "tool_047",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Kenya.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Kenya"
+    }
+  },
+  {
+    "task_id": "tool_048",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of South Korea.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of South Korea"
+    }
+  },
+  {
+    "task_id": "tool_049",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Indonesia.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Indonesia"
+    }
+  },
+  {
+    "task_id": "tool_050",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Turkey.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Turkey"
+    }
+  },
+  {
+    "task_id": "tool_051",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Netherlands.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Netherlands"
+    }
+  },
+  {
+    "task_id": "tool_052",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Belgium.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Belgium"
+    }
+  },
+  {
+    "task_id": "tool_053",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Portugal.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Portugal"
+    }
+  },
+  {
+    "task_id": "tool_054",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Greece.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Greece"
+    }
+  },
+  {
+    "task_id": "tool_055",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Austria.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Austria"
+    }
+  },
+  {
+    "task_id": "tool_056",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Switzerland.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Switzerland"
+    }
+  },
+  {
+    "task_id": "tool_057",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Ireland.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Ireland"
+    }
+  },
+  {
+    "task_id": "tool_058",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Denmark.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Denmark"
+    }
+  },
+  {
+    "task_id": "tool_059",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of Finland.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of Finland"
+    }
+  },
+  {
+    "task_id": "tool_060",
+    "task_type": "retrieval",
+    "query": "Find documents about the economy of New Zealand.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "economy of New Zealand"
+    }
+  },
+  {
+    "task_id": "tool_061",
+    "task_type": "multi_step",
+    "query": "Find the population of Japan and calculate 30 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Japan"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_062",
+    "task_type": "multi_step",
+    "query": "Find the population of France and calculate 35 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of France"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_063",
+    "task_type": "multi_step",
+    "query": "Find the population of Brazil and calculate 40 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Brazil"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_064",
+    "task_type": "multi_step",
+    "query": "Find the population of Canada and calculate 5 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Canada"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_065",
+    "task_type": "multi_step",
+    "query": "Find the population of India and calculate 10 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of India"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_066",
+    "task_type": "multi_step",
+    "query": "Find the population of Spain and calculate 15 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Spain"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_067",
+    "task_type": "multi_step",
+    "query": "Find the population of Italy and calculate 20 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Italy"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_068",
+    "task_type": "multi_step",
+    "query": "Find the population of Germany and calculate 25 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Germany"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_069",
+    "task_type": "multi_step",
+    "query": "Find the population of Australia and calculate 30 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Australia"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_070",
+    "task_type": "multi_step",
+    "query": "Find the population of Mexico and calculate 35 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Mexico"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_071",
+    "task_type": "multi_step",
+    "query": "Find the population of Norway and calculate 40 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Norway"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_072",
+    "task_type": "multi_step",
+    "query": "Find the population of Sweden and calculate 5 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Sweden"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_073",
+    "task_type": "multi_step",
+    "query": "Find the population of Poland and calculate 10 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Poland"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_074",
+    "task_type": "multi_step",
+    "query": "Find the population of Argentina and calculate 15 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Argentina"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_075",
+    "task_type": "multi_step",
+    "query": "Find the population of Chile and calculate 20 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Chile"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_076",
+    "task_type": "multi_step",
+    "query": "Find the population of Egypt and calculate 25 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Egypt"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_077",
+    "task_type": "multi_step",
+    "query": "Find the population of Kenya and calculate 30 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Kenya"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_078",
+    "task_type": "multi_step",
+    "query": "Find the population of South Korea and calculate 35 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of South Korea"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_079",
+    "task_type": "multi_step",
+    "query": "Find the population of Indonesia and calculate 40 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Indonesia"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_080",
+    "task_type": "multi_step",
+    "query": "Find the population of Turkey and calculate 5 percent of it.",
+    "expected_tool": "retrieve_docs",
+    "expected_args": {
+      "query": "population of Turkey"
+    },
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "tool_081",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Japan?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Tokyo"
+    }
+  },
+  {
+    "task_id": "tool_082",
+    "task_type": "direct_answer",
+    "query": "What is the capital of France?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Paris"
+    }
+  },
+  {
+    "task_id": "tool_083",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Brazil?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Brasilia"
+    }
+  },
+  {
+    "task_id": "tool_084",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Canada?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Ottawa"
+    }
+  },
+  {
+    "task_id": "tool_085",
+    "task_type": "direct_answer",
+    "query": "What is the capital of India?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "New Delhi"
+    }
+  },
+  {
+    "task_id": "tool_086",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Spain?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Madrid"
+    }
+  },
+  {
+    "task_id": "tool_087",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Italy?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Rome"
+    }
+  },
+  {
+    "task_id": "tool_088",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Germany?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Berlin"
+    }
+  },
+  {
+    "task_id": "tool_089",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Australia?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Canberra"
+    }
+  },
+  {
+    "task_id": "tool_090",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Mexico?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Mexico City"
+    }
+  },
+  {
+    "task_id": "tool_091",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Norway?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Oslo"
+    }
+  },
+  {
+    "task_id": "tool_092",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Sweden?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Stockholm"
+    }
+  },
+  {
+    "task_id": "tool_093",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Poland?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Warsaw"
+    }
+  },
+  {
+    "task_id": "tool_094",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Argentina?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Buenos Aires"
+    }
+  },
+  {
+    "task_id": "tool_095",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Chile?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Santiago"
+    }
+  },
+  {
+    "task_id": "tool_096",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Egypt?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Cairo"
+    }
+  },
+  {
+    "task_id": "tool_097",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Kenya?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Nairobi"
+    }
+  },
+  {
+    "task_id": "tool_098",
+    "task_type": "direct_answer",
+    "query": "What is the capital of South Korea?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Seoul"
+    }
+  },
+  {
+    "task_id": "tool_099",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Indonesia?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Jakarta"
+    }
+  },
+  {
+    "task_id": "tool_100",
+    "task_type": "direct_answer",
+    "query": "What is the capital of Turkey?",
+    "expected_tool": "generate_answer",
+    "expected_args": {
+      "text": "Ankara"
+    }
+  }
+]
