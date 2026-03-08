@@ -109,6 +109,17 @@ Artifacts:
 - `results/benchmark_report.md`
 - task-level traces in `results/benchmark_traces.jsonl`
 - plots in `results/plots/`
+- active-inference trace dynamics plots: `belief_evolution.png`, `policy_probabilities.png`, `free_energy.png`
+
+### Active Inference Trace Dynamics Visualization
+
+`python experiments/run_benchmark.py` now auto-generates time-series plots from an Active Inference run trace (`results/traces/active_inference__*.json`) using:
+
+- `src/visualization/belief_plots.py` → `results/plots/belief_evolution.png`
+- `src/visualization/policy_plots.py` → `results/plots/policy_probabilities.png`
+- `src/visualization/free_energy_plot.py` → `results/plots/free_energy.png`
+
+These plots visualize belief updates, policy distributions, and expected free energy over reasoning steps.
 
 ### Benchmark Results (example)
 

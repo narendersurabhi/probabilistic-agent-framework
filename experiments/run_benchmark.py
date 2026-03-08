@@ -6,6 +6,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -13,6 +14,30 @@ if str(ROOT) not in sys.path:
 
 from experiments.generate_report import generate_markdown_report
 from src.evaluation.benchmark_runner import BenchmarkRunner
+from src.visualization.belief_plots import plot_belief_evolution
+from src.visualization.free_energy_plot import plot_expected_free_energy
+from src.visualization.policy_plots import plot_policy_probabilities
+
+
+def _load_trace(path: Path) -> list[dict[str, Any]]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    steps = payload.get("steps", [])
+    return steps if isinstance(steps, list) else []
+
+
+def _generate_trace_plots(trace_dir: Path) -> list[Path]:
+    active_traces = sorted(trace_dir.glob("active_inference__*.json"))
+    if not active_traces:
+        return []
+    trace = _load_trace(active_traces[0])
+    if not trace:
+        return []
+
+    return [
+        plot_belief_evolution(trace),
+        plot_policy_probabilities(trace),
+        plot_expected_free_energy(trace),
+    ]
 
 
 def main() -> None:
@@ -28,9 +53,14 @@ def main() -> None:
     runner = BenchmarkRunner()
     results = runner.run(agent_filter=args.agent)
     report_path = generate_markdown_report(results, output_path="results/benchmark_report.md")
+    trace_plots = _generate_trace_plots(Path("results/traces"))
 
     print(json.dumps(results, indent=2))
     print(f"Benchmark report written to: {report_path}")
+    if trace_plots:
+        print("Trace plots written:")
+        for path in trace_plots:
+            print(f"- {path}")
 
 
 if __name__ == "__main__":
