@@ -112,11 +112,11 @@ Artifacts:
 
 ### Benchmark Results (example)
 
-| Agent | Tool Accuracy | First-Step Accuracy | Sequence Accuracy | Prefix Accuracy | Argument Accuracy | Completion Rate | Avg Steps |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Standard LLM | 0.65 | 0.55 | 0.52 | 0.61 | 0.62 | 0.50 | 1.00 |
-| ReAct | 0.74 | 0.63 | 0.63 | 0.72 | 0.71 | 0.62 | 1.40 |
-| Active Inference | 0.86 | 0.82 | 0.78 | 0.84 | 0.81 | 0.76 | 1.20 |
+| Agent | Tool Accuracy | First-Step Accuracy | Sequence Accuracy | Planning Accuracy | Premature Action Rate | Prefix Accuracy | Argument Accuracy | Completion Rate | Avg Steps |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Standard LLM | 0.65 | 0.55 | 0.52 | 0.52 | 0.45 | 0.61 | 0.62 | 0.50 | 1.00 |
+| ReAct | 0.74 | 0.63 | 0.63 | 0.63 | 0.37 | 0.72 | 0.71 | 0.62 | 1.40 |
+| Active Inference | 0.86 | 0.82 | 0.78 | 0.78 | 0.18 | 0.84 | 0.81 | 0.76 | 1.20 |
 
 Why Active Inference helps:
 
@@ -124,7 +124,8 @@ Why Active Inference helps:
 - preference-guided policy optimization,
 - iterative updates from critic feedback,
 - improved multi-step sequence performance under trace-aware scoring,
-- stronger first-step information-seeking behavior on uncertainty tasks.
+- stronger first-step information-seeking behavior on uncertainty tasks,
+- lower premature action rates on delayed-reward planning tasks.
 
 
 ### Dataset Bundles
@@ -136,6 +137,7 @@ Additional benchmark datasets are available under `evaluation/datasets/`:
 - `uncertainty_tasks.json` (40 tasks): information-first tool sequences (`retrieve_docs -> call_calculator`)
 - `argument_accuracy_tasks.json` (40 tasks): arithmetic prompts focused on calculator argument correctness
 - `multi_step_tasks.json` (40 tasks): explicit two-step planning tasks requiring retrieval then computation
+- `delayed_reward_tasks.json` (40 tasks): long-horizon planning prompts requiring at least three tool calls before reward
 
 These datasets are intended for targeted evaluation beyond the default benchmark configuration and can be passed into the benchmark harness directly.
 

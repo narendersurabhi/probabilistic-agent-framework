@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List
 
 import numpy as np
 
@@ -13,10 +13,13 @@ from benchmarks.react_agent import ReActAgent
 from benchmarks.standard_agent import StandardToolAgent
 from evaluation.metrics import (
     argument_accuracy,
+    average_planning_depth,
     belief_entropy_reduction,
     final_answer_accuracy,
     first_step_accuracy,
+    planning_accuracy,
     prefix_accuracy,
+    premature_action_rate,
     sequence_tool_accuracy,
     step_efficiency,
     task_completion_rate,
@@ -113,6 +116,8 @@ def _row_from_result(item: Dict[str, Any], normalized: Dict[str, Any]) -> Dict[s
         "prefix_ratio": _prefix_ratio(expected_tools, actual_tools),
         "final_answer_correct": expected_final_answer is None or final_answer == expected_final_answer,
         "task_type": item.get("task_type", "unknown"),
+        "has_expected_sequence": bool(expected_tools),
+        "has_action": bool(actual_tools),
     }
 
 
@@ -124,6 +129,9 @@ def _per_task_type(rows: List[Dict[str, Any]]) -> Dict[str, Dict[str, float]]:
         k: {
             "tool_accuracy": tool_selection_accuracy(v),
             "sequence_accuracy": sequence_tool_accuracy(v),
+            "planning_accuracy": planning_accuracy(v),
+            "average_planning_depth": average_planning_depth(v),
+            "premature_action_rate": premature_action_rate(v),
             "completion": task_completion_rate(v),
             "first_step_accuracy": first_step_accuracy(v),
         }
@@ -141,10 +149,13 @@ def _aggregate_runs(run_results: List[Dict[str, Any]]) -> Dict[str, Any]:
         task_types.update(rr["per_task_type"].keys())
     per_task: Dict[str, Dict[str, float]] = {}
     for t in sorted(task_types):
-        vals = [rr["per_task_type"].get(t, {"tool_accuracy": 0.0, "sequence_accuracy": 0.0, "completion": 0.0, "first_step_accuracy": 0.0}) for rr in run_results]
+        vals = [rr["per_task_type"].get(t, {"tool_accuracy": 0.0, "sequence_accuracy": 0.0, "planning_accuracy": 0.0, "average_planning_depth": 0.0, "premature_action_rate": 0.0, "completion": 0.0, "first_step_accuracy": 0.0}) for rr in run_results]
         per_task[t] = {
             "tool_accuracy": float(np.mean([v["tool_accuracy"] for v in vals])),
             "sequence_accuracy": float(np.mean([v["sequence_accuracy"] for v in vals])),
+            "planning_accuracy": float(np.mean([v["planning_accuracy"] for v in vals])),
+            "average_planning_depth": float(np.mean([v["average_planning_depth"] for v in vals])),
+            "premature_action_rate": float(np.mean([v["premature_action_rate"] for v in vals])),
             "completion": float(np.mean([v["completion"] for v in vals])),
             "first_step_accuracy": float(np.mean([v["first_step_accuracy"] for v in vals])),
         }
@@ -204,6 +215,9 @@ def run_benchmark(
                     "task_completion": task_completion_rate(rows),
                     "step_efficiency": step_efficiency(rows),
                     "sequence_tool_accuracy": sequence_tool_accuracy(rows),
+                    "planning_accuracy": planning_accuracy(rows),
+                    "average_planning_depth": average_planning_depth(rows),
+                    "premature_action_rate": premature_action_rate(rows),
                     "prefix_accuracy": prefix_accuracy(rows),
                     "final_answer_accuracy": final_answer_accuracy(rows),
                     "first_step_accuracy": first_step_accuracy(rows),

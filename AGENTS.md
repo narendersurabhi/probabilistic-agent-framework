@@ -172,3 +172,19 @@ All agents operating in this repository should read this file first to understan
 - Updated benchmark reporting in `experiments/run_benchmark.py` to include first-step columns in markdown and JSON evaluation reports.
 - Expanded `tests/test_evaluation.py` to validate first-step metric calculations and benchmark output fields.
 - Updated `README.md` benchmark table and narrative to highlight first-step accuracy as a planning-sensitive metric for uncertainty tasks.
+
+## 2026-03-08 (delayed-reward planning benchmark extension)
+- Added new delayed-reward dataset `evaluation/datasets/delayed_reward_tasks.json` with 40 long-horizon tasks:
+  - all tasks include `expected_tool_sequence` with at least 3 steps.
+  - includes 3-step and 4-step retrieval-plus-calculation planning trajectories.
+- Extended `evaluation/metrics.py` with planning-focused metrics:
+  - `planning_accuracy`
+  - `average_planning_depth`
+  - `premature_action_rate`
+- Extended `evaluation/benchmark_runner.py` to emit delayed-reward metrics at global and per-task-type levels.
+- Updated benchmark reporting in `experiments/run_benchmark.py` to include planning depth and premature action rate in markdown/JSON outputs.
+- Expanded evaluation tests in `tests/test_evaluation.py` to validate:
+  - delayed-reward dataset presence and schema expectations
+  - new planning metric behavior
+  - benchmark runner output fields for new metrics
+- Updated `README.md` benchmark and dataset sections to document delayed-reward tasks and planning-centric metrics.
