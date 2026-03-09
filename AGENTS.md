@@ -10,6 +10,14 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-09 (distributed benchmark runner)
+- Added `src/evaluation/distributed_runner.py` with a multiprocessing-based `DistributedBenchmarkRunner` that schedules task-agent jobs across worker processes and aggregates benchmark metrics/failure analysis.
+- Integrated distributed execution into `experiments/run_benchmark.py` via new `--workers` flag.
+- Extended package exports in `src/evaluation/__init__.py` and `agent_arena/benchmark.py` to expose `DistributedBenchmarkRunner`.
+- Updated `agent_arena/cli.py` with `--workers` support and distributed benchmark execution path for multi-worker runs.
+- Added `tests/test_distributed_runner.py` coverage for distributed execution artifact generation.
+- Updated `README.md` with a new **Distributed Benchmark Runner** section and usage examples.
+
 ## 2026-03-09 (synthetic dataset generation pipeline)
 - Added synthetic data generation package under `agent_arena/data_generation/`:
   - `task_generator.py` with `TaskGenerator` plus deterministic `HeuristicTaskLLM` fallback client.

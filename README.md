@@ -203,6 +203,17 @@ Then benchmark via CLI:
 agent-arena --dataset tool_confusion --max-tasks 20
 ```
 
+## Distributed Benchmark Runner
+
+Run parallel benchmark execution with multiple worker processes to speed up large evaluations:
+
+```bash
+agent-arena --workers 8
+python experiments/run_benchmark.py --workers 8
+```
+
+Distributed mode executes task-agent jobs across a worker pool, writes traces to `results/traces/`, and persists aggregate metrics to `results/benchmark_results.json`.
+
 ## Example Trace
 
 ```text

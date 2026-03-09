@@ -56,7 +56,7 @@ def test_benchmark_runner_executes_and_writes_artifacts(tmp_path: Path) -> None:
         ),
         encoding="utf-8",
     )
-    for name in ["uncertainty_tasks.json", "argument_accuracy_tasks.json", "delayed_reward_tasks.json"]:
+    for name in ["uncertainty_tasks.json", "argument_accuracy_tasks.json", "delayed_reward_tasks.json", "synthetic_tasks.json"]:
         (dataset_dir / name).write_text("[]", encoding="utf-8")
 
     runner = BenchmarkRunner(dataset_dir=dataset_dir, results_dir=tmp_path / "results")
@@ -90,7 +90,7 @@ def test_active_inference_trace_contains_planner_state(tmp_path: Path) -> None:
         ),
         encoding="utf-8",
     )
-    for name in ["tool_confusion_tasks.json", "uncertainty_tasks.json", "argument_accuracy_tasks.json", "delayed_reward_tasks.json"]:
+    for name in ["tool_confusion_tasks.json", "uncertainty_tasks.json", "argument_accuracy_tasks.json", "delayed_reward_tasks.json", "synthetic_tasks.json"]:
         (dataset_dir / name).write_text("[]", encoding="utf-8")
 
     runner = BenchmarkRunner(dataset_dir=dataset_dir, results_dir=tmp_path / "results")
@@ -122,7 +122,7 @@ def test_benchmark_runner_emits_stream_events(tmp_path: Path) -> None:
         ),
         encoding="utf-8",
     )
-    for name in ["tool_confusion_tasks.json", "uncertainty_tasks.json", "argument_accuracy_tasks.json", "delayed_reward_tasks.json"]:
+    for name in ["tool_confusion_tasks.json", "uncertainty_tasks.json", "argument_accuracy_tasks.json", "delayed_reward_tasks.json", "synthetic_tasks.json"]:
         (dataset_dir / name).write_text("[]", encoding="utf-8")
 
     events = []
