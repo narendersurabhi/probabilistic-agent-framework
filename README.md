@@ -123,12 +123,25 @@ uv sync --all-packages --group dev
 uv run python experiments/run_agent_arena.py
 ```
 
-Optional one-command shortcut:
+Optional one-command shortcuts:
 
 ```bash
-make benchmark
+make demo        # run flagship Agent Arena demo
+make benchmark   # run benchmark suite
+make report      # generate markdown report from benchmark metrics
+make full-eval   # sync + synthetic dataset + benchmark + report + rag eval
 ```
 
+
+## End-to-End Evaluation Command
+
+For a single-command reproducible pipeline across Arena + RAG evaluation:
+
+```bash
+make full-eval
+```
+
+This executes dependency sync, synthetic dataset generation, benchmark execution, markdown report generation, and RAG evaluation in sequence.
 
 ## Flagship Demos
 
