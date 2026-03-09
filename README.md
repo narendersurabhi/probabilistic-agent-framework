@@ -20,6 +20,18 @@ Watch the agent plan actions in real time using probabilistic planning.
 Query → State Extraction → Planner → Tool → Observation → Belief Update → Next Action
 ```
 
+## Why Probabilistic Planning Matters
+
+Most LLM agents rely on prompt heuristics that can collapse on ambiguous or multi-step tasks. Agent Arena evaluates an alternative: belief-state planning, where each action is selected from an explicit policy distribution and scored by expected free energy (utility + uncertainty reduction).
+
+This makes decision-making inspectable:
+
+- **Belief state** captures what the agent currently thinks is true.
+- **Policy probabilities** show which action is preferred and why.
+- **Action traces** make failure modes debuggable (wrong tool, premature action, incomplete plan).
+
+For AI platform teams, this is useful because it turns agent behavior from "prompt magic" into something measurable and auditable.
+
 ## Features
 
 - Active Inference planning for tool-using agents.
@@ -39,6 +51,39 @@ Query → State Extraction → Planner → Tool → Observation → Belief Updat
 | Active Inference | **0.86**      | **0.78**          | **0.82**            |
 
 Active Inference agents outperform prompt-driven baselines on multi-step planning and information-seeking tasks.
+
+### Reproducible Baseline Comparison
+
+Run one command to regenerate a direct comparison between Standard, ReAct, and Active Inference agents:
+
+```bash
+uv run python experiments/run_benchmark.py
+```
+
+Primary comparison artifacts:
+
+- `results/benchmark_results.json`
+- `results/evaluation_report.json`
+- `results/benchmark_report.md`
+
+These files are the recommended place to quote metrics in portfolio, resume, or interview walkthroughs.
+
+## Planning Loop Visualization
+
+```text
+User Query
+   ↓
+Belief Initialization
+   ↓
+Policy Evaluation (retrieve_docs | call_calculator | generate_answer)
+   ↓
+Action Selection
+   ↓
+Tool Observation
+   ↓
+Belief Update
+   └──────────────↺ (repeat until confident)
+```
 
 ## Visualization Examples
 

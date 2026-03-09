@@ -454,3 +454,8 @@ All agents operating in this repository should read this file first to understan
 - Removed committed binary demo asset `docs/dashboard_demo.gif` because PR creation tooling rejects binary file payloads.
 - Updated `README.md` demo section to reference a local GIF placeholder workflow instead of embedding a tracked binary.
 - Added `docs/dashboard_demo_placeholder.md` with instructions for adding the GIF locally/out-of-band when publishing.
+
+## 2026-03-09 (README positioning upgrade: hiring-manager clarity)
+- Updated `README.md` with a new **Why Probabilistic Planning Matters** section to explicitly frame the project's research and platform value beyond prompt-only agent heuristics.
+- Added a **Reproducible Baseline Comparison** subsection in `README.md` with a one-command benchmark rerun (`uv run python experiments/run_benchmark.py`) and direct pointers to the primary comparison artifacts under `results/`.
+- Added a text-based **Planning Loop Visualization** diagram in `README.md` to make belief updates, policy evaluation, and action-selection flow immediately legible to reviewers.
