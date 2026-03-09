@@ -10,6 +10,14 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-09 (baseline + trace/info-gain visualization polish)
+- Added lightweight baseline agent `agents/react_agent.py` with injectable LLM/tools and prompt-construction flow for quick ReAct-vs-probabilistic comparisons.
+- Updated `agents/__init__.py` to export the new top-level `ReActAgent` baseline.
+- Added `visualization/trace_graph.py` with `plot_trace(...)` to render step-to-step reasoning trace diagrams.
+- Added `visualization/information_gain_plot.py` with `plot_information_gain(...)` for expected information gain bar charts.
+- Updated `visualization/__init__.py` exports to include new trace and information-gain plotting helpers.
+- Added tests `tests/test_react_baseline.py` and `tests/test_reasoning_visualizations.py` to validate baseline output payloads and plot artifact generation.
+
 ## 2026-03-09 (uv workspace package management for arena + rag-eval)
 - Updated root `pyproject.toml` to support `uv` workspace usage by:
   - adding `[dependency-groups]` with `dev` dependencies (pytest),
