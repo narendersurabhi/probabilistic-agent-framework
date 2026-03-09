@@ -94,6 +94,17 @@ Generates:
 - `results/rag_eval_results.json`
 - `rag_eval/results/rag_judge_results.json`
 
+### 3) Synthetic Dataset Generator
+
+```bash
+python experiments/generate_dataset.py --count 50
+```
+
+Generates:
+
+- `src/evaluation/datasets/synthetic_tasks.json`
+
+
 ## Live Dashboard
 
 ```bash
@@ -218,6 +229,23 @@ Primary benchmark bundles include:
 - `uncertainty_tasks`
 - `argument_accuracy_tasks`
 - `delayed_reward_tasks`
+- `synthetic_tasks`
+
+## Synthetic Dataset Generator
+
+Agent Arena now includes a synthetic task data generation pipeline under `agent_arena/data_generation/` with three modular components:
+
+- `task_generator.py` to create tool-use tasks from an LLM client interface
+- `task_validator.py` to enforce required schema and tool constraints
+- `dataset_builder.py` to assemble and persist JSON datasets
+
+Run:
+
+```bash
+python experiments/generate_dataset.py --count 50
+```
+
+This produces `src/evaluation/datasets/synthetic_tasks.json` and allows benchmarks to include continuously generated evaluation tasks.
 
 Total benchmark tasks across bundles: **~200**.
 

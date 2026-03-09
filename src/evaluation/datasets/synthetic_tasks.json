@@ -1,0 +1,157 @@
+[
+  {
+    "task_id": "synthetic_001",
+    "query": "Find the population of Canada and compute 5 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_002",
+    "query": "What is twice the population of Australia?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_003",
+    "query": "Which city is the capital of Japan?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "synthetic_004",
+    "query": "What is 19 multiplied by 7?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_005",
+    "query": "Find the population of Canada and compute 5 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_006",
+    "query": "What is twice the population of Australia?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_007",
+    "query": "Which city is the capital of Japan?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "synthetic_008",
+    "query": "What is 19 multiplied by 7?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_009",
+    "query": "Find the population of Canada and compute 5 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_010",
+    "query": "What is twice the population of Australia?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_011",
+    "query": "Which city is the capital of Japan?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "synthetic_012",
+    "query": "What is 19 multiplied by 7?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_013",
+    "query": "Find the population of Canada and compute 5 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_014",
+    "query": "What is twice the population of Australia?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_015",
+    "query": "Which city is the capital of Japan?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "synthetic_016",
+    "query": "What is 19 multiplied by 7?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_017",
+    "query": "Find the population of Canada and compute 5 percent of it.",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_018",
+    "query": "What is twice the population of Australia?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "call_calculator"
+    ]
+  },
+  {
+    "task_id": "synthetic_019",
+    "query": "Which city is the capital of Japan?",
+    "expected_tool_sequence": [
+      "retrieve_docs",
+      "generate_answer"
+    ]
+  },
+  {
+    "task_id": "synthetic_020",
+    "query": "What is 19 multiplied by 7?",
+    "expected_tool_sequence": [
+      "call_calculator"
+    ]
+  }
+]
