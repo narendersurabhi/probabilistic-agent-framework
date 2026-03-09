@@ -4,6 +4,7 @@ from agent_arena.arena import Arena
 from agent_arena.benchmark import BenchmarkRunner, DistributedBenchmarkRunner
 from agent_arena.datasets import list_datasets, load_dataset
 from agent_arena.observability import AgentTracer, MetricsCollector
+from agent_arena.replay import ReplayEngine
 
 __all__ = [
     "Arena",
@@ -13,4 +14,5 @@ __all__ = [
     "list_datasets",
     "AgentTracer",
     "MetricsCollector",
+    "ReplayEngine",
 ]

@@ -113,6 +113,17 @@ Quick trace inspection:
 python visualization/show_trace.py results/traces/active_inference__benchmark_001.json
 ```
 
+### Replay System
+
+You can replay any saved run trace step-by-step for failure debugging and reproducible inspection.
+
+- `agent_arena/replay/replay_engine.py` provides `ReplayEngine` for timeline playback and summaries.
+- `scripts/replay_trace.py` provides a CLI with timed and interactive replay modes.
+
+```bash
+python scripts/replay_trace.py results/traces/active_inference__benchmark_001.json --interactive
+```
+
 ## uv Workspace Package Management
 
 This repository now supports `uv` as a unified package manager for both the Agent Arena root package and the standalone RAG evaluation package.
