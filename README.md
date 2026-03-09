@@ -99,6 +99,22 @@ Generated artifacts:
 - `results/graphs/*_graph.json`
 - `results/failure_analysis.json`
 
+## Failure Taxonomy Analysis
+
+Agent Arena automatically categorizes failed runs into structured failure types so benchmark outputs answer **why** a task failed, not only whether it failed.
+
+Taxonomy categories include:
+
+- `tool_selection_error`
+- `tool_argument_error`
+- `premature_action`
+- `missing_step`
+- `incorrect_sequence`
+- `reasoning_error`
+- `hallucination`
+
+These labels are emitted into per-task benchmark artifacts and aggregated in `results/failure_analysis.json` for quick debugging and prioritization.
+
 ## Agent Observability (Tracing + Metrics)
 
 Agent Arena now includes a lightweight observability layer for per-run tracing and metrics aggregation.
