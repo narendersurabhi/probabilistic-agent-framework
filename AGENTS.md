@@ -10,6 +10,13 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-09 (developer workflow targets: demo/report/full-eval)
+- Updated `Makefile` with additional reproducible DX targets:
+  - `make demo` to run the flagship Agent Arena demo command.
+  - `make report` to generate markdown benchmark reports from `artifacts/benchmark_results.json`.
+  - `make full-eval` to run end-to-end evaluation workflow (`sync`, synthetic dataset generation, benchmark, report, and rag-eval).
+- Updated `README.md` quickstart/workflow documentation to include the new one-command shortcuts and an explicit end-to-end `make full-eval` section.
+
 ## 2026-03-09 (baseline + trace/info-gain visualization polish)
 - Added lightweight baseline agent `agents/react_agent.py` with injectable LLM/tools and prompt-construction flow for quick ReAct-vs-probabilistic comparisons.
 - Updated `agents/__init__.py` to export the new top-level `ReActAgent` baseline.
