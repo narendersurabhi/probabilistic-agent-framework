@@ -10,6 +10,10 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-09 (quickstart troubleshooting clarity)
+- Updated `README.md` quickstart docs with a **Troubleshooting setup issues** section covering common local setup failures: `Repository not found` during `git clone` and `No pyproject.toml found` when running `uv` from the wrong directory.
+- Added explicit guidance to run setup commands from an existing checkout (do not re-clone if already in repo) and included a corrected `cd /path/to/agent-arena` command sequence.
+
 ## 2026-03-09 (failure taxonomy analyzer)
 - Added `agent_arena/evaluation/failure_taxonomy.py` with `FailureTaxonomyAnalyzer` for structured failure classification (`tool_selection_error`, `tool_argument_error`, `premature_action`, `missing_step`, `incorrect_sequence`, `reasoning_error`, `hallucination`).
 - Updated `src/evaluation/failure_analyzer.py` to delegate to taxonomy analyzer while preserving the existing `FailureAnalyzer` API for runner compatibility.
