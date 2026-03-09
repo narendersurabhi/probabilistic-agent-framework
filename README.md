@@ -1,7 +1,7 @@
 # Agent Arena
-## A Benchmarking Platform for Tool-Using AI Agents
+## Benchmarking and Evaluation Platform for AI Agents and RAG Systems
 
-Agent Arena is a research-oriented framework for evaluating tool-using AI agents, featuring Active Inference planning, deterministic benchmarks, and real-time reasoning visualization.
+Agent Arena is a research-style framework for evaluating AI agents and retrieval-augmented generation systems with deterministic benchmarks, failure analysis, reasoning visualization, and LLM-judge scoring.
 
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -12,9 +12,7 @@ Agent Arena is a research-oriented framework for evaluating tool-using AI agents
 
 Watch the agent plan actions in real time using probabilistic planning.
 
-![Agent reasoning demo](docs/images/agent_demo.gif)
-
-> Tip: record a 10–15s dashboard GIF (belief updates + tool calls + reasoning graph) and save it at `docs/images/agent_demo.gif`.
+> Demo GIF placeholder: add your recording at `docs/dashboard_demo.gif` (not committed here to keep PRs text-only).
 
 ## Architecture
 
@@ -62,7 +60,7 @@ Generated artifacts:
 git clone https://github.com/narendersurabhi/agent-arena
 cd agent-arena
 pip install -r requirements.txt
-python experiments/run_benchmark.py
+python experiments/run_agent_arena.py
 ```
 
 Optional one-command shortcut:
@@ -70,6 +68,31 @@ Optional one-command shortcut:
 ```bash
 make benchmark
 ```
+
+
+## Flagship Demos
+
+### 1) Agent Arena
+
+```bash
+python experiments/run_agent_arena.py
+```
+
+Generates:
+
+- `results/leaderboard.json`
+- `results/arena_results.json`
+
+### 2) RAG Evaluation Harness
+
+```bash
+python experiments/run_rag_eval.py
+```
+
+Generates:
+
+- `results/rag_eval_results.json`
+- `rag_eval/results/rag_judge_results.json`
 
 ## Live Dashboard
 
@@ -79,7 +102,7 @@ uvicorn api.server:app --reload
 
 Open:
 
-- `http://localhost:8000/`
+- `http://localhost:8000/dashboard`
 - `http://localhost:8000/trace_viewer`
 - `http://localhost:8000/agent_comparison`
 - `http://localhost:8000/arena`
@@ -102,7 +125,7 @@ Supported metrics:
 Run it with:
 
 ```bash
-python rag_eval/experiments/run_rag_eval.py
+python experiments/run_rag_eval.py
 ```
 
 Outputs:

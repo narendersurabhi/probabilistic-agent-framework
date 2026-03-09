@@ -177,6 +177,16 @@ def root() -> FileResponse:
     return FileResponse(UI_DIR / "index.html")
 
 
+@app.get("/dashboard")
+def dashboard_view() -> FileResponse:
+    return FileResponse(UI_DIR / "dashboard.html")
+
+
+@app.get("/rag_eval")
+def rag_eval_view() -> FileResponse:
+    return FileResponse(UI_DIR / "rag_eval.html")
+
+
 @app.get("/trace_viewer")
 def trace_viewer() -> FileResponse:
     return FileResponse(UI_DIR / "trace_viewer.html")
