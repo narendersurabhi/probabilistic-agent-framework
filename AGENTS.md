@@ -10,6 +10,23 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-08 (LLM judge evaluation module)
+- Added prompt-based LLM-as-a-judge framework under `src/evaluation/judges/`:
+  - `rubrics.py` with default RAG scoring rubric + prompt builder.
+  - `llm_judge.py` with `LLMJudge`, typed `JudgeResult`, and deterministic `HeuristicJudgeClient` fallback for offline runs.
+  - `judge_runner.py` for per-task judge execution and aggregate score computation.
+  - `__init__.py` exports for judge utilities.
+- Updated `src/evaluation/__init__.py` to export `LLMJudge` and `JudgeRunner`.
+- Extended `rag_eval/src/rag_eval/evaluator.py` to optionally run judge scoring and emit task/aggregate judge fields (`judge_correctness`, `judge_faithfulness`, `judge_completeness`, `judge_explanation`).
+- Updated `rag_eval/experiments/run_rag_eval.py` to:
+  - invoke judge scoring by default using deterministic heuristic judge client,
+  - write `rag_eval/results/rag_judge_results.json`,
+  - generate `rag_eval/results/rag_judge_metrics.png`,
+  - print judge summaries in CLI output.
+- Added tests in `tests/test_judges.py` for judge evaluation and aggregation.
+- Expanded `tests/test_rag_eval.py` to validate judge summary fields and `rag_judge_results.json` artifact generation.
+- Updated `README.md` with LLM Judge Evaluation documentation and new RAG output artifacts.
+
 ## 2026-03-08 (RAG evaluation harness module)
 - Added a standalone deterministic RAG evaluation module under `rag_eval/`:
   - `rag_eval/src/rag_eval/retriever.py` for keyword-overlap retrieval.

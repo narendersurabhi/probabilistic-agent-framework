@@ -45,6 +45,7 @@ def test_rag_pipeline_components() -> None:
     assert docs
     assert result.retrieval_recall == 1.0
     assert result.answer_accuracy == 1.0
+    assert result.judge_correctness is None
 
 
 def test_run_rag_eval_script_writes_results(tmp_path: Path, monkeypatch) -> None:
@@ -64,3 +65,6 @@ def test_run_rag_eval_script_writes_results(tmp_path: Path, monkeypatch) -> None
     payload = json.loads(result_path.read_text(encoding="utf-8"))
     assert "summary" in payload
     assert "answer_accuracy" in payload["summary"]
+    assert "judge_correctness" in payload["summary"]
+    judge_result_path = rag_root / "results" / "rag_judge_results.json"
+    assert judge_result_path.exists()
