@@ -164,6 +164,24 @@ uv sync --all-packages --group dev
 uv run python experiments/run_agent_arena.py
 ```
 
+### Troubleshooting setup issues
+
+If you see `Repository not found` while cloning:
+
+- Confirm the repository URL and ownership are correct.
+- If this project is private, make sure you are authenticated with GitHub (SSH key or GitHub CLI login).
+- If you are already inside a checked-out copy of this repository, **do not clone again**. Run setup from the existing repo root (the directory containing `pyproject.toml`).
+
+If you see `No pyproject.toml found`:
+
+- You are in the wrong directory. Change into the repository root before running `uv` commands:
+
+```bash
+cd /path/to/agent-arena
+uv sync --all-packages --group dev
+uv run python experiments/run_agent_arena.py
+```
+
 Optional one-command shortcuts:
 
 ```bash
