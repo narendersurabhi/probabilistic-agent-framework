@@ -10,6 +10,15 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-09 (trace replay system)
+- Added replay package `agent_arena/replay/`:
+  - `replay_engine.py` with `ReplayEngine` for deterministic step-by-step trace playback, formatted step rendering, and trace summaries.
+  - `__init__.py` export for replay interfaces.
+- Updated `agent_arena/__init__.py` exports to include `ReplayEngine` in the public package API.
+- Added CLI utility `scripts/replay_trace.py` with timed (`--delay`) and interactive (`--interactive`) replay modes.
+- Added test coverage in `tests/test_replay.py` for replay output formatting and summary metadata.
+- Updated `README.md` with a new **Replay System** subsection and CLI usage example.
+
 ## 2026-03-09 (agent observability tracing + metrics)
 - Added new observability package `agent_arena/observability/`:
   - `tracer.py` with `AgentTracer` for per-run step logging (`run_id`, step timestamps, latency, errors, final status/result).
