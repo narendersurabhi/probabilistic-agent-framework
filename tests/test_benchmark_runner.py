@@ -70,6 +70,11 @@ def test_benchmark_runner_executes_and_writes_artifacts(tmp_path: Path) -> None:
     assert (tmp_path / "results" / "plots" / "tool_accuracy_comparison.png").exists()
     trace_files = list((tmp_path / "results" / "traces").glob("*.json"))
     assert trace_files
+    trace_payload = json.loads(trace_files[0].read_text(encoding="utf-8"))
+    assert "run_id" in trace_payload
+    assert "total_latency_ms" in trace_payload
+    assert "observability_metrics" in trace_payload
+    assert "latency_ms" in trace_payload["steps"][0]
     graph_files = list((tmp_path / "results" / "graphs").glob("*_graph.json"))
     assert graph_files
 

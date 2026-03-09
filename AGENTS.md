@@ -10,6 +10,21 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-09 (agent observability tracing + metrics)
+- Added new observability package `agent_arena/observability/`:
+  - `tracer.py` with `AgentTracer` for per-run step logging (`run_id`, step timestamps, latency, errors, final status/result).
+  - `metrics.py` with `MetricsCollector` for per-trace metrics and aggregate run metrics.
+  - `__init__.py` exports for observability interfaces.
+- Integrated observability instrumentation into `src/evaluation/benchmark_runner.py`:
+  - wraps each task run with an `AgentTracer`,
+  - emits per-step latency and total run latency into persisted traces,
+  - attaches computed `observability_metrics` to trace artifacts,
+  - stores per-agent observability rollups inside `failure_analysis.json`.
+- Updated public package exports in `agent_arena/__init__.py` to include `AgentTracer` and `MetricsCollector`.
+- Added `visualization/show_trace.py` CLI utility to print run timelines from saved trace JSON files.
+- Added tests in `tests/test_observability.py` and extended `tests/test_benchmark_runner.py` to validate observability fields in generated trace artifacts.
+- Updated `README.md` with a dedicated **Agent Observability (Tracing + Metrics)** section and trace viewer usage command.
+
 ## 2026-03-09 (developer workflow targets: demo/report/full-eval)
 - Updated `Makefile` with additional reproducible DX targets:
   - `make demo` to run the flagship Agent Arena demo command.
