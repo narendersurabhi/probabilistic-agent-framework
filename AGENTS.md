@@ -10,6 +10,13 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-09 (failure taxonomy analyzer)
+- Added `agent_arena/evaluation/failure_taxonomy.py` with `FailureTaxonomyAnalyzer` for structured failure classification (`tool_selection_error`, `tool_argument_error`, `premature_action`, `missing_step`, `incorrect_sequence`, `reasoning_error`, `hallucination`).
+- Updated `src/evaluation/failure_analyzer.py` to delegate to taxonomy analyzer while preserving the existing `FailureAnalyzer` API for runner compatibility.
+- Updated `agent_arena/evaluation/__init__.py` exports to include `FailureTaxonomyAnalyzer` and refactored `agent_arena/__init__.py` to lazy-load public exports to avoid circular imports during evaluation module imports.
+- Updated `tests/test_failure_analyzer.py` for taxonomy label expectations and added `tests/test_failure_taxonomy.py` to validate reasoning/hallucination classification behavior.
+- Updated `README.md` with a new **Failure Taxonomy Analysis** section documenting categories and generated artifacts.
+
 ## 2026-03-09 (trace replay system)
 - Added replay package `agent_arena/replay/`:
   - `replay_engine.py` with `ReplayEngine` for deterministic step-by-step trace playback, formatted step rendering, and trace summaries.

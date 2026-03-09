@@ -1,14 +1,14 @@
 from src.evaluation.failure_analyzer import FailureAnalyzer
 
 
-def test_failure_analyzer_wrong_tool() -> None:
+def test_failure_analyzer_tool_selection_error() -> None:
     analyzer = FailureAnalyzer()
     task = {"expected_tool": "retrieve_docs"}
     result = {"selected_tool": "generate_answer", "arguments": {}, "steps": [], "completed": True}
-    assert analyzer.analyze(task, result) == "wrong_tool"
+    assert analyzer.analyze(task, result) == "tool_selection_error"
 
 
-def test_failure_analyzer_incorrect_arguments() -> None:
+def test_failure_analyzer_tool_argument_error() -> None:
     analyzer = FailureAnalyzer()
     task = {"expected_tool": "call_calculator", "expected_args": {"expression": "350 * 0.12"}}
     result = {
@@ -17,10 +17,10 @@ def test_failure_analyzer_incorrect_arguments() -> None:
         "steps": [{"action": "call_calculator"}],
         "completed": True,
     }
-    assert analyzer.analyze(task, result) == "incorrect_arguments"
+    assert analyzer.analyze(task, result) == "tool_argument_error"
 
 
-def test_failure_analyzer_premature_action_and_incomplete_plan() -> None:
+def test_failure_analyzer_premature_action_and_missing_step() -> None:
     analyzer = FailureAnalyzer()
     task = {"expected_tool_sequence": ["retrieve_docs", "call_calculator"]}
 
@@ -32,13 +32,13 @@ def test_failure_analyzer_premature_action_and_incomplete_plan() -> None:
     }
     assert analyzer.analyze(task, premature) == "premature_action"
 
-    incomplete = {
+    missing_step = {
         "selected_tool": "retrieve_docs",
         "arguments": {"query": "population of spain"},
         "steps": [{"action": "retrieve_docs"}],
         "completed": False,
     }
-    assert analyzer.analyze(task, incomplete) == "incomplete_plan"
+    assert analyzer.analyze(task, missing_step) == "missing_step"
 
 
 def test_failure_analyzer_incorrect_sequence() -> None:
