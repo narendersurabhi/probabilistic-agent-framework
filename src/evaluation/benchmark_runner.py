@@ -5,8 +5,10 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from time import perf_counter
 from typing import Any, Callable, Dict, List, Mapping
 
+from agent_arena.observability import AgentTracer, MetricsCollector
 from src.environment.tool_environment import ToolEnvironment
 from src.evaluation.dataset_loader import DatasetLoader
 from src.evaluation.failure_analyzer import FailureAnalyzer
@@ -233,6 +235,7 @@ class BenchmarkRunner:
         return {
             "task_id": task.get("task_id"),
             "query": task.get("query"),
+            "run_id": f"{agent_name}__{task.get('task_id', 'unknown_task')}",
             "agent": agent_name,
             "steps": steps,
             "result": {
@@ -307,14 +310,25 @@ class BenchmarkRunner:
         results: Dict[str, Dict[str, float]] = {}
         failure_analysis: Dict[str, Dict[str, Any]] = {}
         aggregate_failures = {failure: 0 for failure in self.failure_analyzer.FAILURE_TYPES}
+        observability_rollups: Dict[str, Dict[str, Any]] = {}
 
         for agent_name in selected_names:
             agent = self._build_agent(agent_name)
             rows: List[Dict[str, Any]] = []
+            traces_for_agent: List[Dict[str, Any]] = []
             failure_counts = {failure: 0 for failure in self.failure_analyzer.FAILURE_TYPES}
             for tasks in datasets.values():
                 for task in tasks:
+                    run_id = f"{agent_name}__{task.get('task_id', 'unknown_task')}"
+                    tracer = AgentTracer(
+                        run_id=run_id,
+                        query=task["query"],
+                        agent_name=agent_name,
+                        task_id=task.get("task_id"),
+                    )
+                    started = perf_counter()
                     normalized = self._normalize(agent.run(task["query"]))
+                    runtime_ms = (perf_counter() - started) * 1000.0
                     evaluation = self._evaluate_task(task, normalized)
                     rows.append(evaluation)
 
@@ -325,7 +339,46 @@ class BenchmarkRunner:
                             failure_counts[failure_type] += 1
                             aggregate_failures[failure_type] += 1
 
+                    normalized_steps = normalized.get("steps", [])
+                    step_count = len(normalized_steps) or 1
+                    per_step_latency = runtime_ms / step_count
+                    for step in normalized_steps:
+                        tracer.record_step(
+                            action=step.get("action", "unknown_action"),
+                            arguments=step.get("arguments", {}),
+                            observation=step.get("observation"),
+                            latency_ms=per_step_latency,
+                            metadata={
+                                key: step[key]
+                                for key in ["belief_state", "policy_probabilities", "expected_free_energy"]
+                                if key in step
+                            },
+                        )
+
+                    tracer.finish(
+                        status="success" if evaluation.get("completed") else "failed",
+                        result={
+                            "failure_type": failure_type,
+                            "tool_correct": evaluation["tool_correct"],
+                            "arguments_correct": evaluation["arguments_correct"],
+                            "sequence_correct": evaluation["sequence_correct"],
+                        },
+                    )
+                    traces_for_agent.append(tracer.trace)
+
                     trace_payload = self._create_trace(task, agent_name, normalized, evaluation)
+                    trace_payload.update(
+                        {
+                            "run_id": run_id,
+                            "total_latency_ms": tracer.trace.get("total_latency_ms", round(runtime_ms, 3)),
+                            "status": tracer.trace.get("status", "success"),
+                            "observability_metrics": MetricsCollector.compute(tracer.trace),
+                        }
+                    )
+                    for index, step in enumerate(trace_payload.get("steps", []), start=1):
+                        if "latency_ms" not in step:
+                            step["latency_ms"] = round(per_step_latency, 3)
+                        step.setdefault("timestamp", tracer.trace.get("started_at", 0.0) + index)
                     self.trace_logger.log_trace(trace_payload)
                     graph = build_reasoning_graph(trace_payload)
                     task_id = trace_payload.get("task_id", "unknown_task")
@@ -348,10 +401,12 @@ class BenchmarkRunner:
             total_failures = sum(failure_counts.values())
             metrics["failure_rate"] = float(total_failures / total_tasks) if total_tasks else 0.0
             results[agent_name] = metrics
+            observability_rollups[agent_name] = MetricsCollector.aggregate(traces_for_agent)
             failure_analysis[agent_name] = {
                 "total_tasks": total_tasks,
                 "total_failures": total_failures,
                 "failure_counts": failure_counts,
+                "observability": observability_rollups[agent_name],
             }
 
         failure_analysis["overall"] = {

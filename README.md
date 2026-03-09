@@ -99,6 +99,20 @@ Generated artifacts:
 - `results/graphs/*_graph.json`
 - `results/failure_analysis.json`
 
+## Agent Observability (Tracing + Metrics)
+
+Agent Arena now includes a lightweight observability layer for per-run tracing and metrics aggregation.
+
+- `agent_arena/observability/tracer.py` provides `AgentTracer` for structured step-by-step run traces.
+- `agent_arena/observability/metrics.py` provides `MetricsCollector` for per-run and aggregate metrics.
+- Benchmark traces now include `run_id`, per-step `latency_ms`, `total_latency_ms`, and `observability_metrics`.
+
+Quick trace inspection:
+
+```bash
+python visualization/show_trace.py results/traces/active_inference__benchmark_001.json
+```
+
 ## uv Workspace Package Management
 
 This repository now supports `uv` as a unified package manager for both the Agent Arena root package and the standalone RAG evaluation package.
