@@ -410,3 +410,19 @@ All agents operating in this repository should read this file first to understan
   - PyPI install command (`pip install agent-arena`),
   - import example (`from agent_arena import Arena`),
   - CLI example (`agent-arena --dataset ...`).
+
+## 2026-03-09 (portfolio packaging polish: two flagship demos)
+- Added flagship demo script `experiments/run_agent_arena.py` to present head-to-head Agent Arena output in a portfolio-friendly format and highlight `results/leaderboard.json`.
+- Added flagship demo script `experiments/run_rag_eval.py` as a top-level RAG evaluation entrypoint that delegates to `rag_eval/experiments/run_rag_eval.py`, prints key summary metrics, and copies canonical output to `results/rag_eval_results.json`.
+- Extended API routes in `api/server.py` with:
+  - `GET /dashboard` (dashboard alias route)
+  - `GET /rag_eval` (RAG evaluation info page route)
+- Added UI pages:
+  - `ui/dashboard.html` redirect page for dashboard route compatibility
+  - `ui/rag_eval.html` with RAG eval run command and artifact references
+- Updated `README.md` positioning/subtitle and demo commands to emphasize a unified platform for both Agent Arena and RAG evaluation, including new flagship demos and `/dashboard` entry URL.
+
+## 2026-03-09 (follow-up: PR tooling compatibility for binary assets)
+- Removed committed binary demo asset `docs/dashboard_demo.gif` because PR creation tooling rejects binary file payloads.
+- Updated `README.md` demo section to reference a local GIF placeholder workflow instead of embedding a tracked binary.
+- Added `docs/dashboard_demo_placeholder.md` with instructions for adding the GIF locally/out-of-band when publishing.

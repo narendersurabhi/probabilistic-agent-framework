@@ -21,7 +21,7 @@ from src.evaluation.judges import HeuristicJudgeClient, JudgeRunner, LLMJudge
 def _plot_metrics(metrics: dict[str, float], out_path: Path) -> Path:
     try:
         import matplotlib.pyplot as plt
-    except ImportError:
+    except Exception:
         out_path.write_text("matplotlib not installed; plot unavailable\n", encoding="utf-8")
         return out_path
 
@@ -52,7 +52,7 @@ def _plot_judge_metrics(metrics: dict[str, float], out_path: Path) -> Path:
 
     try:
         import matplotlib.pyplot as plt
-    except ImportError:
+    except Exception:
         out_path.write_text("matplotlib not installed; plot unavailable\n", encoding="utf-8")
         return out_path
 
