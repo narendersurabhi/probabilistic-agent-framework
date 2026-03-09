@@ -14,6 +14,7 @@ if str(ROOT) not in sys.path:
 
 from experiments.generate_report import generate_markdown_report
 from src.evaluation.benchmark_runner import BenchmarkRunner
+from src.evaluation.distributed_runner import DistributedBenchmarkRunner
 from src.visualization.belief_plots import plot_belief_evolution
 from src.visualization.free_energy_plot import plot_expected_free_energy
 from src.visualization.policy_plots import plot_policy_probabilities
@@ -48,10 +49,15 @@ def main() -> None:
         choices=["standard", "react", "active_inference"],
         help="Optional agent filter; can be passed multiple times.",
     )
+    parser.add_argument("--workers", type=int, default=1, help="Worker process count for distributed execution.")
     args = parser.parse_args()
 
-    runner = BenchmarkRunner()
-    results = runner.run(agent_filter=args.agent)
+    if args.workers > 1:
+        runner = DistributedBenchmarkRunner(workers=args.workers)
+        results = runner.run(agent_filter=args.agent)
+    else:
+        runner = BenchmarkRunner()
+        results = runner.run(agent_filter=args.agent)
     report_path = generate_markdown_report(results, output_path="results/benchmark_report.md")
     trace_plots = _generate_trace_plots(Path("results/traces"))
 
