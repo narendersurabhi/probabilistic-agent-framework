@@ -12,6 +12,7 @@ DATASET_FILENAMES = {
     "uncertainty_tasks": "uncertainty_tasks.json",
     "argument_accuracy_tasks": "argument_accuracy_tasks.json",
     "delayed_reward_tasks": "delayed_reward_tasks.json",
+    "synthetic_tasks": "synthetic_tasks.json",
 }
 
 

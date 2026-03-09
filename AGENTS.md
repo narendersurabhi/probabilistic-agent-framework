@@ -10,6 +10,18 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-09 (synthetic dataset generation pipeline)
+- Added synthetic data generation package under `agent_arena/data_generation/`:
+  - `task_generator.py` with `TaskGenerator` plus deterministic `HeuristicTaskLLM` fallback client.
+  - `task_validator.py` with schema/tool validation for generated tasks.
+  - `dataset_builder.py` for writing assembled JSON datasets.
+  - `__init__.py` exports for data-generation utilities.
+- Added executable script `experiments/generate_dataset.py` to generate synthetic tasks (`--count`, `--output`) and write benchmark-ready datasets.
+- Generated and added starter synthetic benchmark dataset at `src/evaluation/datasets/synthetic_tasks.json` (20 tasks).
+- Updated `src/evaluation/dataset_loader.py` to register `synthetic_tasks` as a first-class dataset bundle.
+- Added test coverage in `tests/test_data_generation.py` for generation, validation, builder output, and script end-to-end behavior.
+- Updated `README.md` with a new **Synthetic Dataset Generator** section and a flagship demo command for dataset generation.
+
 ## 2026-03-08 (LLM judge evaluation module)
 - Added prompt-based LLM-as-a-judge framework under `src/evaluation/judges/`:
   - `rubrics.py` with default RAG scoring rubric + prompt builder.
