@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from src.evaluation.judges import JudgeRunner
+
 from . import metrics
 
 
@@ -19,9 +21,16 @@ class RAGTaskResult:
     answer_accuracy: float
     faithfulness: float
     hallucination_rate: float
+    judge_correctness: float | None = None
+    judge_faithfulness: float | None = None
+    judge_completeness: float | None = None
+    judge_explanation: str | None = None
 
 
 class RAGEvaluator:
+    def __init__(self, judge_runner: JudgeRunner | None = None):
+        self.judge_runner = judge_runner
+
     def evaluate(
         self,
         question: str,
@@ -30,7 +39,7 @@ class RAGEvaluator:
         ground_truth: str,
         relevant_documents: list[str],
     ) -> RAGTaskResult:
-        return RAGTaskResult(
+        task_result = RAGTaskResult(
             question=question,
             answer=answer,
             ground_truth=ground_truth,
@@ -42,6 +51,20 @@ class RAGEvaluator:
             faithfulness=metrics.faithfulness(answer, retrieved_docs),
             hallucination_rate=metrics.hallucination_rate(answer, retrieved_docs),
         )
+
+        if self.judge_runner is not None:
+            judge_result = self.judge_runner.evaluate_task(
+                question=question,
+                context_docs=retrieved_docs,
+                answer=answer,
+                ground_truth=ground_truth,
+            )
+            task_result.judge_correctness = float(judge_result.correctness_score)
+            task_result.judge_faithfulness = float(judge_result.faithfulness_score)
+            task_result.judge_completeness = float(judge_result.completeness_score)
+            task_result.judge_explanation = judge_result.explanation
+
+        return task_result
 
     def aggregate(self, results: list[RAGTaskResult]) -> dict[str, float]:
         if not results:
@@ -60,7 +83,21 @@ class RAGEvaluator:
             "faithfulness",
             "hallucination_rate",
         ]
-        return {
+        summary = {
             key: sum(getattr(result, key) for result in results) / len(results)
             for key in keys
         }
+
+        judged_results = [result for result in results if result.judge_correctness is not None]
+        if judged_results:
+            summary["judge_correctness"] = (
+                sum(float(result.judge_correctness) for result in judged_results) / len(judged_results)
+            )
+            summary["judge_faithfulness"] = (
+                sum(float(result.judge_faithfulness) for result in judged_results) / len(judged_results)
+            )
+            summary["judge_completeness"] = (
+                sum(float(result.judge_completeness) for result in judged_results) / len(judged_results)
+            )
+
+        return summary

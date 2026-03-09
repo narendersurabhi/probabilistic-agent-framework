@@ -95,6 +95,9 @@ Supported metrics:
 - Answer Accuracy
 - Faithfulness
 - Hallucination Rate
+- LLM Judge Correctness (1-10)
+- LLM Judge Faithfulness (1-10)
+- LLM Judge Completeness (1-10)
 
 Run it with:
 
@@ -106,6 +109,8 @@ Outputs:
 
 - `rag_eval/results/rag_eval_results.json`
 - `rag_eval/results/rag_eval_metrics.png`
+- `rag_eval/results/rag_judge_results.json`
+- `rag_eval/results/rag_judge_metrics.png`
 
 Example benchmark table:
 
@@ -113,6 +118,19 @@ Example benchmark table:
 | ------------ | ---------------- | --------------- | ------------------ |
 | Baseline RAG | 0.84             | 0.79            | 0.08               |
 | Improved RAG | **0.91**         | **0.86**        | **0.04**           |
+
+
+## LLM Judge Evaluation
+
+The repository now includes a prompt-based **LLM-as-a-judge** module under `src/evaluation/judges/` with reusable rubric templates, an `LLMJudge`, and a `JudgeRunner` for task-level + aggregate scoring.
+
+RAG runs can invoke judge scoring to grade:
+
+- Correctness
+- Faithfulness to retrieved context
+- Completeness
+
+For offline determinism, `rag_eval/experiments/run_rag_eval.py` uses a heuristic local judge client that returns strict JSON in the same schema expected from real LLM providers.
 
 ## Agent Arena
 
