@@ -54,13 +54,28 @@ Generated artifacts:
 - `results/graphs/*_graph.json`
 - `results/failure_analysis.json`
 
+## uv Workspace Package Management
+
+This repository now supports `uv` as a unified package manager for both the Agent Arena root package and the standalone RAG evaluation package.
+
+```bash
+# Install all workspace packages + dev tooling
+uv sync --all-packages --group dev
+
+# Run Arena workflows
+uv run python experiments/run_agent_arena.py
+
+# Run RAG evaluation workflows from the rag_eval package
+uv run --package agent-arena-rag-eval python rag_eval/experiments/run_rag_eval.py
+```
+
 ## Quick Start
 
 ```bash
 git clone https://github.com/narendersurabhi/agent-arena
 cd agent-arena
-pip install -r requirements.txt
-python experiments/run_agent_arena.py
+uv sync --all-packages --group dev
+uv run python experiments/run_agent_arena.py
 ```
 
 Optional one-command shortcut:
@@ -75,7 +90,7 @@ make benchmark
 ### 1) Agent Arena
 
 ```bash
-python experiments/run_agent_arena.py
+uv run python experiments/run_agent_arena.py
 ```
 
 Generates:
@@ -86,7 +101,7 @@ Generates:
 ### 2) RAG Evaluation Harness
 
 ```bash
-python experiments/run_rag_eval.py
+uv run --package agent-arena-rag-eval python experiments/run_rag_eval.py
 ```
 
 Generates:
@@ -97,7 +112,7 @@ Generates:
 ### 3) Synthetic Dataset Generator
 
 ```bash
-python experiments/generate_dataset.py --count 50
+uv run python experiments/generate_dataset.py --count 50
 ```
 
 Generates:
@@ -108,7 +123,7 @@ Generates:
 ## Live Dashboard
 
 ```bash
-uvicorn api.server:app --reload
+uv run uvicorn api.server:app --reload
 ```
 
 Open:
@@ -136,7 +151,7 @@ Supported metrics:
 Run it with:
 
 ```bash
-python experiments/run_rag_eval.py
+uv run --package agent-arena-rag-eval python experiments/run_rag_eval.py
 ```
 
 Outputs:
@@ -171,7 +186,7 @@ For offline determinism, `rag_eval/experiments/run_rag_eval.py` uses a heuristic
 Run head-to-head evaluation where built-in agents compete on standardized tasks.
 
 ```bash
-python experiments/arena.py
+uv run python experiments/arena.py
 ```
 
 Example leaderboard:
@@ -253,7 +268,7 @@ Agent Arena now includes a synthetic task data generation pipeline under `agent_
 Run:
 
 ```bash
-python experiments/generate_dataset.py --count 50
+uv run python experiments/generate_dataset.py --count 50
 ```
 
 This produces `src/evaluation/datasets/synthetic_tasks.json` and allows benchmarks to include continuously generated evaluation tasks.
@@ -290,11 +305,11 @@ That combination improves recruiter and collaborator engagement.
 ## Installation (Package Mode)
 
 ```bash
-pip install -e .
+uv sync --all-packages --group dev
 ```
 
 After publication:
 
 ```bash
-pip install agent-arena
+uv add agent-arena
 ```

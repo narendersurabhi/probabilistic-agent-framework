@@ -1,10 +1,16 @@
-.PHONY: benchmark test rag-eval
+.PHONY: benchmark test rag-eval sync sync-rag
+
+sync:
+	uv sync --all-packages --group dev
+
+sync-rag:
+	uv sync --package agent-arena-rag-eval
 
 benchmark:
-	python experiments/run_benchmark.py --config config/benchmark_config.yaml --output-dir artifacts
+	uv run python experiments/run_benchmark.py --config config/benchmark_config.yaml --output-dir artifacts
 
 test:
-	pytest -q
+	uv run pytest -q
 
 rag-eval:
-	python rag_eval/experiments/run_rag_eval.py
+	uv run --package agent-arena-rag-eval python rag_eval/experiments/run_rag_eval.py

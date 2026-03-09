@@ -10,6 +10,14 @@ All agents operating in this repository should read this file first to understan
 
 ## Change Log
 
+## 2026-03-09 (uv workspace package management for arena + rag-eval)
+- Updated root `pyproject.toml` to support `uv` workspace usage by:
+  - adding `[dependency-groups]` with `dev` dependencies (pytest),
+  - adding `[tool.uv.workspace]` members for the root package and `rag_eval` package.
+- Added `rag_eval/pyproject.toml` so the RAG evaluation harness is a first-class workspace package (`agent-arena-rag-eval`) installable/runnable via `uv`.
+- Updated `Makefile` targets to use `uv run` for benchmark/test/rag-eval flows and added `sync` / `sync-rag` helpers.
+- Updated `README.md` with a new **uv Workspace Package Management** section plus `uv`-based quickstart and run commands for both Agent Arena and RAG eval workflows.
+
 ## 2026-03-09 (distributed benchmark runner)
 - Added `src/evaluation/distributed_runner.py` with a multiprocessing-based `DistributedBenchmarkRunner` that schedules task-agent jobs across worker processes and aggregates benchmark metrics/failure analysis.
 - Integrated distributed execution into `experiments/run_benchmark.py` via new `--workers` flag.
